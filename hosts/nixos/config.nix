@@ -32,8 +32,15 @@ in
   # BOOT related stuff
   boot = {
     kernelPackages = pkgs.linuxPackages_zen; # Kernel
-
+    consoleLogLevel = 0 ;
     kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
       "systemd.mask=systemd-vconsole-setup.service"
       "systemd.mask=dev-tpmrm0.device" #this is to mask that stupid 1.5 mins systemd bug
       "nowatchdog"
@@ -46,6 +53,7 @@ in
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
     initrd = {
+      verbose = false;
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
       kernelModules = [ ];
     };
@@ -79,6 +87,7 @@ in
 
     # Bootloader GRUB theme, configure below
 
+    #theme = inputs.nixos-grub-themes.packages.${pkgs.system}.nixos;
     ## -end of BOOTLOADERS----- ##
 
     # Make /tmp a tmpfs
@@ -89,7 +98,7 @@ in
 
     # Appimage Support
     binfmt.registrations.appimage = {
-      wrapInterpreterInShell = false;
+      wrapInterpreterInShell = true;
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";
       recognitionType = "magic";
       offset = 0;
@@ -97,7 +106,18 @@ in
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
 
-    plymouth.enable = true;
+    #plymouth.enable = true;
+     plymouth = {
+      enable = true;
+      theme = "connect";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "connect" ];
+        })
+      ];
+    };
+
   };
 
   # GRUB Bootloader theme. Of course you need to enable GRUB above.. duh!
@@ -193,8 +213,8 @@ in
   };
 
   environment.systemPackages =
-    (with pkgs; [
-      # System Packages
+    (with pkgs; [ 
+     # System Packages
       baobab
       btrfs-progs
       clang
@@ -292,11 +312,30 @@ in
       github-cli
       #catppuccin-papirus-folders
       #catppuccin
-      #catppuccin-gtk
+      catppuccin-gtk
       telegram-desktop
       neofetch
-      #catppuccin-plymouth
-
+      catppuccin-plymouth
+      python312Packages.gpustat
+      power-profiles-daemon
+      ani-cli
+      zathura
+      pango
+      gtk4
+      rustup
+      cargo
+      gdk-pixbuf
+      gobject-introspection
+      gobject-introspection-unwrapped
+      haskellPackages.gi-gobject
+      cairo 
+      glib 
+      dbus-glib
+      gtk3
+      gio-sharp
+      nwg-dock-hyprland
+      pipx
+      waypaper
       #waybar  # if wanted experimental next line
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
@@ -316,7 +355,7 @@ in
     terminus_font
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
+    
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
@@ -382,7 +421,7 @@ in
     nfs.server.enable = false;
 
     openssh.enable = true;
-    flatpak.enable = false;
+    flatpak.enable = true;
 
     blueman.enable = true;
 
@@ -394,7 +433,7 @@ in
     upower.enable = true;
 
     gnome.gnome-keyring.enable = true;
-
+    
     #printing = {
     #  enable = false;
     #  drivers = [
