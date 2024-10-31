@@ -297,6 +297,7 @@ in
       neovim
       protonvpn-gui
       nitch
+      ahoviewer
       sddm
       catppuccin-sddm-corners
       bun
@@ -325,7 +326,8 @@ in
       oh-my-posh
       github-cli
       #catppuccin-papirus-folders
-      #catppuccin
+      catppuccin
+      catppuccin-cursors
       catppuccin-gtk
       telegram-desktop
       neofetch
@@ -354,6 +356,9 @@ in
       qcomicbook
       libsForQt5.qt5.qtquickcontrols   
       libsForQt5.qt5.qtgraphicaleffects
+      wezterm
+      hyprpicker
+      hyprlandPlugins.borders-plus-plus
       #waybar  # if wanted experimental next line
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
@@ -388,33 +393,38 @@ in
   };
 
    # Enable sddm login manager
-  #services.displayManager.sddm = {
-  #  enable = true;
-  #  wayland.enable = true;
-  #  theme = "catppuccin-sddm-corners";
-  #  settings.Theme.CursorTheme = "Chiharu";
-  #};
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "catppuccin-sddm-corners";
+    settings.Theme.CursorTheme = "Chiharu";
+  };
 
   # Services to start
   services = {
+
     xserver = {
-      enable = false;
-      ixkb = {
+      enable = true;
+      xkb = {
         layout = "${keyboardLayout}";
         variant = "";
       };
+  #      displayManager.sddm = {
+  #          enable = true;
+  #          theme = "catppuccin-sddm-corners";
+   #     };
     };
   # services.xserver.displayManager.sddm.package = libsForQt5.sddm;
-    greetd = {
-      enable = true;
-      vt = 3;
-      settings = {
-        default_session = {
-          user = username;
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
-        };
-      };
-    };
+  #  greetd = {
+  #    enable = true;
+  #    vt = 3;
+  #    settings = {
+  #      default_session = {
+  #        user = username;
+  #        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
+  #      };
+  #    };
+  #  };
      
 
     smartd = {

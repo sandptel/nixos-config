@@ -16,18 +16,26 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # hyprland development
     distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix";
+    wezterm.url = "github:wez/wezterm?dir=nix";
+
+
   };
 
   outputs =
     inputs @ { self
     , nixpkgs
+ #   ,home-manager
+ #   ,stylix
     , ...
     }:
     let
       system = "x86_64-linux";
-      host = "nixos";
+      host = "NixOS";
       username = "antonio";
-
+      #defaultPackage.x86_64-linux = wezterm.packages.x86_64-linux.default;
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -45,6 +53,7 @@
           modules = [
             ./hosts/${host}/config.nix
             inputs.distro-grub-themes.nixosModules.${system}.default
+#            inputs.stylix.nixosModules.stylix
             { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
           ];
         };

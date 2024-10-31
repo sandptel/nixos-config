@@ -27,6 +27,7 @@ in
     ../../modules/intel-drivers.nix
     ../../modules/vm-guest-services.nix
     ../../modules/local-hardware-clock.nix
+    #./sddm-theme.nix
   ];
 
   # BOOT related stuff
@@ -48,8 +49,9 @@ in
       "modprobe.blacklist=iTCO_wdt" #watchdog for Intel
     ];
 
-    # This is for OBS Virtual Cam Support
-    kernelModules = [ "v4l2loopback" ];
+  # This is for OBS Virtual Cam Support
+  
+  kernelModules = [ "v4l2loopback" ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
     initrd = {
@@ -106,19 +108,26 @@ in
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
 
-    #plymouth.enable = true;
-     plymouth = {
-      enable = true;
-      theme = "connect";
-      themePackages = with pkgs; [
+    plymouth.enable = true;
+    # plymouth = {
+    #  enable = true;
+    #  theme = "connect";
+    #  themePackages = with pkgs; [
         # By default we would install all themes
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "connect" ];
-        })
-      ];
-    };
+    #    (adi1090x-plymouth-themes.override {
+    #      selected_themes = [ "connect" ];
+    #    })
+    #  ];
+    #};
 
   };
+
+  #stylix = {
+   # enable = true;
+   #  polarity = "dark";
+   # opacity.terminal = 0.8;
+
+  #};
 
   # GRUB Bootloader theme. Of course you need to enable GRUB above.. duh!
   distro-grub-themes = {
@@ -131,9 +140,9 @@ in
   drivers.intel.enable = true;
   drivers.nvidia.enable = true;
   drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
+    enable = true;
+    intelBusID = "PCI:0:2:0";
+    nvidiaBusID = "PCI:1:0:0";
   };
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
@@ -170,7 +179,7 @@ in
       portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
       xwayland.enable = true;
     };
-
+    nix-ld.enable = true;
     waybar.enable = true;
     hyprlock.enable = true;
     firefox.enable = true;
@@ -210,6 +219,7 @@ in
 
   users = {
     mutableUsers = true;
+    #defaultUserShell = pkgs.fish;
   };
 
   environment.systemPackages =
@@ -259,6 +269,9 @@ in
       jq
       kitty
       libsForQt5.qtstyleplugin-kvantum #kvantum
+      #libsForQt6.qtstyleplugin-kvantum
+      kdePackages.qtstyleplugin-kvantum
+      #kdePackages.qt6gtk2
       networkmanagerapplet
       nwg-look # requires unstable channel
       nvtopPackages.full
@@ -285,6 +298,11 @@ in
       neovim
       protonvpn-gui
       nitch
+      brave
+      lshw
+      ahoviewer
+      sddm
+      catppuccin-sddm-corners
       bun
       nodejs
       dart-sass
@@ -311,7 +329,8 @@ in
       oh-my-posh
       github-cli
       #catppuccin-papirus-folders
-      #catppuccin
+      catppuccin
+      catppuccin-cursors
       catppuccin-gtk
       telegram-desktop
       neofetch
@@ -336,6 +355,15 @@ in
       nwg-dock-hyprland
       pipx
       waypaper
+      kdePackages.qt6ct
+      qcomicbook
+      libsForQt5.qt5.qtquickcontrols   
+      libsForQt5.qt5.qtgraphicaleffects
+      wezterm
+      hyprpicker
+      hyprlandPlugins.borders-plus-plus
+      egl-wayland
+      nvidia-vaapi-driver
       #waybar  # if wanted experimental next line
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
@@ -355,7 +383,8 @@ in
     terminus_font
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-    
+  
+  #catppuccin.enable = true;
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
@@ -369,26 +398,40 @@ in
     ];
   };
 
+   # Enable sddm login manager
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "catppuccin-sddm-corners";
+    settings.Theme.CursorTheme = "catppuccin-cursors";
+  };
+
   # Services to start
   services = {
+
     xserver = {
-      enable = false;
+      enable = true;
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
       };
+  #      displayManager.sddm = {
+  #          enable = true;
+  #          theme = "catppuccin-sddm-corners";
+   #     };
     };
-
-    greetd = {
-      enable = true;
-      vt = 3;
-      settings = {
-        default_session = {
-          user = username;
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
-        };
-      };
-    };
+  # services.xserver.displayManager.sddm.package = libsForQt5.sddm;
+  #  greetd = {
+  #    enable = true;
+  #    vt = 3;
+  #    settings = {
+  #      default_session = {
+  #        user = username;
+  #        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
+  #      };
+  #    };
+  #  };
+     
 
     smartd = {
       enable = false;
