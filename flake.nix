@@ -20,6 +20,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
 
   };
@@ -54,6 +58,7 @@
             ./hosts/${host}/config.nix
             inputs.distro-grub-themes.nixosModules.${system}.default
 #            inputs.stylix.nixosModules.stylix
+            inputs.spicetify-nix.nixosModules.default
             { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
           ];
         };

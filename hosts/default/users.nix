@@ -34,8 +34,11 @@ in
   programs.fish.interactiveShellInit = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
   '';
-    
-  programs = {
+   programs = {
+
+    spicetify = {
+        enable = true;
+    };
   # Zsh configuration
 	  zsh = {
     	enable = true;

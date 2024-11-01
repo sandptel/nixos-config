@@ -109,6 +109,7 @@ in
     };
 
     plymouth.enable = true;
+    #plymouth.theme = "catppuccin";
     # plymouth = {
     #  enable = true;
     #  theme = "connect";
@@ -178,6 +179,7 @@ in
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
       portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
       xwayland.enable = true;
+
     };
     nix-ld.enable = true;
     waybar.enable = true;
@@ -204,6 +206,8 @@ in
     #  remotePlay.openFirewall = true;
     #  dedicatedServer.openFirewall = true;
     #};
+    
+
 
     xwayland.enable = true;
 
@@ -296,9 +300,17 @@ in
       yad
       yt-dlp
       neovim
+      protonvpn-cli_2
       protonvpn-gui
+      python312Packages.protonvpn-nm-lib
+      python312Packages.proton-keyring-linux
+      python312Packages.proton-vpn-network-manager
+      protonvpn-cli
+      python312Packages.pip 
+      python312Packages.proton-vpn-api-core
       nitch
-      brave
+      dialog
+      neovide
       lshw
       ahoviewer
       sddm
@@ -346,12 +358,12 @@ in
       gdk-pixbuf
       gobject-introspection
       gobject-introspection-unwrapped
-      haskellPackages.gi-gobject
+      #haskellPackages.gi-gobject
       cairo 
       glib 
       dbus-glib
       gtk3
-      gio-sharp
+      #gio-sharp
       nwg-dock-hyprland
       pipx
       waypaper
@@ -359,11 +371,11 @@ in
       qcomicbook
       libsForQt5.qt5.qtquickcontrols   
       libsForQt5.qt5.qtgraphicaleffects
-      wezterm
       hyprpicker
       hyprlandPlugins.borders-plus-plus
       egl-wayland
       nvidia-vaapi-driver
+      #dracut
       #waybar  # if wanted experimental next line
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
@@ -397,7 +409,12 @@ in
       pkgs.xdg-desktop-portal
     ];
   };
-
+  #qt = {
+  #  enable = true;
+  #  platformTheme = "qt5ct";
+  #  #platformTheme = "qt6ct";
+  #  style = "kvantum";
+  #};
    # Enable sddm login manager
   services.displayManager.sddm = {
     enable = true;
@@ -467,7 +484,7 @@ in
     flatpak.enable = true;
 
     blueman.enable = true;
-
+    power-profiles-daemon.enable = true;
     #hardware.openrgb.enable = true;
     #hardware.openrgb.motherboard = "amd";
 
@@ -608,8 +625,14 @@ in
 
   # For Electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+  EDITOR = "nvim";
+  BROWSER = "firefox";
+  TERMINAL = "kitty";
+  VISUAL = "vscodium";
+};
 
-  # Open ports in the firewall.
+# Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
