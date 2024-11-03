@@ -346,7 +346,6 @@ in
       catppuccin-gtk
       telegram-desktop
       neofetch
-      catppuccin-plymouth
       python312Packages.gpustat
       power-profiles-daemon
       ani-cli
