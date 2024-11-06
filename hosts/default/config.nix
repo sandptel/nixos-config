@@ -331,8 +331,7 @@ in
       rustup
       cargo
       gdk-pixbuf
-      cairo 
-      glib 
+      cairo  
       dbus-glib
       gtk3
       nwg-dock-hyprland
