@@ -31,8 +31,6 @@
   outputs =
     inputs @ { self
     , nixpkgs
- #   ,home-manager
- #   ,stylix
     , ...
     }:
     let
@@ -57,7 +55,6 @@
           modules = [
             ./hosts/${host}/config.nix
             inputs.distro-grub-themes.nixosModules.${system}.default
-#            inputs.stylix.nixosModules.stylix
             inputs.spicetify-nix.nixosModules.default
             { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
           ];

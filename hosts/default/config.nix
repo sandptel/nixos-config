@@ -252,7 +252,6 @@ in
 
       fastfetch
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
-      #ranger
 
       # Hyprland Stuff
       hyprpanel
@@ -273,9 +272,6 @@ in
       jq
       kitty
       libsForQt5.qtstyleplugin-kvantum #kvantum
-      #libsForQt6.qtstyleplugin-kvantum
-      kdePackages.qtstyleplugin-kvantum
-      #kdePackages.qt6gtk2
       networkmanagerapplet
       nwg-look # requires unstable channel
       nvtopPackages.full
@@ -299,20 +295,10 @@ in
       wlogout
       yad
       yt-dlp
-      neovim
-      protonvpn-cli_2
-      protonvpn-gui
-      python312Packages.protonvpn-nm-lib
-      python312Packages.proton-keyring-linux
-      python312Packages.proton-vpn-network-manager
-      protonvpn-cli
-      python312Packages.pip 
-      python312Packages.proton-vpn-api-core
       nitch
       dialog
       neovide
       lshw
-      ahoviewer
       sddm
       catppuccin-sddm-corners
       bun
@@ -321,29 +307,19 @@ in
       vesktop
       yazi
       fish
-      starship
       libgtop
       mise
       atuin
       sass
       sassc
-      cmake
-      cpio
-      meson
-      discord
       spotify
       gtop
       vscodium
       komikku
       mangal
-      manga-tui
       mangareader
       oh-my-posh
       github-cli
-      #catppuccin-papirus-folders
-      catppuccin
-      catppuccin-cursors
-      catppuccin-gtk
       telegram-desktop
       neofetch
       python312Packages.gpustat
@@ -355,18 +331,13 @@ in
       rustup
       cargo
       gdk-pixbuf
-      gobject-introspection
-      gobject-introspection-unwrapped
-      #haskellPackages.gi-gobject
       cairo 
       glib 
       dbus-glib
       gtk3
-      #gio-sharp
       nwg-dock-hyprland
       pipx
       waypaper
-      kdePackages.qt6ct
       qcomicbook
       libsForQt5.qt5.qtquickcontrols   
       libsForQt5.qt5.qtgraphicaleffects
@@ -374,7 +345,6 @@ in
       hyprlandPlugins.borders-plus-plus
       egl-wayland
       nvidia-vaapi-driver
-      #dracut
       #waybar  # if wanted experimental next line
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
@@ -408,13 +378,9 @@ in
       pkgs.xdg-desktop-portal
     ];
   };
-  #qt = {
-  #  enable = true;
-  #  platformTheme = "qt5ct";
-  #  #platformTheme = "qt6ct";
-  #  style = "kvantum";
-  #};
-   # Enable sddm login manager
+
+  # Enable sddm login manager
+  
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -431,22 +397,6 @@ in
         layout = "${keyboardLayout}";
         variant = "";
       };
-  #      displayManager.sddm = {
-  #          enable = true;
-  #          theme = "catppuccin-sddm-corners";
-   #     };
-    };
-  # services.xserver.displayManager.sddm.package = libsForQt5.sddm;
-  #  greetd = {
-  #    enable = true;
-  #    vt = 3;
-  #    settings = {
-  #      default_session = {
-  #        user = username;
-  #        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
-  #      };
-  #    };
-  #  };
      
 
     smartd = {
