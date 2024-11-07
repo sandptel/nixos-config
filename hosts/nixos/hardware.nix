@@ -19,6 +19,12 @@
       options = [ "subvol=@" ];
     };
 
+  fileSystems."/bin" =
+    { device = "/usr/bin";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/73FE-9361";
       fsType = "vfat";

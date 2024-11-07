@@ -81,7 +81,7 @@ in
       enable = true;
       devices = [ "nodev" ];
       efiSupport = true;
-      #gfxmodeBios = "auto";
+      gfxmodeBios = "auto";
       memtest86.enable = true;
       extraGrubInstallArgs = [ "--bootloader-id=${host}" ];
       configurationName = "${host}";
@@ -131,26 +131,19 @@ in
   #};
 
   # GRUB Bootloader theme. Of course you need to enable GRUB above.. duh!
-  #distro-grub-themes = {
-  #  enable = true;
-  #  theme = "nixos";
-  #};
-  boot.loader.grub2-theme = {
-        enable = true;
-        theme = "stylish";
-        footer = true;
-      #  customResolution = "2160x1440";
-
+  distro-grub-themes = {
+    enable = true;
+    theme = "nixos";
   };
 
   # Extra Module Options
-  drivers.amdgpu.enable = false;
+  drivers.amdgpu.enable = true;
   drivers.intel.enable = true;
   drivers.nvidia.enable = true;
   drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
+    enable = true;
+    intelBusID = "PCI:0:2:0";
+    nvidiaBusID = "PCI:1:0:0";
   };
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
@@ -266,7 +259,7 @@ in
       btop
       brightnessctl # for brightness control
       cava
-      cliphist
+      #cliphist
       eog
       gnome-system-monitor
       file-roller
@@ -343,21 +336,13 @@ in
       nwg-dock-hyprland
       pipx
       waypaper
-      #qcomicbook
-      #libsForQt5.qt5.qtquickcontrols   
-      #libsForQt5.qt5.qtgraphicaleffects
+      qcomicbook
+      libsForQt5.qt5.qtquickcontrols   
+      libsForQt5.qt5.qtgraphicaleffects
       hyprpicker
       #hyprlandPlugins.borders-plus-plus
       egl-wayland
-      brave
-      qv2ray
-      v2ray
-      v2raya
-      papirus-folders
-      papirus-icon-theme
-      spotify
-      #xarchive
-      nvidia-vaapi-driver
+      #nvidia-vaapi-driver
       #waybar  # if wanted experimental next line
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
@@ -372,7 +357,7 @@ in
     noto-fonts-cjk-sans
     jetbrains-mono
     font-awesome
-    material-icons
+    #material-icons
     #material-desing-icons
     terminus_font
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -405,7 +390,7 @@ in
   services = {
 
     xserver = {
-      enable = false;
+      enable = true;
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
