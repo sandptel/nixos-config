@@ -36,9 +36,11 @@ in
   '';
    programs = {
 
-   # spicetify = {
-   #     enable = true;
-   # };
+    spicetify = {
+        enable = true;
+#        theme = "catppuccin";
+#        colorscheme = "mocha";
+    };
   # Zsh configuration
 	  zsh = {
     	enable = true;

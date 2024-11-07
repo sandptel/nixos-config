@@ -356,6 +356,7 @@ in
       papirus-folders
       papirus-icon-theme
       spotify
+      lunarvim
       #xarchive
       nvidia-vaapi-driver
       #waybar  # if wanted experimental next line
@@ -405,7 +406,7 @@ in
   services = {
 
     xserver = {
-      enable = false;
+      enable = true;
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";

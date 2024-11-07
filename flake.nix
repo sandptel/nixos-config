@@ -2,7 +2,7 @@
   description = "KooL's NixOS-Hyprland";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #wallust.url = "git+https://codeberg.org/explosion-mental/wallust?ref=dev";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -14,7 +14,7 @@
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # hyprland development
-    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+#    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
      grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
@@ -23,14 +23,15 @@
   #  home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 #    spicetify-nix = {
  #     url = "github:Gerg-L/spicetify-nix";
  #     inputs.nixpkgs.follows = "nixpkgs";
  #   };
-
-
-  };
-
+};
   outputs =
     inputs @ { self
     , nixpkgs
@@ -57,9 +58,9 @@
           };
           modules = [
             ./hosts/${host}/config.nix
-            inputs.distro-grub-themes.nixosModules.${system}.default
+ #           inputs.distro-grub-themes.nixosModules.${system}.default
             inputs.grub2-themes.nixosModules.default
-  #          inputs.spicetify-nix.nixosModules.default
+            inputs.spicetify-nix.nixosModules.default
             { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
           ];
         };
