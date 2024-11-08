@@ -154,9 +154,9 @@ in
   drivers.intel.enable = true;
   drivers.nvidia.enable = true;
   drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
+    enable = true;
+    intelBusID = "PCI:0:2:0";
+    nvidiaBusID = "PCI:1:0:0";
   };
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
