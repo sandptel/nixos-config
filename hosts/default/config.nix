@@ -184,7 +184,10 @@ in
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
+     #plugins = [
+     #             inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+     #];
+     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
       xwayland.enable = true;
 
     };
@@ -359,6 +362,7 @@ in
       lunarvim
       #xarchive
       nvidia-vaapi-driver
+      libsForQt5.ark
       #waybar  # if wanted experimental next line
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
