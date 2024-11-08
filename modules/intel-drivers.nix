@@ -10,7 +10,7 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     };
 
     # OpenGL
@@ -19,7 +19,7 @@ in
         intel-media-driver
         libvdpau-va-gl
         libva
-		ibva-utils	
+			  libva-utils	
       ];
     };
   };
