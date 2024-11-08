@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #catppuccin.url = "github:catppuccin/nix";
     #wallust.url = "git+https://codeberg.org/explosion-mental/wallust?ref=dev";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -25,6 +26,11 @@
     wezterm.url = "github:wez/wezterm?dir=nix";
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    darkmatter-grub-theme = {
+      url = gitlab:VandalByte/darkmatter-grub-theme;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 #    nvf = {
@@ -65,6 +71,9 @@
  #           inputs.distro-grub-themes.nixosModules.${system}.default
             inputs.grub2-themes.nixosModules.default
             inputs.spicetify-nix.nixosModules.default
+            inputs.darkmatter-grub-theme.nixosModule
+
+            #inputs.catppuccin.homeManagerModules.catppuccin
             { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
           ];
         };

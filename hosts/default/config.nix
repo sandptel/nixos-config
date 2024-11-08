@@ -85,6 +85,12 @@ in
       memtest86.enable = true;
       extraGrubInstallArgs = [ "--bootloader-id=${host}" ];
       configurationName = "${host}";
+      #darkmatter-theme = {
+      #    enable = true;
+      #    style = "nixos";
+      #    icon = "color";
+      #    resolution = "1440p";
+      #};
     };
 
     # Bootloader GRUB theme, configure below
@@ -137,9 +143,9 @@ in
   #};
   boot.loader.grub2-theme = {
         enable = true;
-        theme = "stylish";
+        theme = "tela";
         footer = true;
-      #  customResolution = "2160x1440";
+        customResolution = "2160x1440";
 
   };
 
