@@ -81,16 +81,9 @@ in
       enable = true;
       devices = [ "nodev" ];
       efiSupport = true;
-      #gfxmodeBios = "auto";
       memtest86.enable = true;
       extraGrubInstallArgs = [ "--bootloader-id=${host}" ];
       configurationName = "${host}";
-      #darkmatter-theme = {
-      #    enable = true;
-      #    style = "nixos";
-      #    icon = "color";
-      #    resolution = "1440p";
-      #};
     };
 
     # Bootloader GRUB theme, configure below
@@ -194,7 +187,8 @@ in
      #             inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
      #];
      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
-      xwayland.enable = true;
+     xwayland.enable = true;
+     #opengl.enable = true;
 
     };
     nix-ld.enable = true;
@@ -204,7 +198,9 @@ in
     git.enable = true;
     nm-applet.indicator = true;
     neovim.enable = true;
-
+    #hardware.opengl.enable = true;
+    #hardware.opengl.driSupport = true;
+    #hardware.opengl.driSupport32Bit = true;
     thunar.enable = true;
     thunar.plugins = with pkgs.xfce; [
       exo
@@ -312,6 +308,7 @@ in
       yad
       yt-dlp
       nitch
+      hyprgui
       dialog
       neovide
       lshw
@@ -603,6 +600,7 @@ in
   BROWSER = "firefox";
   TERMINAL = "kitty";
   VISUAL = "vscodium";
+  GSK_RENDERER = "gl";
 };
 
 # Open ports in the firewall.
