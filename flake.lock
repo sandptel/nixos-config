@@ -372,6 +372,26 @@
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1730837930,
+        "narHash": "sha256-0kZL4m+bKBJUBQse0HanewWO0g8hDdCvBhudzxgehqc=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "2f607e07f3ac7e53541120536708e824acccfaa8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_3": {
+      "inputs": {
+        "nixpkgs": [
           "stylix",
           "nixpkgs"
         ]
@@ -540,11 +560,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731201509,
-        "narHash": "sha256-PZR18v5ZbmqLARBJSfpWh1hH6Wqb5BJUUSO2BTh1gs0=",
+        "lastModified": 1731223637,
+        "narHash": "sha256-9FLqM8e6aGgFjFjrdfZnzNaYPRwuEkIvBCjJJa5huLo=",
         "owner": "Jas-SinghFSU",
         "repo": "HyprPanel",
-        "rev": "fabec34557c5ebb31b191776b850fb7af944f290",
+        "rev": "4cadb3e6bf51c7e16d1c42915cb2a6661d923583",
         "type": "github"
       },
       "original": {
@@ -732,11 +752,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1731207313,
-        "narHash": "sha256-IzpEyeeYmCmF8PxjFqQh6QQsXY+8TLMonrE8ArYO+BA=",
+        "lastModified": 1731230578,
+        "narHash": "sha256-UOqjGJQgRuD/QMRVtfsKXhw5NNiYFxv3FFLkmWmZ5ss=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e20360e289dacab745c92318e0a7bef0c50e05c3",
+        "rev": "62fa59a6394762dda966c0723efdcd2dec8a7c2a",
         "type": "github"
       },
       "original": {
@@ -870,6 +890,7 @@
       "inputs": {
         "chaotic": "chaotic",
         "grub2-themes": "grub2-themes",
+        "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "hyprpanel": "hyprpanel",
@@ -910,11 +931,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731186962,
-        "narHash": "sha256-9o6sWcoQL248vde3m7mRcvhZr7U6UVCgEzqLbi3kDSg=",
+        "lastModified": 1731212123,
+        "narHash": "sha256-z7BcNt3Z6xozfRC+ldgMPFM4RmNjeCbJWZgcnQeAdRM=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "b500d10445f5bfe9c84cf7b16bab30f01d155bcb",
+        "rev": "9c3f1ef622b7b82a01936bdbd75ea4c5891ee4d1",
         "type": "github"
       },
       "original": {
@@ -932,7 +953,7 @@
         "flake-compat": "flake-compat_3",
         "flake-utils": "flake-utils",
         "gnome-shell": "gnome-shell",
-        "home-manager": "home-manager_2",
+        "home-manager": "home-manager_3",
         "nixpkgs": "nixpkgs_7",
         "systems": "systems_3",
         "tinted-foot": "tinted-foot",
