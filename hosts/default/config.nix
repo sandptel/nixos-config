@@ -29,7 +29,7 @@ in
     ../../modules/local-hardware-clock.nix
     #../../modules/core/user.nix
     #../../modules/stylix.nix
-    #./sddm-theme.nix
+    #../../modules/sddm.nix
   ];
 
   # BOOT related stuff
@@ -329,6 +329,9 @@ in
       lshw
       sddm
       catppuccin-sddm-corners
+      sddm-sugar-dark
+      sddm-astronaut
+      where-is-my-sddm-theme
       bun
       nodejs
       dart-sass
