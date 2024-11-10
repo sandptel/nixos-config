@@ -2,7 +2,8 @@
   description = "KooL's NixOS-Hyprland";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     #catppuccin.url = "github:catppuccin/nix";
     #wallust.url = "git+https://codeberg.org/explosion-mental/wallust?ref=dev";
     hyprland-plugins = {
@@ -27,12 +28,9 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    darkmatter-grub-theme = {
-      url = gitlab:VandalByte/darkmatter-grub-theme;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+   };
+    nixos-boot.url = "github:Melkor333/nixos-boot";
+    #zen-browser.url = "github:MarceColl/zen-browser-flake";
 #    nvf = {
 #        url = "github:notashelf/nvf";
 #        inputs.nixpkgs.follows = "nixpkgs";
@@ -68,11 +66,13 @@
           };
           modules = [
             ./hosts/${host}/config.nix
+            inputs.nixos-boot.nixosModules.default
  #           inputs.distro-grub-themes.nixosModules.${system}.default
             inputs.grub2-themes.nixosModules.default
             inputs.spicetify-nix.nixosModules.default
-            inputs.darkmatter-grub-theme.nixosModule
-
+            inputs.chaotic.nixosModules.default
+            #inputs.zen-browser.packages."${system}".default
+            #inputs.stylix.nixosModules.default
             #inputs.catppuccin.homeManagerModules.catppuccin
             { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
           ];

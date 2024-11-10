@@ -27,12 +27,14 @@ in
     ../../modules/intel-drivers.nix
     ../../modules/vm-guest-services.nix
     ../../modules/local-hardware-clock.nix
+    #../../modules/stylix.nix
     #./sddm-theme.nix
   ];
 
   # BOOT related stuff
   boot = {
     kernelPackages = pkgs.linuxPackages_zen; # Kernel
+    #chaotic.scx.enable = true;
     consoleLogLevel = 0 ;
     kernelParams = [
       "quiet"
@@ -59,6 +61,10 @@ in
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
       kernelModules = [ ];
     };
+
+    #nixos-boot = {
+    #    enable = true;
+    #};
 
     # Needed For Some Steam Games
     #kernel.sysctl = {
@@ -87,7 +93,7 @@ in
     };
 
     # Bootloader GRUB theme, configure below
-
+    #stylix.enable = true;
     #theme = inputs.nixos-grub-themes.packages.${pkgs.system}.nixos;
     ## -end of BOOTLOADERS----- ##
 
@@ -107,7 +113,12 @@ in
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
 
+    #stylix.enable = true;
     plymouth.enable = true;
+    plymouth.themePackages = [
+        pkgs.catppuccin-plymouth
+    ];
+    plymouth.theme = "catppuccin-macchiato";
     #plymouth.theme = "catppuccin";
     # plymouth = {
     #  enable = true;
@@ -123,12 +134,12 @@ in
   };
 
   #stylix = {
-   # enable = true;
-   #  polarity = "dark";
-   # opacity.terminal = 0.8;
+  #  enable = true;
+  #   polarity = "dark";
+  #  opacity.terminal = 0.8;
 
   #};
-
+  #stylix.enable = true;
   # GRUB Bootloader theme. Of course you need to enable GRUB above.. duh!
   #distro-grub-themes = {
   #  enable = true;
@@ -178,13 +189,13 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-
+  
   programs = {
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
-     #plugins = [
-     #             inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+      #plugins = [
+       #           inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
      #];
      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
      xwayland.enable = true;
@@ -198,6 +209,7 @@ in
     git.enable = true;
     nm-applet.indicator = true;
     neovim.enable = true;
+    #stylix.enable = true;
     #hardware.opengl.enable = true;
     #hardware.opengl.driSupport = true;
     #hardware.opengl.driSupport32Bit = true;
@@ -308,6 +320,8 @@ in
       yad
       yt-dlp
       nitch
+      inputs.wezterm.packages.${pkgs.system}.default
+      #zen-browser
       hyprgui
       dialog
       neovide
@@ -355,7 +369,6 @@ in
       hyprpicker
       #hyprlandPlugins.borders-plus-plus
       egl-wayland
-      brave
       qv2ray
       v2ray
       v2raya
@@ -386,6 +399,7 @@ in
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
   
+  #chaotic.mesa-git.enable = true;
   #catppuccin.enable = true;
   # Extra Portal Configuration
   xdg.portal = {
@@ -508,6 +522,7 @@ in
     cpuFreqGovernor = "schedutil";
   };
 
+  hardware.opengl.enable = true;
   #hardware.sane = {
   #  enable = true;
   #  extraBackends = [ pkgs.sane-airscan ];
@@ -615,5 +630,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
