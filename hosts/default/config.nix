@@ -32,7 +32,9 @@ in
     #../../modules/stylix.nix
     #../../modules/sddm.nix
   ];
-
+  # nixos-boot = {
+  #      enable = true;
+  #   };
   # BOOT related stuff
   boot = {
     kernelPackages = pkgs.linuxPackages_zen; # Kernel
@@ -64,9 +66,7 @@ in
       kernelModules = [ ];
     };
 
-    #nixos-boot = {
-    #    enable = true;
-    #};
+    
 
     # Needed For Some Steam Games
     #kernel.sysctl = {
@@ -75,7 +75,7 @@ in
 
     ## BOOT LOADERS: NOT USE ONLY 1. either systemd or grub
     # Bootloader SystemD
-    #loader.systemd-boot.enable = true;
+    loader.systemd-boot.enable = true;
 
     loader.efi = {
       #efiSysMountPoint = "/efi"; #this is if you have separate /efi partition
@@ -83,16 +83,17 @@ in
     };
 
     loader.timeout = 1;
+    loader.systemd-boot.graceful=true;
 
     # Bootloader GRUB
-    loader.grub = {
-      enable = true;
-      devices = [ "nodev" ];
-      efiSupport = true;
-      memtest86.enable = true;
-      extraGrubInstallArgs = [ "--bootloader-id=${host}" ];
-      configurationName = "${host}";
-    };
+    # loader.grub = {
+    #   enable = true;
+    #   devices = [ "nodev" ];
+    #   efiSupport = true;
+    #   memtest86.enable = true;
+    #   extraGrubInstallArgs = [ "--bootloader-id=${host}" ];
+    #   configurationName = "${host}";
+    # };
 
     # Bootloader GRUB theme, configure below
     #stylix.enable = true;
@@ -116,11 +117,11 @@ in
     };
 
     #stylix.enable = true;
-    plymouth.enable = true;
-    plymouth.themePackages = [
-        pkgs.catppuccin-plymouth
-    ];
-    plymouth.theme = "catppuccin-macchiato";
+    # plymouth.enable = true;
+    # plymouth.themePackages = [
+    #     pkgs.catppuccin-plymouth
+    # ];
+    # plymouth.theme = "catppuccin-macchiato";
     #plymouth.theme = "catppuccin";
     # plymouth = {
     #  enable = true;
@@ -147,13 +148,13 @@ in
   #  enable = true;
   #  theme = "nixos";
   #};
-  boot.loader.grub2-theme = {
-        enable = true;
-        theme = "tela";
-        footer = true;
-        customResolution = "2160x1440";
+  # boot.loader.grub2-theme = {
+  #       enable = true;
+  #       theme = "tela";
+  #       footer = true;
+  #       customResolution = "2160x1440";
 
-  };
+  # };
 
   # Extra Module Options
   drivers.amdgpu.enable = false;
@@ -249,7 +250,7 @@ in
 
   users = {
     mutableUsers = true;
-    #defaultUserShell = pkgs.fish;
+    defaultUserShell = pkgs.fish;
   };
 
   environment.systemPackages =
@@ -328,7 +329,7 @@ in
       dialog
       neovide
       lshw
-      sddm
+      # sddm
       catppuccin-sddm-corners
       sddm-sugar-dark
       sddm-astronaut
@@ -420,18 +421,13 @@ in
   };
 
   # Enable sddm login manager
-  
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "catppuccin-sddm-corners";
-    settings.Theme.CursorTheme = "catppuccin-cursors";
-  };
 
   # Services to start
   services = {
-
     xserver = {
+      displayManager.gdm = {
+    enable = true;
+  };
       enable = true;
       xkb = {
         layout = "${keyboardLayout}";

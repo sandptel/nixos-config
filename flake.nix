@@ -2,6 +2,7 @@
   description = "KooL's NixOS-Hyprland";
 
   inputs = {
+    elanmoc2.url= github:sandptel/elanmoc2;
     nixpkgs.url = "github:NixOS/nixpkgs/24f0d4acd634792badd6470134c387a3b039dace";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     #catppuccin.url = "github:catppuccin/nix";
@@ -10,11 +11,11 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     hyprland.url = "github:hyprwm/Hyprland/940ed3d525d838bc255070bd8cfc2f75df04229a"; # hyprland development
 #    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
@@ -40,10 +41,6 @@
 #        url = "github:notashelf/nvf";
 #        inputs.nixpkgs.follows = "nixpkgs";
 #    };
-   # spicetify-nix = {
-   #   url = "github:Gerg-L/spicetify-nix";
-   #   inputs.nixpkgs.follows = "nixpkgs";
-   # };
 };
   outputs =
     inputs @ { self
@@ -76,6 +73,7 @@
             inputs.grub2-themes.nixosModules.default
             inputs.spicetify-nix.nixosModules.default
             inputs.chaotic.nixosModules.default
+            inputs.elanmoc2.nixosModules.elanmoc2
             #inputs.zen-browser.packages."${system}".default
             #inputs.stylix.nixosModules.default
             #inputs.catppuccin.homeManagerModules.catppuccin

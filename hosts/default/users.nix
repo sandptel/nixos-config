@@ -1,9 +1,13 @@
-{ pkgs, username, ... }:
+{ pkgs, lib,username, ... }:
 
 let
   inherit (import ./variables.nix) gitUsername;
 in
 {
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "spotify"
+  ];
+  services.fprintd.elanmoc2.enable=true;
   imports=[
 ./starship.nix
 ];
@@ -65,7 +69,7 @@ github-desktop
   environment.systemPackages = with pkgs; [ fzf ]; 
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = ''
-    fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
+    #fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
         #pokemon colorscripts like. Make sure to install krabby package
         krabby random --no-mega --no-gmax --no-regional --no-title -s; 
   '';
@@ -73,8 +77,8 @@ github-desktop
 
     spicetify = {
         enable = true;
-#        theme = "catppuccin";
-#        colorscheme = "mocha";
+      #  theme = "catppuccin";
+      #  colorscheme = "mocha";
     };
   # Zsh configuration
 	  zsh = {
