@@ -2,7 +2,7 @@
   description = "KooL's NixOS-Hyprland";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/24f0d4acd634792badd6470134c387a3b039dace";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     #catppuccin.url = "github:catppuccin/nix";
     #wallust.url = "git+https://codeberg.org/explosion-mental/wallust?ref=dev";
@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # hyprland development
+    hyprland.url = "github:hyprwm/Hyprland/940ed3d525d838bc255070bd8cfc2f75df04229a"; # hyprland development
 #    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
      grub2-themes = {
@@ -52,8 +52,8 @@
     }:
     let
       system = "x86_64-linux";
-      host = "nixos";
-      username = "antonio";
+      host = "default";
+      username = "roronoa";
       #defaultPackage.x86_64-linux = wezterm.packages.x86_64-linux.default;
       pkgs = import nixpkgs {
         inherit system;

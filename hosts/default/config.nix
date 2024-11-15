@@ -19,6 +19,7 @@ let
 in
 {
   imports = [
+    ./starship.nix
     ./hardware.nix
     ./users.nix
     ../../modules/amd-drivers.nix

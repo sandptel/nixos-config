@@ -4,6 +4,9 @@ let
   inherit (import ./variables.nix) gitUsername;
 in
 {
+  imports=[
+./starship.nix
+];
   users = { 
     users."${username}" = {
       homeMode = "755";
@@ -22,6 +25,36 @@ in
 
     # define user packages here
     packages = with pkgs; [
+wl-clipboard
+spotify
+grim
+slurp
+blueman
+rofi-bluetooth
+networkmanagerapplet  
+flameshot
+bun
+eza
+pulseaudio
+brightnessctl
+playerctl
+neofetch
+firefox
+vim
+git
+vscode
+# obs-studio	
+rustup
+gcc
+glib     
+google-chrome
+vlc
+telegram-desktop
+discord
+gnomeExtensions.pano
+libnotify
+github-desktop
+      krabby
       ];
     };
     
@@ -30,9 +63,11 @@ in
   
   environment.shells = with pkgs; [ fish ];
   environment.systemPackages = with pkgs; [ fzf ]; 
-   programs.fish.enable = true;
+  programs.fish.enable = true;
   programs.fish.interactiveShellInit = ''
-    ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+    fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
+        #pokemon colorscripts like. Make sure to install krabby package
+        krabby random --no-mega --no-gmax --no-regional --no-title -s; 
   '';
    programs = {
 
