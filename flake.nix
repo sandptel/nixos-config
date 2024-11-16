@@ -36,7 +36,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
    };
     nixos-boot.url = "github:Melkor333/nixos-boot";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:sandptel/zen-browser-flake";
 #        url = "github:notashelf/nvf";
 #        inputs.nixpkgs.follows = "nixpkgs";
 #    };

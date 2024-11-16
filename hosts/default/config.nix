@@ -542,7 +542,7 @@ in
     cpuFreqGovernor = "schedutil";
   };
 
-  hardware.opengl.enable = true;
+  # hardware.opengl.enable = true;
   #hardware.sane = {
   #  enable = true;
   #  extraBackends = [ pkgs.sane-airscan ];
