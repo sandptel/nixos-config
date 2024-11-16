@@ -29,6 +29,8 @@ in
 
     # define user packages here
     packages = with pkgs; [
+      # gitbutler
+      gitkraken
 wl-clipboard
 spotify
 grim

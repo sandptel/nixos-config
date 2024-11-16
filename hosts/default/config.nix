@@ -18,7 +18,22 @@ let
   );
 in
 {
+  home-manager={
+  extraSpecialArgs={inherit inputs;};
+  useGlobalPkgs=true;
+  useUserPackages=true;
+  backupFileExtension= "backup6";
+  users={
+    roronoa= {
+      imports =[
+      ./home.nix
+      ];
+      };
+  };
+};
+
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ./starship.nix
     ./hardware.nix
     ./users.nix
@@ -174,7 +189,7 @@ in
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
   # Set your time zone.
-  time.timeZone = "Asia/Yangon";
+  time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -256,6 +271,8 @@ in
   environment.systemPackages =
     (with pkgs; [ 
      # System Packages
+     gedit
+     gruvbox-dark-gtk
       baobab
       btrfs-progs
       clang
@@ -297,7 +314,7 @@ in
       imagemagick
       inxi
       jq
-      kitty
+      # kitty
       libsForQt5.qtstyleplugin-kvantum #kvantum
       networkmanagerapplet
       nwg-look # requires unstable channel
@@ -323,8 +340,10 @@ in
       yad
       yt-dlp
       nitch
-      inputs.wezterm.packages.${pkgs.system}.default
-      #zen-browser
+      wezterm
+      # inputs.wezterm.packages.${pkgs.system}.default
+      inputs.zen-browser.packages."${system}".default
+      # zen-browser
       hyprgui
       dialog
       neovide

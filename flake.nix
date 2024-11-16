@@ -36,8 +36,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
    };
     nixos-boot.url = "github:Melkor333/nixos-boot";
-    #zen-browser.url = "github:MarceColl/zen-browser-flake";
-#    nvf = {
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
 #        url = "github:notashelf/nvf";
 #        inputs.nixpkgs.follows = "nixpkgs";
 #    };
@@ -74,7 +73,7 @@
             inputs.spicetify-nix.nixosModules.default
             inputs.chaotic.nixosModules.default
             inputs.elanmoc2.nixosModules.elanmoc2
-            #inputs.zen-browser.packages."${system}".default
+            # inputs.zen-browser.packages."${system}".generaic
             #inputs.stylix.nixosModules.default
             #inputs.catppuccin.homeManagerModules.catppuccin
             { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
