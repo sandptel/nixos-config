@@ -4,7 +4,8 @@
 , host
 , username
 , options
-, inputs
+, inputs,
+modulesPath
 , ...
 }:
 let
@@ -31,15 +32,16 @@ in
       };
   };
 };
-
+nixpkgs.config.allowUnsupportedSystem = true;
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    (modulesPath + "/installer/scan/not-detected.nix")
     ./starship.nix
     ./hardware.nix
     ./users.nix
-    ../../modules/amd-drivers.nix
-    ../../modules/nvidia-drivers.nix
-    ../../modules/nvidia-prime-drivers.nix
+    # ../../modules/amd-drivers.nix
+    # ../../modules/nvidia-drivers.nix
+    # ../../modules/nvidia-prime-drivers.nix
     ../../modules/intel-drivers.nix
     ../../modules/vm-guest-services.nix
     ../../modules/local-hardware-clock.nix
@@ -172,14 +174,14 @@ in
   # };
 
   # Extra Module Options
-  drivers.amdgpu.enable = false;
+  # drivers.amdgpu.enable = false;
   drivers.intel.enable = true;
-  drivers.nvidia.enable = true;
-  drivers.nvidia-prime = {
-    enable = true;
-    intelBusID = "PCI:0:2:0";
-    nvidiaBusID = "PCI:1:0:0";
-  };
+  # drivers.nvidia.enable = true;
+  # drivers.nvidia-prime = {
+  #   enable = true;
+  #   intelBusID = "PCI:0:2:0";
+  #   nvidiaBusID = "PCI:1:0:0";
+  # };
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
 
@@ -196,6 +198,8 @@ in
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
     LC_MEASUREMENT = "en_US.UTF-8";
     LC_MONETARY = "en_US.UTF-8";
@@ -208,18 +212,21 @@ in
 
   nixpkgs.config.allowUnfree = true;
   
+  services.seatd.enable = true;
+
   programs = {
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
-      #plugins = [
-       #           inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
-     #];
-     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
-     xwayland.enable = true;
-     #opengl.enable = true;
-
+  #     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
+  #   #   plugins = [
+  #   #     inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
+  #   #             #  inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+  #   #  ];
+    #  portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
+  #    xwayland.enable = true;
+  #    #opengl.enable = true;
     };
+    @#
     nix-ld.enable = true;
     waybar.enable = true;
     hyprlock.enable = true;
@@ -271,7 +278,9 @@ in
   environment.systemPackages =
     (with pkgs; [ 
      # System Packages
+     albert
      gedit
+     gjs
      gruvbox-dark-gtk
       baobab
       btrfs-progs
@@ -302,7 +311,7 @@ in
       ags
       btop
       brightnessctl # for brightness control
-      cava
+      # cava
       cliphist
       eog
       gnome-system-monitor
@@ -346,7 +355,7 @@ in
       # zen-browser
       hyprgui
       dialog
-      neovide
+      # neovide
       lshw
       # sddm
       catppuccin-sddm-corners
@@ -495,6 +504,8 @@ in
     fwupd.enable = true;
 
     upower.enable = true;
+
+    xserver.desktopManager.gnome.enable = true;
 
     gnome.gnome-keyring.enable = true;
     
