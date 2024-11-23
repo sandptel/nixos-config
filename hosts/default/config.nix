@@ -640,7 +640,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   console.keyMap = "${keyboardLayout}";
 
   # For Electron apps to use wayland
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables = {
   EDITOR = "nvim";
   BROWSER = "firefox";
