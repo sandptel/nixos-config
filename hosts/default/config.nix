@@ -226,7 +226,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
   #    xwayland.enable = true;
   #    #opengl.enable = true;
     };
-    @#
     nix-ld.enable = true;
     waybar.enable = true;
     hyprlock.enable = true;
