@@ -1,22 +1,25 @@
 { config,lib,inputs,pkgs, ... }:
 {
   imports=[
+    ../../nixos-dots.nix
     # ./hypr.nix
     inputs.hyprland.homeManagerModules.default
+    
 ];
+nixos-dots.enable = true;
   home.username = "roronoa";
   home.homeDirectory = "/home/roronoa";
   home.enableNixpkgsReleaseCheck = false;
  
 # module.phcontrol.enable=true;
 
-programs.kitty={
-  enable = true;
-  extraConfig = ''
-  font_size 14
-  background_opacity 0.1
-  '';
-};
+# programs.kitty={
+#   enable = true;
+#   extraConfig = ''
+#   font_size 14
+#   background_opacity 0.1
+#   '';
+# };
 
 # gtk = {
 #     enable = true;

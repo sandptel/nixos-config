@@ -1,0 +1,91 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+
+// ### DUAL TOP and BOTTOM ### //
+
+[{
+"include": [
+  "$HOME/.config/waybar/Modules",
+  "$HOME/.config/waybar/ModulesWorkspaces",
+  "$HOME/.config/waybar/ModulesCustom",
+  "$HOME/.config/waybar/ModulesGroups",
+  ],
+"layer": "top",
+//"mode": "dock",
+"exclusive": true,
+"passthrough": false,
+"position": "bottom",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-left": 4,
+"margin-right": 4,
+"margin-bottom": 4,
+
+
+"modules-left": [
+	"cpu", 
+	"temperature", 
+	"memory",
+	"disk", 
+	],
+  
+"modules-center": [
+	"hyprland/workspaces#kanji",
+	], 
+
+"modules-right": [
+	"custom/weather",	  
+	"battery", 
+	"backlight",
+	"bluetooth",
+	"network",
+	"custom/updater",
+	"custom/cycle_wall",
+	"custom/lock", 
+	],
+},
+
+{
+"include": [
+  "$HOME/.config/waybar/Modules",
+  "$HOME/.config/waybar/ModulesWorkspaces",
+  "$HOME/.config/waybar/ModulesCustom",
+  "$HOME/.config/waybar/ModulesGroups",
+  ],
+"layer": "top",
+//"mode": "dock",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-top": 4,
+"margin-left": 4,
+"margin-right": 4,
+
+
+"modules-left": [
+	"custom/menu",  
+	"wlr/taskbar",
+	 ],
+
+"modules-center": [
+	"custom/cava_mviz",
+	"idle_inhibitor",
+	"clock",  
+	"custom/light_dark",
+	],
+
+"modules-right": [
+	"hyprland/window",
+	"tray",
+	"custom/swaync",
+	"mpris",
+	"keyboard-state",
+	"pulseaudio",
+	"wireplumber", 
+	"pulseaudio#microphone",	  
+	"custom/power",
+	],  
+}],

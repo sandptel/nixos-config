@@ -37,8 +37,7 @@
     stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
     spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:the-argus/spicetify-nix";
    };
    hypr-dynamic-cursors = {
         url = "github:VirtCode/hypr-dynamic-cursors";
@@ -76,6 +75,7 @@
           };
           modules = [
             ./hosts/${host}/config.nix
+            
             inputs.nixos-boot.nixosModules.default
             inputs.hyprland.nixosModules.default
  #           inputs.distro-grub-themes.nixosModules.${system}.default

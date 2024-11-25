@@ -1,5 +1,6 @@
 # Main default config
-{ config
+{ nixos-dots 
+, config
 , pkgs
 , host
 , username
@@ -23,15 +24,17 @@ in
   extraSpecialArgs={inherit inputs;};
   useGlobalPkgs=true;
   useUserPackages=true;
-  backupFileExtension= "backup6";
+  backupFileExtension= "backup8";
   users={
     roronoa= {
       imports =[
+      
       ./home.nix
       ];
       };
   };
 };
+
 nixpkgs.config.allowUnsupportedSystem = true;
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -226,6 +229,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   #    xwayland.enable = true;
   #    #opengl.enable = true;
     };
+
     nix-ld.enable = true;
     waybar.enable = true;
     hyprlock.enable = true;
@@ -277,6 +281,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   environment.systemPackages =
     (with pkgs; [ 
      # System Packages
+     home-manager
      albert
      gedit
      gjs
@@ -407,7 +412,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       v2raya
       papirus-folders
       papirus-icon-theme
-      spotify
+      # spotify
       lunarvim
       #xarchive
       nvidia-vaapi-driver
@@ -639,7 +644,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   console.keyMap = "${keyboardLayout}";
 
   # For Electron apps to use wayland
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables = {
   EDITOR = "nvim";
   BROWSER = "firefox";

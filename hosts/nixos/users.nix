@@ -69,13 +69,13 @@ github-desktop
         #pokemon colorscripts like. Make sure to install krabby package
         krabby random --no-mega --no-gmax --no-regional --no-title -s; 
   '';
-   programs = {
+  #  programs = {
 
-    spicetify = {
-        enable = true;
-#        theme = "catppuccin";
-#        colorscheme = "mocha";
-    };
+  #   spicetify = {
+  #       enable = true;
+  #      theme = "catppuccin";
+  #      colorscheme = "mocha";
+  #   };
   # Zsh configuration
 	  zsh = {
     	enable = true;
