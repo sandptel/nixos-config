@@ -3,20 +3,22 @@
 
   inputs = {
     Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
+      url = "github:KZDKM/Hyprspace/2f239d0569f8c380338bbd5aef99e7e8c41b9a09";
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
+    matugen = {
+    url = "github:/sandptel/Matugen";
+  };
     elanmoc2.url= github:sandptel/elanmoc2;
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    #catppuccin.url = "github:catppuccin/nix";
+    # hyprsplit.url = "github:shezdy/hyprsplit";
     #wallust.url = "git+https://codeberg.org/explosion-mental/wallust?ref=dev";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
       # inputs.nixpkgs.follows = "nixpkgs";

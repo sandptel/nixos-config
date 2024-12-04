@@ -19,12 +19,15 @@ let
       ]
   );
 in
-{
+{  
+
+  
+  
   home-manager={
   extraSpecialArgs={inherit inputs;};
   useGlobalPkgs=true;
   useUserPackages=true;
-  backupFileExtension= "backup8";
+  backupFileExtension= "backup9";
   users={
     roronoa= {
       imports =[
@@ -37,6 +40,7 @@ in
 
 nixpkgs.config.allowUnsupportedSystem = true;
   imports = [
+    inputs.matugen.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
     (modulesPath + "/installer/scan/not-detected.nix")
     ./starship.nix
@@ -367,7 +371,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       sddm-astronaut
       where-is-my-sddm-theme
       bun
-      nodejs
+      # nodejs
       dart-sass
       vesktop
       yazi

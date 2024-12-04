@@ -24,7 +24,7 @@ home.file.".config/qt5ct".source = config.lib.file.mkOutOfStoreSymlink ./config/
 home.file.".config/swappy".source = config.lib.file.mkOutOfStoreSymlink ./config/swappy;
 home.file.".config/swaync".source = config.lib.file.mkOutOfStoreSymlink ./config/swaync;
 # home.file.".config/wallrust".source = config.lib.file.mkOutOfStoreSymlink ./config/wallrust;
-home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./config/waybar;
+# home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./config/waybar;
 home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./config/wlogout;
 
 

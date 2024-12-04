@@ -4,9 +4,15 @@
     ../../nixos-dots.nix
     # ./hypr.nix
     inputs.hyprland.homeManagerModules.default
-    
+    # inputs.matugen.homeManagerModules.default
 ];
 nixos-dots.enable = true;
+# home.configFile."<path>".source = "${config.programs.matugen.theme.files}/<template_output_path>";
+
+# home.file.".config/gtk-4.0/gtk.css".source = "${config.programs.matugen.theme.files}/.config/gtk-4.0/gtk.css";
+
+# home.file.".config/gtk-3.0/gtk.css".source = "${config.programs.matugen.theme.files}/.config/gtk-3.0/gtk.css";
+
   home.username = "roronoa";
   home.homeDirectory = "/home/roronoa";
   home.enableNixpkgsReleaseCheck = false;
@@ -54,23 +60,15 @@ source= $UserConfigs/UserDecorAnimations.conf
 source= $UserConfigs/UserKeybinds.conf
 source= $UserConfigs/UserSettings.conf
 source= $UserConfigs/WorkspaceRules.conf
+plugin:overview:reverseSwipe =true;
   '';
+
+  xwayland.enable=true;
   plugins = [
     inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
+    # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
   ];
 };
-
-# hyprland.extraConfig = ''
-# # plugin = ${inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors}/lib/libhypr-dynamic-cursors.so
-# #plugin = ${inputs.Hyprspace.packages.${pkgs.system}.Hyprspace}/lib/libHyprspace.so
-# #plugin:overview:reverseSwipe =true;
-# #plugin:overview:disableGestures =true;plugin:overview:disableGestures
-# # exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'gruvbox-dark'"
-# # exec-once = dconf write /org/gnome/desktop/interface/icon-theme "'oomox-Everforest-Dark'"
-# # exec-once = dconf write /org/gnome/desktop/interface/document-font-name "'Noto Sans Medium 11'"
-# # exec-once = dconf write /org/gnome/desktop/interface/font-name "'Noto Sans Medium 11'"
-# # exec-once = dconf write /org/gnome/desktop/interface/monospace-font-name "'Noto Sans Mono Medium 11'"
-# '';
 
 
 # wayland.windowManager.hyprland = {
@@ -85,12 +83,14 @@ source= $UserConfigs/WorkspaceRules.conf
 
 home.sessionVariables.GTK_THEME = "gruvbox-dark";
 
+
 home.packages = with pkgs;[
 # airshipper
 kitty
 solarc-gtk-theme
 wl-clipboard
 hyprlock
+matugen
 ];
 
   home.stateVersion = "23.11";

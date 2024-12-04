@@ -4,6 +4,8 @@ let
   inherit (import ./variables.nix) gitUsername;
 in
 {
+
+
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "spotify"
   ];
