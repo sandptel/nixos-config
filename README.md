@@ -1,5 +1,6 @@
+# Preview
 
-https://github.com/user-attachments/assets/4a93588c-a215-499a-b45f-963cca54fd49
+https://github.com/user-attachments/assets/cecee8a8-0dff-4bd9-aefe-2f557686ce52
 
 # **!!! Do Not Blindly install these dots**
 
