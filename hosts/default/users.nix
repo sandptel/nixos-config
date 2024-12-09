@@ -50,7 +50,7 @@ neofetch
 firefox
 vim
 git
-vscode
+#vscode
 # obs-studio	
 rustup
 gcc
@@ -77,6 +77,8 @@ github-desktop
         #pokemon colorscripts like. Make sure to install krabby package
         krabby random --no-mega --no-gmax --no-regional --no-title -s; 
   '';
+
+
    programs = {
 
   #   spicetify = {

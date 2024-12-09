@@ -20,8 +20,6 @@ let
   );
 in
 {  
-
-  
   
   home-manager={
   extraSpecialArgs={inherit inputs;};
@@ -436,9 +434,10 @@ nixpkgs.config.allowUnsupportedSystem = true;
     jetbrains-mono
     font-awesome
     material-icons
-    #material-desing-icons
     terminus_font
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  nerd-fonts.droid-sans-mono
+  # nerd-fonts._0xproto
+    #(nerdfonts.override { fonts = [ "0xproto" "JetBrainsMono" ]; })
   ];
   
   #chaotic.mesa-git.enable = true;

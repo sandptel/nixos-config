@@ -61,10 +61,7 @@
       host = "default";
       username = "roronoa";
       #defaultPackage.x86_64-linux = wezterm.packages.x86_64-linux.default;
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
     in
     {
       nixosConfigurations = {

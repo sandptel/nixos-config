@@ -17,7 +17,7 @@ home.file.".config/btop".source = config.lib.file.mkOutOfStoreSymlink ./config/b
 home.file.".config/cava".source = config.lib.file.mkOutOfStoreSymlink ./config/cava;
 home.file.".config/fastfetch".source = config.lib.file.mkOutOfStoreSymlink ./config/fastfetch;
 # home.file.".config/hypr".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr;
-home.file.".config/kitty".source = config.lib.file.mkOutOfStoreSymlink ./config/kitty;
+home.file.".config/kitty/kitty-colors.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/kitty/kitty-colors.conf;
 home.file.".config/Kvantum".source = config.lib.file.mkOutOfStoreSymlink ./config/Kvantum;
 home.file.".config/qt5ct".source = config.lib.file.mkOutOfStoreSymlink ./config/qt5ct;
 
