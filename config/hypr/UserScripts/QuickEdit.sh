@@ -7,8 +7,8 @@ edit=${EDITOR:-nano}
 tty=kitty
 
 # Paths to configuration directories
-configs="$HOME/.config/hypr/configs"
-UserConfigs="$HOME/.config/hypr/UserConfigs"
+configs="$HOME/nixos-config/config/hypr/configs"
+UserConfigs="$HOME/nixos-config/config/hypr/UserConfigs"
 
 # Function to display the menu options
 menu() {
