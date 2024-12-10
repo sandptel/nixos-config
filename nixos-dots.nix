@@ -12,7 +12,7 @@ in
 
   config = mkIf cfg.enable {
 
-programs.pywal.enable=true;
+programs.pywal16.enable=true;
 
 programs.kitty={
   enable = true;
@@ -96,7 +96,6 @@ programs.vscode.enable=true;
 home.packages = with pkgs;[
 # airshipper
 pywalfox-native
-pywal
 solarc-gtk-theme
 wl-clipboard
 hyprlock

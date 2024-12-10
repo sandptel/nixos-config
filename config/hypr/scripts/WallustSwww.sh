@@ -11,8 +11,6 @@ monitor_outputs=($(ls "$cache_dir"))
 # Initialize a flag to determine if the ln command was executed
 ln_success=false
 
-
-
 # Get current focused monitor
 current_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
 echo $current_monitor
@@ -35,9 +33,11 @@ fi
 # Check the flag before executing further commands
 if [ "$ln_success" = true ]; then
     # execute wallust
-	echo 'about to execute wallust'
-    wal -i $wallpaper_path --saturate 0.7
+	echo 'about to pywal'
+    which wal
+    wal --cols16 -i $wallpaper_path --saturate 0.65 -n 
     # execute wallust skipping tty and terminal changes
+    echo 'about to execute wallust'
     wallust run "$wallpaper_path" -s &
 fi
 

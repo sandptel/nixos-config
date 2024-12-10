@@ -3,9 +3,12 @@
   imports=[
     ../../nixos-dots.nix
     # ./hypr.nix
+    ./pywal16.nix
     inputs.hyprland.homeManagerModules.default
     # inputs.matugen.homeManagerModules.default
 ];
+
+
 nixos-dots.enable = true;
 # home.configFile."<path>".source = "${config.programs.matugen.theme.files}/<template_output_path>";
 
