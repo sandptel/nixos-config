@@ -9,9 +9,9 @@ SCRIPTSDIR="$HOME/.config/hypr/scripts"
 # variables
 focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
 # swww transition config
-FPS=60
+FPS=120
 TYPE="any"
-DURATION=2
+DURATION=3
 BEZIER=".43,1.19,1,.4"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
 

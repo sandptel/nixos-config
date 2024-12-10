@@ -1,4 +1,4 @@
-{ pkgs, lib,username, ... }:
+{ inputs,pkgs, lib,username, ... }:
 
 let
   inherit (import ./variables.nix) gitUsername;
@@ -31,6 +31,7 @@ in
 
     # define user packages here
     packages = with pkgs; [
+      # inputs.nix-init.packages."${system}".default
       # gitbutler
       gitkraken
 wl-clipboard
