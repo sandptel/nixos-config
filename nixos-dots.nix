@@ -102,7 +102,6 @@ hyprlock
 matugen
 ];
 
-
 home.file.".config/ags".source = config.lib.file.mkOutOfStoreSymlink ./config/ags;
 home.file.".config/btop".source = config.lib.file.mkOutOfStoreSymlink ./config/btop;
 home.file.".config/cava".source = config.lib.file.mkOutOfStoreSymlink ./config/cava;

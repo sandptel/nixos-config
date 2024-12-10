@@ -32,7 +32,7 @@ sleep 0.3
 waybar &
 
 # relaunch swaync
-sleep 0.5
+# sleep 0.5
 swaync > /dev/null 2>&1 &
 
 # relaunch ags
@@ -41,7 +41,7 @@ ags &
 ${SCRIPTSDIR}/WallustSwww.sh
 
 # Relaunching rainbow borders if the script exists
-sleep 1
+# sleep 1
 if file_exists "${UserScripts}/RainbowBorders.sh"; then
     ${UserScripts}/RainbowBorders.sh &
 fi
