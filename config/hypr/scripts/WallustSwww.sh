@@ -35,7 +35,7 @@ if [ "$ln_success" = true ]; then
     # execute wallust
 	echo 'about to pywal'
     which wal
-    wal --cols16 -i $wallpaper_path --saturate 0.5 -n 
+    wal --cols16 -i $wallpaper_path --saturate 0.55 -n 
     # execute wallust skipping tty and terminal changes
     echo 'about to execute wallust'
     wallust run "$wallpaper_path" -s &

@@ -122,7 +122,7 @@ home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./confi
  home.file.".config/hypr/UserConfigs".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/UserConfigs;
  home.file.".config/hypr/UserScripts".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/UserScripts;
  home.file.".config/hypr/hypridle.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/hypridle.conf;
- home.file.".config/hypr/hyprlock-2k.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/hyprlock-2k.conf;
+ home.file.".config/hypr/hyprlock.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/hyprlock.conf;
  home.file.".config/hypr/initial-boot.sh".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/initial-boot.sh;
  home.file.".config/hypr/v2.3.7".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/v2.3.7;
 
