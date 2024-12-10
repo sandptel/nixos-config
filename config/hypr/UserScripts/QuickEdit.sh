@@ -1,5 +1,5 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
 # Rofi menu for Quick Edit/View of Settings (SUPER E)
 
 # Define preferred text editor and terminal

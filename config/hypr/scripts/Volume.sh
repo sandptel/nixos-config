@@ -1,5 +1,5 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
 # Scripts for volume controls for audio and mic 
 
 iDIR="$HOME/.config/swaync/icons"

@@ -1,5 +1,5 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
 # Searchable enabled keybinds using rofi
 
 # Kill yad to not interfere with this binds

@@ -53,7 +53,7 @@ cursor #dddddd
 wayland.windowManager.hyprland = {
   enable = true;
   extraConfig = ''
-  # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+  # /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  #
 # Sourcing external config files
 
 exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'gruvbox-dark'"

@@ -1,5 +1,5 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
 # wlogout (Power, Screen Lock, Suspend, etc)
 
 # Set variables for parameters. First numbers corresponts to Monitor Resolution

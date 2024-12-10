@@ -1,4 +1,4 @@
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
 # Modified Script for Google Search
 # Original Submitted by https://github.com/LeventKaanOguz
 

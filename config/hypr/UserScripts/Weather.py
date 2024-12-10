@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+# /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  #
 # weather using python
 
 import subprocess

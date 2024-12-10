@@ -1,5 +1,5 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
 # Script for keyboard backlights (if supported) using brightnessctl
 
 iDIR="$HOME/.config/swaync/icons"

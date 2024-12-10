@@ -1,5 +1,5 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
 # Keyhints. Idea got from Garuda Hyprland
 
 # GDK BACKEND. Change to either wayland or x11 if having issues
