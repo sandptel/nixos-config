@@ -13,7 +13,7 @@ wallpaper=$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified
 waybar_style="$HOME/.config/waybar/style/[Dark] Latte-Wallust combined.css"
 kvantum_theme="Catppuccin-Mocha"
 color_scheme="prefer-dark"
-gtk_theme="Andromeda-dark"
+gtk_theme="FlatColor"
 icon_theme="Flat-Remix-Blue-Dark"
 cursor_theme="Bibata-Modern-Ice"
 
@@ -56,3 +56,5 @@ if [ ! -f ~/.config/hypr/.initial_startup_done ]; then
 
     exit
 fi
+
+notify-send -r 2 "Welcome" -t 1000

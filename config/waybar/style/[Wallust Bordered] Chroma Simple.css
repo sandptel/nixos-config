@@ -8,6 +8,7 @@
 	font-family: "JetBrainsMono Nerd Font";
 	font-weight: bold;
 	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
+    background: @color1;
 	font-size: 97%;
     min-height: 0;
 }

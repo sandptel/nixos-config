@@ -14,6 +14,60 @@ in
 
 programs.pywal16.enable=true;
 
+home.packages = with pkgs;[
+wpgtk
+# airshipper
+pywalfox-native
+solarc-gtk-theme
+wl-clipboard
+hyprlock
+matugen
+];
+
+#script for wpgtk
+home.activation= {
+  wpgtk = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    # ${pkgs.wpgtk}/bin/wpg-install.sh -i -g
+    ${pkgs.wpgtk}/bin/wpg --preview
+  '';
+};
+
+# home.sessionVariables.GTK_THEME = "FlatColor";
+
+gtk = {
+    enable = true;
+    # font.name = "JetBrains Mono Nerd Font";
+    # font.size = 12.5;
+    # font.package = pkgs.jetbrains-mono;
+    iconTheme.name = "Flat-Remix-Blue-Dark";
+    iconTheme.package = pkgs.flat-remix-icon-theme;
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+      # gtk-key-theme-name = "FlatColor";
+      # gtk-icon-theme-name   = "flattr";
+      gtk-cursor-theme-name = "Bibata-Modern-Ice";
+    };
+  };
+
+  home.file.".icons/default".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice";
+  home.sessionVariables = {
+    XCURSOR_SIZE = 24;
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-key-theme = "FlatColor";
+      cursor-theme = "Bibata-Modern-Ice";
+    };
+  };
+
+  xdg.systemDirs.data = [
+    "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+    "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+  ];
+
+
 programs.kitty={
   enable = true;
   shellIntegration.enableFishIntegration=true;
@@ -78,29 +132,21 @@ source= $UserConfigs/UserDecorAnimations.conf
 source= $UserConfigs/UserKeybinds.conf
 source= $UserConfigs/UserSettings.conf
 source= $UserConfigs/WorkspaceRules.conf
+
+# plugin = ${inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors}/lib/libhypr-dynamic-cursors.so
+
 plugin:overview:reverseSwipe =true;
   '';
 
   xwayland.enable=true;
   plugins = [
-    #inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursorsssssss
-    # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+    inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
+    # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
   ];
 };
 
-
-home.sessionVariables.GTK_THEME = "gruvbox-dark";
-
 programs.vscode.enable=true;
-
-home.packages = with pkgs;[
-# airshipper
-pywalfox-native
-solarc-gtk-theme
-wl-clipboard
-hyprlock
-matugen
-];
 
 home.file.".config/ags".source = config.lib.file.mkOutOfStoreSymlink ./config/ags;
 home.file.".config/btop".source = config.lib.file.mkOutOfStoreSymlink ./config/btop;
@@ -116,6 +162,8 @@ home.file.".config/swaync".source = config.lib.file.mkOutOfStoreSymlink ./config
 # home.file.".config/wallrust".source = config.lib.file.mkOutOfStoreSymlink ./config/wallrust;
 # home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./config/waybar;
 home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./config/wlogout;
+
+# home.file.".config/wpg/wpg.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/wpg/wpg.conf;
 
  home.file.".config/hypr/configs".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/configs;
  home.file.".config/hypr/scripts".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/scripts;

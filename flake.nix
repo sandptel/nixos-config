@@ -3,7 +3,7 @@
 
   inputs = {
     Hyprspace = {
-      url = "github:KZDKM/Hyprspace/2f239d0569f8c380338bbd5aef99e7e8c41b9a09";
+      url = "github:KZDKM/Hyprspace/260f386075c7f6818033b05466a368d8821cde2d";
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
@@ -23,7 +23,7 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland"; # hyprland development
+    hyprland.url = "github:hyprwm/Hyprland/1ba050d603dca644aca48872f62388d794c030b9"; # hyprland development
 #    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
      grub2-themes = {
@@ -46,7 +46,7 @@
       url = "github:the-argus/spicetify-nix";
    };
    hypr-dynamic-cursors = {
-        url = "github:VirtCode/hypr-dynamic-cursors";
+        url = "github:VirtCode/hypr-dynamic-cursors/81f4b964f997a3174596ef22c7a1dee8a5f616c7";
         inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
     };
     nixos-boot.url = "github:Melkor333/nixos-boot";

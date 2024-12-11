@@ -25,7 +25,7 @@ in
   extraSpecialArgs={inherit inputs;};
   useGlobalPkgs=true;
   useUserPackages=true;
-  backupFileExtension= "backup9";
+  backupFileExtension= "backup0";
   users={
     roronoa= {
       imports =[

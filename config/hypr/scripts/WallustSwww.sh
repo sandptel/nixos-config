@@ -8,6 +8,8 @@ cache_dir="$HOME/.cache/swww/"
 # Get a list of monitor outputs
 monitor_outputs=($(ls "$cache_dir"))
 
+colorscheme="$HOME/.cache/wal/colors.json"
+
 # Initialize a flag to determine if the ln command was executed
 ln_success=false
 
@@ -34,10 +36,13 @@ fi
 if [ "$ln_success" = true ]; then
     # execute wallust
 	echo 'about to pywal'
-    which wal
     wal --cols16 -i $wallpaper_path --saturate 0.55 -n 
     # execute wallust skipping tty and terminal changes
     echo 'about to execute wallust'
     wallust run "$wallpaper_path" -s &
+
+    echo 'about to wpgtk'
+    sleep 0.3
+    wpg --theme "$colorscheme"
 fi
 
