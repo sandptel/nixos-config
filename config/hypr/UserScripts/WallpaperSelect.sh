@@ -11,7 +11,7 @@ focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{pri
 # swww transition config
 FPS=120
 TYPE="any"
-DURATION=3
+DURATION=4
 BEZIER=".43,1.19,1,.4"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
 

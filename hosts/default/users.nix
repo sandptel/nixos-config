@@ -76,7 +76,8 @@ github-desktop
   programs.fish.interactiveShellInit = ''
     #fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
         #pokemon colorscripts like. Make sure to install krabby package
-        krabby random --no-mega --no-gmax --no-regional --no-title -s; 
+        krabby random --no-mega --no-gmax --no-regional --no-title -s;
+        wal --preview | sed '/Current colorscheme:/d'
   '';
 
 
