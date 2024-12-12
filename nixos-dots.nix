@@ -133,6 +133,14 @@ source= $UserConfigs/UserKeybinds.conf
 source= $UserConfigs/UserSettings.conf
 source= $UserConfigs/WorkspaceRules.conf
 
+#pywal colors #https://github.com/alexhulbert/SeaGlass
+source = ~/.cache/wal/colors-hyprland.conf
+
+#hyprchroma
+windowrulev2 = plugin:chromakey,fullscreen:0
+chromakey_background = 7,8,17
+bind = Super SHIFT,O, togglechromakey
+
 # plugin = ${inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors}/lib/libhypr-dynamic-cursors.so
 
 plugin:overview:reverseSwipe =true;
@@ -143,6 +151,7 @@ plugin:overview:reverseSwipe =true;
     inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
     # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+    inputs.hyprchroma.packages.${pkgs.system}.default
   ];
 };
 
@@ -174,6 +183,7 @@ home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./confi
  home.file.".config/hypr/initial-boot.sh".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/initial-boot.sh;
  home.file.".config/hypr/v2.3.7".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/v2.3.7;
 
+home.file.".config/wal/templates/colors-hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/wal/templates/colors-hyprland.conf;
 
 # home.file.".config/rofi" = {
 #   source = config.lib.file.mkOutOfStoreSymlink ./config/rofi;
