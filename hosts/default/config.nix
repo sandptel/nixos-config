@@ -44,6 +44,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     ./starship.nix
     ./hardware.nix
     ./users.nix
+    # ./nixvim.nix
     # ../../modules/amd-drivers.nix
     # ../../modules/nvidia-drivers.nix
     # ../../modules/nvidia-prime-drivers.nix
@@ -238,7 +239,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     firefox.enable = true;
     git.enable = true;
     nm-applet.indicator = true;
-    neovim.enable = true;
+    # neovim.enable = true;
     #stylix.enable = true;
     #hardware.opengl.enable = true;
     #hardware.opengl.driSupport = true;

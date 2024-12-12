@@ -7,6 +7,10 @@
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     matugen = {
     url = "github:/sandptel/Matugen";
   };
@@ -86,6 +90,7 @@
             inputs.spicetify-nix.nixosModules.default
             inputs.chaotic.nixosModules.default
             inputs.elanmoc2.nixosModules.elanmoc2
+            inputs.nixvim.nixosModules.nixvim
             # inputs.zen-browser.packages."${system}".generaic
             #inputs.stylix.nixosModules.default
             #inputs.catppuccin.homeManagerModules.catppuccin

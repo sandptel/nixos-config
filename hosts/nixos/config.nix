@@ -209,7 +209,7 @@ in
     firefox.enable = true;
     git.enable = true;
     nm-applet.indicator = true;
-    neovim.enable = true;
+    # neovim.enable = true;
     #stylix.enable = true;
     #hardware.opengl.enable = true;
     #hardware.opengl.driSupport = true;
