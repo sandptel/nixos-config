@@ -32,6 +32,7 @@ in
     # define user packages here
     packages = with pkgs; [
       # inputs.nix-init.packages."${system}".default
+      #  inputs.hellwal.packages."${system}".default
       # gitbutler
       gitkraken
 wl-clipboard

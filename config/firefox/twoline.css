@@ -1,0 +1,26 @@
+:root .tabbrowser-tab[fadein]:not([pinned]) {
+    max-width: 225px !important;
+    max-height: 52px !important;
+  }
+  
+  .tab-background {
+    margin: 0 !important;
+  }
+  
+  .tab-background[selected] {
+    outline: 1px solid var(--tab-selected-textcolor);
+    outline-offset: -1px;
+  }
+  
+  .urlbarView {
+    width: 100% !important;
+    margin-top: -2px;
+    margin-inline: 0 !important;
+    border-radius: 0 0 4px 4px;
+    padding: 10px;
+    background: var(--newtab-background-color) !important;
+  }
+  
+  .titlebar-spacer, .titlebar-buttonbox-container {
+    display: none;
+  }
