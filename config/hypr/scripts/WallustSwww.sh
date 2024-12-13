@@ -36,10 +36,11 @@ fi
 if [ "$ln_success" = true ]; then
     # execute wallust
 	echo 'about to pywal'
-    wal --cols16 -i $wallpaper_path --saturate 0.55 -n 
+    wal --cols16 -i $wallpaper_path --saturate 0.4 -n 
     # execute wallust skipping tty and terminal changes
     echo 'about to execute wallust'
     wallust run "$wallpaper_path" -s &
+    # wallust cs ~/.cache/wal/colors.json -s &
 
     echo 'about to wpgtk'
     sleep 0.3

@@ -136,14 +136,15 @@ source= $UserConfigs/WorkspaceRules.conf
 #pywal colors #https://github.com/alexhulbert/SeaGlass
 source = ~/.cache/wal/colors-hyprland.conf
 
-#hyprchroma
-windowrulev2 = plugin:chromakey,fullscreen:0
-chromakey_background = 7,8,17
-bind = Super SHIFT,O, togglechromakey
+# #hyprchroma
+# windowrulev2 = plugin:chromakey,fullscreen:0
+# chromakey_background = 7,8,17
+# bind = Super SHIFT,O, togglechromakey
 
 # plugin = ${inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors}/lib/libhypr-dynamic-cursors.so
 
 plugin:overview:reverseSwipe =true;
+
   '';
 
   xwayland.enable=true;
@@ -151,7 +152,7 @@ plugin:overview:reverseSwipe =true;
     inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
     # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-    inputs.hyprchroma.packages.${pkgs.system}.default
+    # inputs.hyprchroma.packages.${pkgs.system}.default
   ];
 };
 
