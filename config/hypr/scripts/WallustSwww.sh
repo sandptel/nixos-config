@@ -34,7 +34,10 @@ fi
 
 # Check the flag before executing further commands
 if [ "$ln_success" = true ]; then
-    # execute wallust
+    #kill wallust previous sessions 
+    killall .wallust-wrappe
+    sleep 0.3
+    # execute pywal
 	echo 'about to pywal'
     wal --cols16 -i $wallpaper_path --saturate 0.4 -n 
     # execute wallust skipping tty and terminal changes
@@ -43,7 +46,12 @@ if [ "$ln_success" = true ]; then
     # wallust cs ~/.cache/wal/colors.json -s &
 
     echo 'about to wpgtk'
-    sleep 0.3
     wpg --theme "$colorscheme"
 fi
+
+sleep 5
+# Check if the process is running
+if pgrep .wallust-wrappe > /dev/null; then
+    # Kill the process if it's still running
+    killall .wallust-wrappe
 
