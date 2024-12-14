@@ -36,7 +36,7 @@ in
       # gitbutler
       gitkraken
 wl-clipboard
-spotify
+# spotify
 grim
 slurp
 blueman

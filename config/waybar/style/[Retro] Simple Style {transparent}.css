@@ -194,3 +194,7 @@ tooltip label {
 	padding-left: 2px;
 	opacity:0.9;
 }
+
+#custom-cava_mviz{
+    color: @color13;
+}

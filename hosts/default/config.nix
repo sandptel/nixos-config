@@ -407,6 +407,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       #qcomicbook
       #libsForQt5.qt5.qtquickcontrols   
       #libsForQt5.qt5.qtgraphicaleffects
+      cava
       hyprpicker
       #hyprlandPlugins.borders-plus-plus
       egl-wayland

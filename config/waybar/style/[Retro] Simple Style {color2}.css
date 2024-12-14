@@ -187,3 +187,8 @@ tooltip label {
 	border-radius: 5px;
 	background-color: @green;
 }
+
+
+#custom-cava_mviz{
+    color: @color12;
+}
