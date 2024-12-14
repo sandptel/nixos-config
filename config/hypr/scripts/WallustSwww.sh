@@ -36,10 +36,9 @@ fi
 if [ "$ln_success" = true ]; then
     #kill wallust previous sessions 
     killall .wallust-wrappe
-    sleep 0.3
     # execute pywal
 	echo 'about to pywal'
-    wal --cols16 -i $wallpaper_path --saturate 0.4 -n 
+    wal --cols16 -i $wallpaper_path --saturate 0.5 -n 
     # execute wallust skipping tty and terminal changes
     echo 'about to execute wallust'
     wallust run "$wallpaper_path" -s &
@@ -49,9 +48,10 @@ if [ "$ln_success" = true ]; then
     wpg --theme "$colorscheme"
 fi
 
-sleep 5
+
 # Check if the process is running
 if pgrep .wallust-wrappe > /dev/null; then
     # Kill the process if it's still running
+    notify-send "Wallust" "Wallust was still running. Killing it" -t 2000 
     killall .wallust-wrappe
 

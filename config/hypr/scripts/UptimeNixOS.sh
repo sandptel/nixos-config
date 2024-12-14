@@ -30,4 +30,4 @@ uptime=${d:+$d, }${h:+$h, }$m
 uptime=${uptime%', '}
 uptime=${uptime:-$s seconds}
 
-echo "up $uptime"
+echo "uptime: $uptime"

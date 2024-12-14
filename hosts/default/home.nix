@@ -3,7 +3,7 @@
   imports=[
     ../../nixos-dots.nix
     # ./hypr.nix
-    # ./firefox.nix
+    ./firefox.nix
     ./pywal16.nix
     inputs.hyprland.homeManagerModules.default
     # inputs.hellwal.homeManagerModules.default
