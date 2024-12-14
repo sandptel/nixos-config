@@ -18,7 +18,7 @@
 window#waybar {
   background: @color1;
   color: @color0;
-  opacity: 0.95;
+  opacity: 0.85;
   transition-property: background-color;
   transition-duration: 0.2s;
   border-radius: 15px;
@@ -91,6 +91,8 @@ tooltip label {
 #custom-hint,
 #custom-hypridle,
 #custom-menu,
+#custom-power_vertical,
+#custom-power,
 #custom-settings,
 #custom-spotify,
 #custom-swaync,

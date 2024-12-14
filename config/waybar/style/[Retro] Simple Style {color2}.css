@@ -16,7 +16,7 @@
 }
 
 window#waybar {
-  background: @color1;
+  background: @color2;
   color: @color0;
   opacity: 0.95;
   transition-property: background-color;
@@ -91,6 +91,8 @@ tooltip label {
 #custom-hint,
 #custom-hypridle,
 #custom-menu,
+#custom-power_vertical,
+#custom-power,
 #custom-settings,
 #custom-spotify,
 #custom-swaync,
@@ -184,11 +186,4 @@ tooltip label {
 	min-width: 10px; 
 	border-radius: 5px;
 	background-color: @green;
-}
-
-#custom-power {
-    color: #8B0000;
-	padding-right: 5px;
-	padding-left: 2px;
-	opacity:0.9;
 }

@@ -8,8 +8,8 @@ font-family: "JetBrainsMono Nerd Font";
 font-weight: bold;
 min-height: 0;
 /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-    background: @color1;
 font-size: 97%;
+background: transparent;
 font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
@@ -383,4 +383,22 @@ label:focus {
 #backlight-slider highlight {
 	min-width: 10px;
 	border-radius: 5px;
+}
+
+#taskbar button,
+#workspaces button {
+  color: @color14;
+}
+
+#taskbar button.active,
+#workspaces button.active {
+  color: @color13;
+  background-color: transparent;
+  border-bottom: 2px solid @color13;
+  border-top: 2px solid @color13;
+}
+
+#taskbar button.urgent,
+#workspaces button.urgent {
+  border-bottom: 2px solid red;
 }

@@ -23,9 +23,9 @@
 * {
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
+    background: transparent;
 	min-height: 0;  
     /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-    background: @color1;
     font-size: 97%;
     font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
@@ -371,3 +371,11 @@ tooltip {
 }
 #swaync{
     color: #ffd700;}
+
+#custom-power {
+        color: #8B0000;
+        padding-right: 5px;
+        padding-left: 2px;
+        opacity:0.9;
+}
+

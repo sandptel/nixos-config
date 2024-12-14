@@ -7,8 +7,8 @@
 font-family: "JetBrainsMono Nerd Font";
 font-weight: bold;
 min-height: 0;
+background:transparent;
 /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-    background: @color1;
 font-size: 97%;
 font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
@@ -16,13 +16,7 @@ font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 window#waybar {
   background: @color1;
 	border-radius: 12px;
-}
-window#waybar.empty #window {
-    padding: 0px;
-    border: 0px;
-    /*  background-color: rgba(66,66,66,0.5); */ /* transparent */
-    background-color: @color1;
-    opacity: 0.89;
+    opacity: 0.95;
 }
 
 window#waybar.hidden {
@@ -31,11 +25,8 @@ window#waybar.hidden {
 
 window#waybar.empty,
 window#waybar.empty #window {
-    padding: 0px;
-    border: 0px;
-    /*  background-color: rgba(66,66,66,0.5); */ /* transparent */
-    background-color: @color1;
-    opacity: 0.9;
+	border-radius: 12px;
+    opacity: 0.85;
 }
 
 tooltip {
@@ -80,7 +71,7 @@ tooltip label {
 
 #taskbar button,
 #workspaces button {
-    color: #d8dee9;
+    color: @color12;
     box-shadow: none;
 	text-shadow: none;
     padding: 0px;
@@ -93,12 +84,13 @@ tooltip label {
 
 #taskbar button.active,
 #workspaces button.active {
-    color: @color12 ;
+    color: @color13 ;
     border-radius: 15px 15px 15px 15px;
     padding-left: 8px;
     padding-right: 8px;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    border-bottom: 0.5px solid @color13;
 }
 
 #workspaces button.focused {
@@ -112,7 +104,7 @@ tooltip label {
 
 #taskbar button:hover,
 #workspaces button:hover {
-    color: @color9;
+    color: @color10;
     border-radius: 15px;
  	padding-left: 2px;
     padding-right: 2px;
@@ -172,7 +164,7 @@ tooltip label {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-    color: @color15;
+    color: @color14;
   border-radius: 8px;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -242,4 +234,10 @@ tooltip label {
 #backlight-slider highlight {
 	min-width: 10px;
 	border-radius: 5px;
+}
+#custom-power {
+    color: #8B0000;
+	padding-right: 5px;
+	padding-left: 2px;
+	opacity:0.9;
 }
