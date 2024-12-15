@@ -514,7 +514,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
     upower.enable = true;
 
-    xserver.desktopManager.gnome.enable = true;
+    # xserver.desktopManager.gnome.enable = true;
 
     gnome.gnome-keyring.enable = true;
     

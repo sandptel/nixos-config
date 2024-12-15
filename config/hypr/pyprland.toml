@@ -10,3 +10,14 @@ animation = "fromTop"
 command = "kitty --class kitty-dropterm"
 class = "kitty-dropterm"
 size = "75% 60%"
+allow_special_workspaces = true
+
+# [scratchpads.code]
+# animation = "fromRight"
+# match_by = "workspace"
+# workspace = "special:scratchpad_code"
+# command = "code"
+# size = "50% 50%"
+# allow_special_workspaces=true
+# skip_windowrules = ["aspect", "workspace"]
+# alt_toggle =true # mightbe useful on monitor

@@ -19,6 +19,7 @@ in
 programs.pywal16.enable=true;
 
 home.packages = with pkgs;[
+matugen
 checkupdates
 wpgtk
 # airshipper
@@ -189,6 +190,7 @@ home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./confi
  home.file.".config/hypr/hyprlock.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/hyprlock.conf;
  home.file.".config/hypr/initial-boot.sh".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/initial-boot.sh;
  home.file.".config/hypr/v2.3.7".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/v2.3.7;
+ home.file.".config/hypr/pyprland.toml".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/pyprland.toml;
 
 home.file.".config/wal/templates/colors-hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/wal/templates/colors-hyprland.conf;
 
