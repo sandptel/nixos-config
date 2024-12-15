@@ -6,7 +6,8 @@ SCRIPTSDIR=$HOME/.config/hypr/scripts
 UserScripts=$HOME/.config/hypr/UserScripts
 
 pywalfox update
-
+${SCRIPTSDIR}/WallustSwww.sh
+wait
 # Define file_exists function
 file_exists() {
     if [ -e "$1" ]; then
@@ -38,15 +39,6 @@ swaync > /dev/null 2>&1 &
 
 # relaunch ags
 ags &
-
-#if not already running then only launch wallust again....
-# sleep 1
-# if ! pgrep .wallust-wrappe > /dev/null; then
-#     # Relaunch wallust
-#     ${SCRIPTSDIR}/WallustSwww.sh
-# fi
-
-${SCRIPTSDIR}/WallustSwww.sh
 
 # Relaunching rainbow borders if the script exists
 # sleep 1
