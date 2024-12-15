@@ -4,6 +4,10 @@ with lib;
 
 let
     cfg = config.nixos-dots;
+    checkupdates= pkgs.writeShellScriptBin "checkupdates" ''
+    ${pkgs.uutils-coreutils-noprefix}/bin/echo "This is a pseudo package to check for updates"
+    exit 0
+    '';
 in
 {
   options.nixos-dots = {
@@ -15,6 +19,7 @@ in
 programs.pywal16.enable=true;
 
 home.packages = with pkgs;[
+checkupdates
 wpgtk
 # airshipper
 pywalfox-native
@@ -110,7 +115,7 @@ wayland.windowManager.hyprland = {
   # /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  #
 # Sourcing external config files
 
-exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'gruvbox-dark'"
+exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'FlatColor'"
 exec-once = dconf write /org/gnome/desktop/interface/icon-theme "'Flat-Remix-Blue-Dark'"
 
 # Default Configs
@@ -160,7 +165,8 @@ programs.vscode.enable=true;
 
 home.file.".config/ags".source = config.lib.file.mkOutOfStoreSymlink ./config/ags;
 home.file.".config/btop".source = config.lib.file.mkOutOfStoreSymlink ./config/btop;
-home.file.".config/cava".source = config.lib.file.mkOutOfStoreSymlink ./config/cava;
+home.file.".config/cava/shaders".source = config.lib.file.mkOutOfStoreSymlink ./config/cava/shaders;
+# home.file.".config/cava/config".source = config.lib.file.mkOutOfStoreSymlink ./config/cava/config;
 home.file.".config/fastfetch".source = config.lib.file.mkOutOfStoreSymlink ./config/fastfetch;
 # home.file.".config/hypr".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr;
 home.file.".config/kitty/kitty-colors.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/kitty/kitty-colors.conf;

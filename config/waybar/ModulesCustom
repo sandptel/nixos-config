@@ -152,19 +152,8 @@
 	"exec": "swaync-client -swb",
 	"on-click": "sleep 0.1 && swaync-client -t -sw",
 	"on-click-right": "swaync-client -d -sw",
-	"escape": true,
+	"escape": true
 },
-// NOTE:! This is only for Arch and Arch Based Distros  depend: pacman-contrib
-"custom/updater": {
-	"format": " {}",
-	"exec": "checkupdates | wc -l",
-	"exec-if": "[[ $(checkupdates | wc -l) ]]",
-	"interval": 15,
-	"on-click": "if command -v paru &> /dev/null; then kitty -T update paru -Syu; else kitty -T update yay -Syu; fi && notify-send 'The system has been updated'",
-	"tooltip": true,
-	"tooltip-format": "Left Click: Update System\nArch Linux Only",
-},
-// Separators
 "custom/separator#dot": {
 	"format": "",
 	"interval": "once",

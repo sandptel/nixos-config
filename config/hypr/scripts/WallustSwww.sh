@@ -12,7 +12,6 @@ colorscheme="$HOME/.cache/wal/colors.json"
 
 # Initialize a flag to determine if the ln command was executed
 ln_success=false
-
 # Get current focused monitor
 current_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
 echo $current_monitor
@@ -45,13 +44,8 @@ if [ "$ln_success" = true ]; then
     # wallust cs ~/.cache/wal/colors.json -s &
 
     echo 'about to wpgtk'
-    wpg --theme "$colorscheme"
+    wpg --theme "$colorscheme" -n
 fi
 
 
-# Check if the process is running
-if pgrep .wallust-wrappe > /dev/null; then
-    # Kill the process if it's still running
-    notify-send "Wallust" "Wallust was still running. Killing it" -t 2000 
-    killall .wallust-wrappe
-
+exit 0 
