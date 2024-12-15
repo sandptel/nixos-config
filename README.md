@@ -1,9 +1,8 @@
 # Preview
 
-https://github.com/user-attachments/assets/8b44f1a5-7926-449e-bde4-078972ffab35
+https://github.com/user-attachments/assets/ad5d5f34-cb39-4afe-bc71-4833bdacc037
 
 # **!!! Do Not Blindly install these dots**
-
 # Installation
 1. Installing Nix
 ```bash
