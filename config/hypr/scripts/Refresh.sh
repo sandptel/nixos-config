@@ -28,8 +28,8 @@ done
 ags -q
 
 #Restart waybar
-sleep 0.3
 killall .waybar-wrapped
+sleep 0.3
 waybar &
 
 # relaunch swaync
@@ -45,6 +45,8 @@ ags &
 #     # Relaunch wallust
 #     ${SCRIPTSDIR}/WallustSwww.sh
 # fi
+
+${SCRIPTSDIR}/WallustSwww.sh
 
 # Relaunching rainbow borders if the script exists
 # sleep 1

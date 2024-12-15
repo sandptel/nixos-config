@@ -38,7 +38,7 @@ SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration
 swww query || swww-daemon --format xrgb && swww img -o $focused_monitor "${RANDOMPICS}" $SWWW_PARAMS
 
 # Run additional scripts
-"${scriptsDir}/WallustSwww.sh"
-"${scriptsDir}/Refresh.sh"
+${scriptsDir}/WallustSwww.sh
+${scriptsDir}/Refresh.sh
 
 exit 0
