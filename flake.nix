@@ -1,6 +1,5 @@
 {
-  description = "KooL's NixOS-Hyprland";
-
+  description = "sandptel's Hyprland Dots";
   inputs = {
     Hyprspace = {
       url = "github:KZDKM/Hyprspace/e2d561c933cd085d68bf0b39c4f78870ad0abbc2";
