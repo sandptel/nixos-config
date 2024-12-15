@@ -40,10 +40,11 @@ swaync > /dev/null 2>&1 &
 ags &
 
 #if not already running then only launch wallust again....
-if ! pgrep .wallust-wrappe > /dev/null; then
-    # Relaunch wallust
-    ${SCRIPTSDIR}/WallustSwww.sh
-fi
+# sleep 1
+# if ! pgrep .wallust-wrappe > /dev/null; then
+#     # Relaunch wallust
+#     ${SCRIPTSDIR}/WallustSwww.sh
+# fi
 
 # Relaunching rainbow borders if the script exists
 # sleep 1
