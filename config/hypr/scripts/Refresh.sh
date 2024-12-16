@@ -5,8 +5,6 @@
 SCRIPTSDIR=$HOME/.config/hypr/scripts
 UserScripts=$HOME/.config/hypr/UserScripts
 
-pywalfox update
-
 ${SCRIPTSDIR}/WallustSwww.sh
 
 # Define file_exists function
@@ -40,6 +38,13 @@ swaync > /dev/null 2>&1 &
 
 # relaunch ags
 ags &
+
+#pywalfox to update firefox after wallustsww has ran once
+
+pywalfox update
+
+# Setting Obsidian theme
+$UserScripts/Obsidian.sh
 
 # Relaunching rainbow borders if the script exists
 # sleep 1

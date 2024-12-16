@@ -19,6 +19,7 @@ in
 programs.pywal16.enable=true;
 
 home.packages = with pkgs;[
+obsidian
 matugen
 checkupdates
 wpgtk
@@ -194,7 +195,7 @@ home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./confi
  home.file.".config/hypr/pyprland.toml".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/pyprland.toml;
 
 home.file.".config/wal/templates/colors-hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/wal/templates/colors-hyprland.conf;
-
+home.file.".config/wal/templates/obsidian.css".source = config.lib.file.mkOutOfStoreSymlink ./config/wal/templates/obsidian.css;
 # home.file.".config/rofi" = {
 #   source = config.lib.file.mkOutOfStoreSymlink ./config/rofi;
 #   # recursive = true;
