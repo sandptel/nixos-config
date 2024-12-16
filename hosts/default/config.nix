@@ -44,6 +44,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     ./starship.nix
     ./hardware.nix
     ./users.nix
+    # ./greetd.nix
     # ./nixvim.nix
     # ../../modules/amd-drivers.nix
     # ../../modules/nvidia-drivers.nix
@@ -461,6 +462,11 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
   # Services to start
   services = {
+    # displayManager.ly.enable=true; //so slow and buggy
+    # greetd={
+    #   enable =true;
+    #   package=pkgs.greetd.tuigreet;
+    # }; //imported as a module above
     xserver = {
       displayManager.gdm = {
     enable = true;
