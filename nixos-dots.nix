@@ -138,6 +138,7 @@ source= $UserConfigs/UserDecorAnimations.conf
 source= $UserConfigs/UserKeybinds.conf
 source= $UserConfigs/UserSettings.conf
 source= $UserConfigs/WorkspaceRules.conf
+source= $UserConfigs/Scratchpads.conf
 
 #pywal colors #https://github.com/alexhulbert/SeaGlass
 source = ~/.cache/wal/colors-hyprland.conf

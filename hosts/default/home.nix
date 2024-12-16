@@ -3,12 +3,28 @@
   imports=[
     ../../nixos-dots.nix
     # ./hypr.nix
-    ./firefox.nix
+    ./firefox-webapp.nix
     ./pywal16.nix
     inputs.hyprland.homeManagerModules.default
     # inputs.hellwal.homeManagerModules.default
     # inputs.matugen.homeManagerModules.default
 ];
+
+# programs.firefox.webapps ={
+# name = "YouTube";
+# # mimeTypes = ["video/*"];
+# genericName = "YouTube";
+# # comment = "YouTube";
+# # categories = ["Network"];
+# # icon = "https://www.youtube.com/favicon.ico";
+# # prefersNonDefaultGPU = false;
+# url = "https://www.youtube.com/";
+# id = 1;
+# # extraArgs = [];
+# # extraSettings = {};
+# # backgroundColor = "rgba(0, 0, 0, 0)";
+# # theme = "system";
+# };
 
 # programs.hellwal.enable=true;
 nixos-dots.enable = true;
