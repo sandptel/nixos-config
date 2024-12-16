@@ -10,22 +10,6 @@
     # inputs.matugen.homeManagerModules.default
 ];
 
-# programs.firefox.webapps ={
-# name = "YouTube";
-# # mimeTypes = ["video/*"];
-# genericName = "YouTube";
-# # comment = "YouTube";
-# # categories = ["Network"];
-# # icon = "https://www.youtube.com/favicon.ico";
-# # prefersNonDefaultGPU = false;
-# url = "https://www.youtube.com/";
-# id = 1;
-# # extraArgs = [];
-# # extraSettings = {};
-# # backgroundColor = "rgba(0, 0, 0, 0)";
-# # theme = "system";
-# };
-
 # programs.hellwal.enable=true;
 nixos-dots.enable = true;
 # home.configFile."<path>".source = "${config.programs.matugen.theme.files}/<template_output_path>";
@@ -46,5 +30,22 @@ nixos-dots.enable = true;
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+ 
+
+    programs.firefox.webapps.notion ={
+    enable = true;
+    name = "Notion";
+    extraSettings = config.programs.firefox.profiles."roronoa".settings;
+    # mimeTypes = ["video/*"];
+    genericName = "Notion";
+    comment = "Notion is a new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team.";
+    categories = ["Productivity"];
+    icon = "https://super.so/icon/dark/feather.svg";
+    # prefersNonDefaultGPU = false;
+    url = "https://www.notion.so/";
+    id = 1;
+    backgroundColor = "#202225";
+    };
 
 }  
