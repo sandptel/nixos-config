@@ -25,7 +25,7 @@ in
   extraSpecialArgs={inherit inputs;};
   useGlobalPkgs=true;
   useUserPackages=true;
-  backupFileExtension= "backup0";
+  backupFileExtension= "bac0";
   users={
     roronoa= {
       imports =[
@@ -520,7 +520,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
     upower.enable = true;
 
-    # xserver.desktopManager.gnome.enable = true;
+    xserver.desktopManager.gnome.enable = true;
 
     gnome.gnome-keyring.enable = true;
     
