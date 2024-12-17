@@ -40,7 +40,7 @@ home.activation= {
   '';
 };
 
-# home.sessionVariables.GTK_THEME = "FlatColor";
+home.sessionVariables.GTK_THEME = "linea-nord-color";
 
 gtk = {
     enable = true;
@@ -51,7 +51,7 @@ gtk = {
     iconTheme.package = pkgs.flat-remix-icon-theme;
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
-      # gtk-key-theme-name = "FlatColor";
+      gtk-key-theme-name = "linea-nord-color";
       # gtk-icon-theme-name   = "flattr";
       gtk-cursor-theme-name = "Bibata-Modern-Ice";
     };
@@ -65,7 +65,7 @@ gtk = {
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-key-theme = "FlatColor";
+      gtk-key-theme = "linea-nord-color";
       cursor-theme = "Bibata-Modern-Ice";
     };
   };
@@ -118,7 +118,7 @@ wayland.windowManager.hyprland = {
   # /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  #
 # Sourcing external config files
 
-exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'FlatColor'"
+exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'linea-nord-color'"
 exec-once = dconf write /org/gnome/desktop/interface/icon-theme "'Flat-Remix-Blue-Dark'"
 
 # Default Configs
