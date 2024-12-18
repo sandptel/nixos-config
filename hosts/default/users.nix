@@ -4,9 +4,7 @@ let
   inherit (import ./variables.nix) gitUsername;
 in
 {
-
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "spotify"
   ];
   services.fprintd.elanmoc2.enable=true;
@@ -34,7 +32,7 @@ in
       # inputs.nix-init.packages."${system}".default
       #  inputs.hellwal.packages."${system}".default
       # gitbutler
-      gitkraken
+
 wl-clipboard
 # spotify
 grim
@@ -50,9 +48,6 @@ brightnessctl
 playerctl
 neofetch
 firefox
-vim
-git
-#vscode
 # obs-studio	
 rustup
 gcc
@@ -63,7 +58,6 @@ telegram-desktop
 discord
 gnomeExtensions.pano
 libnotify
-github-desktop
       krabby
       ];
     };
@@ -80,10 +74,8 @@ github-desktop
         krabby random --no-mega --no-gmax --no-regional --no-title -s;
         wal --preview | sed '/Current colorscheme:/d'
   '';
-
-
+  
    programs = {
-
   #   spicetify = {
   #       enable = true;
   #      theme = "catppuccin";

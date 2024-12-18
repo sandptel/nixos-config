@@ -24,6 +24,13 @@ nixos-dots.enable = true;
  
 # module.phcontrol.enable=true;
 
+programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+};
 
 
   home.stateVersion = "23.11";

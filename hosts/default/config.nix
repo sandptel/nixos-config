@@ -20,7 +20,7 @@ let
   );
 in
 {  
-  
+   
   home-manager={
   extraSpecialArgs={inherit inputs;};
   useGlobalPkgs=true;
@@ -41,6 +41,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     inputs.matugen.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
     (modulesPath + "/installer/scan/not-detected.nix")
+    ./code.nix
     ./starship.nix
     ./hardware.nix
     ./users.nix
@@ -289,7 +290,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
      albert
      gedit
      gjs
-     gruvbox-dark-gtk
       baobab
       btrfs-progs
       clang
@@ -304,16 +304,13 @@ nixpkgs.config.allowUnsupportedSystem = true;
       killall
       libappindicator
       libnotify
-      openssl #required by Rainbow borders
       pciutils
       vim
       wget
       xdg-user-dirs
       xdg-utils
-
       fastfetch
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
-
       # Hyprland Stuff
       hyprpanel
       ags
@@ -387,7 +384,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
       mangal
       mangareader
       oh-my-posh
-      github-cli
       telegram-desktop
       neofetch
       python312Packages.gpustat
@@ -395,15 +391,10 @@ nixpkgs.config.allowUnsupportedSystem = true;
       ani-cli
       zathura
       pango
-      gtk4
-      rustup
-      cargo
       gdk-pixbuf
       cairo  
       dbus-glib
-      gtk3
       nwg-dock-hyprland
-      pipx
       waypaper
       #qcomicbook
       #libsForQt5.qt5.qtquickcontrols   
@@ -415,8 +406,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
       qv2ray
       v2ray
       v2raya
-      papirus-folders
-      papirus-icon-theme
       # spotify
       lunarvim
       #xarchive
@@ -426,7 +415,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
     ++ [
-      python-packages
+      # python-packages #no python should be stated here
     ];
 
   # FONTS
@@ -520,7 +509,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
     upower.enable = true;
 
-    xserver.desktopManager.gnome.enable = true;
+    # xserver.desktopManager.gnome.enable = true;
 
     gnome.gnome-keyring.enable = true;
     

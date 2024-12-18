@@ -23,7 +23,7 @@ obsidian
 matugen
 checkupdates
 wpgtk
-gnome-tweaks
+# gnome-tweaks
 # airshipper
 pywalfox-native
 solarc-gtk-theme
