@@ -5,8 +5,6 @@
 SCRIPTSDIR=$HOME/.config/hypr/scripts
 UserScripts=$HOME/.config/hypr/UserScripts
 
-pywalfox update
-
 # Define file_exists function
 file_exists() {
     if [ -e "$1" ]; then
@@ -27,26 +25,28 @@ done
 # quit ags
 ags -q
 
-
 killall .waybar-wrapped
 
-sleep 0.3
+sleep 0.5
 #Restart waybar
 waybar &
 
 # relaunch swaync
-# sleep 0.5
+sleep 0.5
 swaync > /dev/null 2>&1 &
 
 # relaunch ags
 ags &
 
 ${SCRIPTSDIR}/WallustSwww.sh
-
+sleep 0.5
+${UserScripts}/Obsidian.sh
 # Relaunching rainbow borders if the script exists
 # sleep 1
 # if file_exists "${UserScripts}/RainbowBorders.sh"; then
 #     ${UserScripts}/RainbowBorders.sh &
 # fi
+
+pywalfox update
 
 exit 0

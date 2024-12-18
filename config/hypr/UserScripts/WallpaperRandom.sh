@@ -28,7 +28,7 @@ RANDOMPICS=${PICS[ $RANDOM % ${#PICS[@]} ]}
 basename "$(basename "$RANDOMPICS")" > "$wallDIR/current_wallpaper.txt"
 
 # Transition config
-FPS=60
+FPS=120
 TYPE="any"
 DURATION=1.5
 BEZIER=".43,1.19,1,.4"
