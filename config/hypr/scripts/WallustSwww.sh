@@ -45,8 +45,6 @@ if [ "$ln_success" = true ]; then
 
     echo 'about to wpgtk'
     wpg --theme "$colorscheme" -n
-
-    pywalfox update 
 fi
 
 

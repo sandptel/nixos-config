@@ -11,7 +11,7 @@ focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{pri
 # swww transition config
 FPS=90
 TYPE="any"
-DURATION=5
+DURATION=3
 BEZIER=".43,1.19,1,.4"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
 
@@ -97,13 +97,13 @@ main() {
 # Check if rofi is already running
 if pidof rofi > /dev/null; then
   pkill rofi
-  sleep 0.5  # Allow some time for rofi to close
+  sleep 1  # Allow some time for rofi to close
 fi
 
 main
-#refresh includes wallustswww
-# $SCRIPTSDIR/WallustSwww.sh
 
-$SCRIPTSDIR/Refresh.sh
+sleep 0.5
+"$SCRIPTSDIR/WallustSwww.sh"
 
-
+sleep 0.2
+"$SCRIPTSDIR/Refresh.sh"
