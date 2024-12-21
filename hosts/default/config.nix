@@ -42,6 +42,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     inputs.home-manager.nixosModules.home-manager
     (modulesPath + "/installer/scan/not-detected.nix")
     ./code.nix
+    ./gaming.nix
     ./starship.nix
     ./hardware.nix
     ./users.nix

@@ -6,6 +6,7 @@
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
+    nix-gaming.url = "github:fufexan/nix-gaming";
     # hellwal.url = "github:sandptel/hellwal";
     nixvim = {
       url = "github:nix-community/nixvim/";

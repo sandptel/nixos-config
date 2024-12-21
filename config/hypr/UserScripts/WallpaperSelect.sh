@@ -9,10 +9,10 @@ SCRIPTSDIR="$HOME/.config/hypr/scripts"
 # variables
 focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
 # swww transition config
-FPS=60
-TYPE="any"
-DURATION=10
-BEZIER=".43,1.19,1,.4"
+FPS=90
+TYPE="grow"
+DURATION=15
+BEZIER=".12,.8,1,.27"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
 
 # Check if swaybg is running
@@ -102,8 +102,8 @@ fi
 
 main
 
-sleep 0.5
+
 "$SCRIPTSDIR/WallustSwww.sh"
 
-sleep 0.2
+sleep 5
 "$SCRIPTSDIR/Refresh.sh"
