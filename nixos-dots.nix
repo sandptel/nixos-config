@@ -19,8 +19,8 @@ in
 programs.pywal16.enable=true;
 
 home.packages = with pkgs;[
-obsidian
 matugen
+nwg-drawer
 checkupdates
 wpgtk
 # gnome-tweaks

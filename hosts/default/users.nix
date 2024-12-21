@@ -35,6 +35,7 @@ in
 
 wl-clipboard
 # spotify
+obsidian
 grim
 slurp
 blueman
