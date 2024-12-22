@@ -8,12 +8,14 @@ SCRIPTSDIR="$HOME/.config/hypr/scripts"
 
 # variables
 focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
+#waybar/wallust reload duration
+RELOAD_DURATION=12
 # swww transition config
 FPS=90
-TYPE="grow"
+TYPE="any"
 DURATION=15
-BEZIER=".12,.8,1,.27"
-SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
+BEZIER="0,.95,1,.05"
+SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
 
 # Check if swaybg is running
 if pidof swaybg > /dev/null; then
@@ -71,7 +73,7 @@ main() {
 	swww img -o "$focused_monitor" "$RANDOM_PIC" $SWWW_PARAMS;
     sleep 0.5
     "$SCRIPTSDIR/WallustSwww.sh"
-    sleep 0.2
+    sleep $RELOAD_DURATION
     "$SCRIPTSDIR/Refresh.sh"
     exit 0
   fi
@@ -102,8 +104,12 @@ fi
 
 main
 
-
 "$SCRIPTSDIR/WallustSwww.sh"
 
-sleep 5
+let wallust_pid = $(pgrep -f "$SCRIPTSDIR/WallustSwww.sh")
+
+wait $wallust_pid
+
+sleep $RELOAD_DURATION
+
 "$SCRIPTSDIR/Refresh.sh"
