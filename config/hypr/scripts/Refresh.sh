@@ -39,7 +39,11 @@ swaync > /dev/null 2>&1 &
 ags &
 
 ${SCRIPTSDIR}/WallustSwww.sh
+
+pywalfox update
+
 sleep 0.5
+
 ${UserScripts}/Obsidian.sh
 # Relaunching rainbow borders if the script exists
 # sleep 1
@@ -47,6 +51,5 @@ ${UserScripts}/Obsidian.sh
 #     ${UserScripts}/RainbowBorders.sh &
 # fi
 
-pywalfox update
 
 exit 0
