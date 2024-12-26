@@ -9,11 +9,11 @@ SCRIPTSDIR="$HOME/.config/hypr/scripts"
 # variables
 focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
 #waybar/wallust reload duration
-RELOAD_DURATION=12
+RELOAD_DURATION=1
 # swww transition config
-FPS=90
+FPS=60
 TYPE="any"
-DURATION=15
+DURATION=2
 BEZIER="0,.95,1,.05"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
 

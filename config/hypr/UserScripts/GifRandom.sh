@@ -3,7 +3,7 @@
 # Script for Random Wallpaper ( CTRL ALT W)
 
 allwallDIR="$HOME/Pictures/wallpapers"
-wallDIR="$HOME/Pictures/wallpapers/Best"
+wallDIR="$HOME/Pictures/wallpapers/Gifs"
 scriptsDir="$HOME/.config/hypr/scripts"
 
 focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
@@ -37,7 +37,7 @@ RANDOMPICS=${PICS[ $RANDOM % ${#PICS[@]} ]}
 basename "$(basename "$RANDOMPICS")" > "$wallDIR/current_wallpaper.txt"
 
 # Transition config
-FPS=60
+FPS=30
 TYPE="any"
 DURATION=1
 BEZIER=".43,1.19,1,.4"

@@ -32,7 +32,7 @@ sleep 0.5
 waybar &
 
 # relaunch swaync
-sleep 0.5
+# sleep 0.5
 swaync > /dev/null 2>&1 &
 
 # relaunch ags
@@ -42,7 +42,7 @@ ${SCRIPTSDIR}/WallustSwww.sh
 
 pywalfox update
 
-sleep 0.5
+# sleep 0.5
 
 ${UserScripts}/Obsidian.sh
 # Relaunching rainbow borders if the script exists
