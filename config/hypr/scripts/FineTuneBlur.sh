@@ -1,16 +1,21 @@
 #!/bin/bash
 # /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
-# Script for changing blurs on the fly with 5 variants
+# Script for changing blurs on the fly with 10 variants
 
 notif="$HOME/.config/swaync/images/bell.png"
 
 # Array of blur configurations: [size, passes, message]
 BLUR_SETTINGS=(
-    "2 1 Less blur"
-    "3 2 Mild blur"
-    "4 2 Medium blur"
-    "5 3 High blur"
-    "6 4 Extreme blur"
+    "2 1 Minimal blur"
+    "3 2 Very light blur"
+    "4 2 Light blur"
+    "5 3 Moderate blur"
+    "6 3 Noticeable blur"
+    "7 4 Strong blur"
+    "8 4 Intense blur"
+    "9 5 Very intense blur"
+    "10 5 Extreme blur"
+    "12 6 Maximal blur"
 )
 
 # Current state retrieval
@@ -30,4 +35,4 @@ done
 IFS=" " read -r size passes message <<< "${BLUR_SETTINGS[$NEXT_INDEX]}"
 hyprctl keyword decoration:blur:size "$size"
 hyprctl keyword decoration:blur:passes "$passes"
-notify-send -r 2 -e -u low -i "$notif" "$message"
+notify-send -e -u low -i "$notif" "$message"

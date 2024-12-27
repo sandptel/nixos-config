@@ -288,7 +288,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     (with pkgs; [ 
      # System Packages
      home-manager
-     albert
+    #  albert
      gedit
      gjs
       baobab
