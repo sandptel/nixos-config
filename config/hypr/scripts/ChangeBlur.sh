@@ -11,6 +11,8 @@ BLUR_SETTINGS=(
     "4 2 Medium blur"
     "5 3 High blur"
     "6 4 Extreme blur"
+    "8 5 Intense blur"
+    "10 6 Maximal blur"
 )
 
 # Current state retrieval

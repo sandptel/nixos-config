@@ -7,7 +7,7 @@ plugins = [
 
 [scratchpads.term]
 animation = "fromTop"
-command = "kitty --class kitty-dropterm"
+command = "kitty --class kitty-dropterm tmux"
 class = "kitty-dropterm"
 size = "75% 60%"
 allow_special_workspaces = true
