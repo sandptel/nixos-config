@@ -7,15 +7,20 @@
   };
 
   config = {
-    # programs.gamemode.enable = true; # for performance mode
+    programs.gamemode.enable = true; # for performance mode
 
     programs.steam = {
       enable = true; # install steam
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      protontricks.enable = true; # install protontricks
+    
     };
 
+    hardware.graphics.enable32Bit = true; # enable 32-bit graphics support
+
     environment.systemPackages = with pkgs; [
+      wineWowPackages.waylandFull # install wine with wayland support
       heroic # install heroic launcher
       lutris # install lutris launcher
       mumble # install voice-chat

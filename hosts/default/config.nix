@@ -25,7 +25,7 @@ in
   extraSpecialArgs={inherit inputs;};
   useGlobalPkgs=true;
   useUserPackages=true;
-  backupFileExtension= "back0";
+  backupFileExtension= "backext";
   users={
     roronoa= {
       imports =[
@@ -46,6 +46,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     ./starship.nix
     ./hardware.nix
     ./users.nix
+    ./power.nix
     # ./greetd.nix
     # ./nixvim.nix
     # ../../modules/amd-drivers.nix
@@ -359,7 +360,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       # inputs.wezterm.packages.${pkgs.system}.default
       inputs.zen-browser.packages."${system}".default
       # zen-browser
-      hyprgui
+      # hyprgui
       dialog
       # neovide
       lshw
@@ -502,7 +503,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     flatpak.enable = true;
 
     blueman.enable = true;
-    power-profiles-daemon.enable = true;
+    
     #hardware.openrgb.enable = true;
     #hardware.openrgb.motherboard = "amd";
 
@@ -553,11 +554,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
     algorithm = "zstd";
   };
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "schedutil";
-  };
-
   # hardware.opengl.enable = true;
   #hardware.sane = {
   #  enable = true;
@@ -605,6 +601,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       }
     })
   '';
+  # security.pam.services."config.services.fprintd.enable".fprintAuth = true;
   security.pam.services.swaylock = {
     text = ''
       auth include login
