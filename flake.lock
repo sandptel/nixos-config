@@ -1001,15 +1001,15 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1732576227,
-        "narHash": "sha256-1o2UaDV2elzYrAEWiPSZ5BcVDZqdRoZGhYZDqooWyEk=",
-        "owner": "sandptel",
+        "lastModified": 1734790966,
+        "narHash": "sha256-Qh3mLBlKPDYPgzzd0IPmajGK+pA0JZr1Rk+isf+gSfA=",
+        "owner": "InioX",
         "repo": "Matugen",
-        "rev": "7e9e6825b5d0078abe2bdf707cadbdf2d5e518a4",
+        "rev": "2fd2cacc35ed289f26f12156e4a74c525fd2c2b0",
         "type": "github"
       },
       "original": {
-        "owner": "sandptel",
+        "owner": "InioX",
         "repo": "Matugen",
         "type": "github"
       }

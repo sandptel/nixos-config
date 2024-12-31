@@ -6,6 +6,7 @@
     ./firefox-webapp.nix
     ./pywal16.nix
     inputs.hyprland.homeManagerModules.default
+    ./matugen.nix
     ./spicetify.nix
     # inputs.hellwal.homeManagerModules.default
     # inputs.matugen.homeManagerModules.default

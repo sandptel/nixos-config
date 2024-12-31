@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     matugen = {
-    url = "github:/sandptel/Matugen";
+    url = "github:/InioX/Matugen";
   };
     elanmoc2.url= github:sandptel/elanmoc2;
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

@@ -40,7 +40,7 @@ matugen
 #   '';
 # };
 
-home.sessionVariables.GTK_THEME = "linea-nord-color";
+# home.sessionVariables.GTK_THEME = "linea-nord-color";
 
 gtk = {
     enable = true;
@@ -51,7 +51,7 @@ gtk = {
     iconTheme.package = pkgs.flat-remix-icon-theme;
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
-      gtk-key-theme-name = "linea-nord-color";
+      # gtk-key-theme-name = "linea-nord-color";
       # gtk-icon-theme-name   = "flattr";
       gtk-cursor-theme-name = "Bibata-Modern-Ice";
     };
@@ -65,7 +65,7 @@ gtk = {
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-key-theme = "linea-nord-color";
+      # gtk-key-theme = "linea-nord-color";
       cursor-theme = "Bibata-Modern-Ice";
     };
   };
@@ -118,7 +118,7 @@ wayland.windowManager.hyprland = {
   # /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  #
 # Sourcing external config files
 
-exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'linea-nord-color'"
+# exec-once = dconf write /org/gnome/desktop/interface/gtk-theme "'linea-nord-color'"
 exec-once = dconf write /org/gnome/desktop/interface/icon-theme "'Flat-Remix-Blue-Dark'"
 
 # Default Configs
@@ -183,7 +183,7 @@ home.file.".config/swaync".source = config.lib.file.mkOutOfStoreSymlink ./config
 # home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./config/waybar;
 home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./config/wlogout;
 
-# home.file.".config/wpg/wpg.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/wpg/wpg.conf;
+home.file.".config/wpg/wpg.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/wpg/wpg.conf;
 
  home.file.".config/hypr/configs".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/configs;
  home.file.".config/hypr/scripts".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/scripts;
