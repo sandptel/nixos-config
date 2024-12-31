@@ -33,12 +33,12 @@ matugen
 ];
 
 #script for wpgtk
-home.activation= {
-  wpgtk = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    # ${pkgs.wpgtk}/bin/wpg-install.sh -i -g
-    ${pkgs.wpgtk}/bin/wpg --preview
-  '';
-};
+# home.activation= {
+#   wpgtk = lib.hm.dag.entryAfter ["writeBoundary"] ''
+#     ${pkgs.wpgtk}/bin/wpg-install.sh -i -g
+#     ${pkgs.wpgtk}/bin/wpg --preview
+#   '';
+# };
 
 home.sessionVariables.GTK_THEME = "linea-nord-color";
 
@@ -197,6 +197,10 @@ home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./confi
 
 home.file.".config/wal/templates/colors-hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/wal/templates/colors-hyprland.conf;
 home.file.".config/wal/templates/obsidian.css".source = config.lib.file.mkOutOfStoreSymlink ./config/wal/templates/obsidian.css;
+
+home.file.".config/wal/templates/spicetify.ini".source = config.lib.file.mkOutOfStoreSymlink ./config/wal/templates/spicetify.ini ;
+home.file.".config/spicetify/config-xpui.ini".source = config.lib.file.mkOutOfStoreSymlink ./config/spicetify/config-xpui.ini;
+
 # home.file.".config/rofi" = {
 #   source = config.lib.file.mkOutOfStoreSymlink ./config/rofi;
 #   # recursive = true;

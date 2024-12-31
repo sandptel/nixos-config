@@ -3,7 +3,7 @@
   ## POWER
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = "schedutil";
+    # cpuFreqGovernor = "schedutil"; # no available for my laptop --> tlp logs 
   };
   services.power-profiles-daemon.enable = false;
   # services.auto-cpufreq.enable = true;
@@ -29,14 +29,14 @@
     "w /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference - - - - balance_power"
   ];
 
-  ### TLP
+  ### TLP --> https://linrunner.de/tlp/settings/processor.html#cpu-hwp-dyn-boost-on-ac-bat
   services.tlp = {
       enable = true;
       settings = {
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
         PLATFORM_PROFILE_ON_AC = "performance";
@@ -55,7 +55,7 @@
         CPU_MAX_PERF_ON_BAT = 60;
 
        #Optional helps save long term battery health
-       START_CHARGE_THRESH_BAT0 = 60; # 60 and below it starts to charge
+       START_CHARGE_THRESH_BAT0 = 70; # 70 and below it starts to charge
        STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
 
       };

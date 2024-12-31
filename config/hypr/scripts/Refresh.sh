@@ -45,6 +45,7 @@ pywalfox update
 # sleep 0.5
 
 ${UserScripts}/Obsidian.sh
+# ${UserScripts}/spicetify.sh
 # Relaunching rainbow borders if the script exists
 # sleep 1
 # if file_exists "${UserScripts}/RainbowBorders.sh"; then

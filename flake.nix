@@ -52,7 +52,8 @@
     stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
     spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
    };
    hypr-dynamic-cursors = {
         url = "github:VirtCode/hypr-dynamic-cursors/37c770dfb0667179174b26ba5b45618f1c2dd10b";
