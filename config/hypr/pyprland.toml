@@ -7,7 +7,7 @@ plugins = [
 
 [scratchpads.term]
 animation = "fromTop"
-command = "kitty --class kitty-dropterm tmux"
+command = "kitty --class kitty-dropterm"
 class = "kitty-dropterm"
 size = "75% 60%"
 allow_special_workspaces = true
@@ -19,6 +19,20 @@ command = "obsidian"
 match_by = "initialTitle"
 initialTitle = "obsidian - Obsidian v1.7.7"
 size = "83% 87%"
+allow_special_workspaces = true
+
+[scratchpads.yazi]
+animation = "fromTop"
+command = "kitty --class kitty-yazi yazi"
+class = "kitty-yazi"
+size = "75% 60%"
+allow_special_workspaces = true
+
+[scratchpads.tmux]
+animation = "fromTop"
+command = "kitty --class kitty-tmux tmux"
+class = "kitty-tmux"
+size = "75% 60%"
 allow_special_workspaces = true
 
 # [scratchpads.code]
