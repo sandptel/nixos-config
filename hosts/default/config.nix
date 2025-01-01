@@ -234,7 +234,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   #   #  ];
     #  portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
   #    xwayland.enable = true;
-  #    #opengl.enable = true;
+    #  opengl.enable = true;
     };
 
     nix-ld.enable = true;
@@ -244,10 +244,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     git.enable = true;
     nm-applet.indicator = true;
     # neovim.enable = true;
-    #stylix.enable = true;
-    #hardware.opengl.enable = true;
-    #hardware.opengl.driSupport = true;
-    #hardware.opengl.driSupport32Bit = true;
+    #stylix.enable = true;   
     thunar.enable = true;
     thunar.plugins = with pkgs.xfce; [
       exo
@@ -632,11 +629,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
     enable = false;
     dockerCompat = false;
     defaultNetwork.settings.dns_enabled = false;
-  };
-
-  # OpenGL
-  hardware.graphics = {
-    enable = true;
   };
 
   console.keyMap = "${keyboardLayout}";
