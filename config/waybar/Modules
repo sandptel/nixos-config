@@ -387,7 +387,9 @@
 		"wofi",
 		"rofi",
 		"kitty",
-    "kitty-dropterm"
+    "kitty-dropterm",
+    "kitty-yazi",
+    "kitty-tmux",
 		],
 },
 

@@ -19,6 +19,7 @@ in
 programs.pywal16.enable=true;
 
 home.packages = with pkgs;[
+gifsicle
 matugen
 nwg-drawer
 checkupdates
@@ -183,7 +184,7 @@ home.file.".config/swaync".source = config.lib.file.mkOutOfStoreSymlink ./config
 # home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ./config/waybar;
 home.file.".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink ./config/wlogout;
 
-# home.file.".config/wpg/wpg.conf".source = config.lib.file.mkOutOfStoreSymlink ./config/wpg/wpg.conf;
+home.file.".config/wallust/wallust.toml".source = config.lib.file.mkOutOfStoreSymlink ./config/wallust/wallust.toml;
 
  home.file.".config/hypr/configs".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/configs;
  home.file.".config/hypr/scripts".source = config.lib.file.mkOutOfStoreSymlink ./config/hypr/scripts;

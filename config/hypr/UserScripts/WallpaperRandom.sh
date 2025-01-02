@@ -36,6 +36,14 @@ if [[ ${#PICS[@]} -eq 0 ]]; then
 fi
 RANDOMPICS=${PICS[ $RANDOM % ${#PICS[@]} ]}
 
+# Check if the random wallpaper is a GIF
+if [[ "$RANDOMPICS" =~ \.gif$ ]]; then
+    printf "Selected wallpaper is a GIF: %s\n" "$RANDOMPICS"
+    gifsicle --resize 1920x1080 "$RANDOMPICS" --output "$RANDOMPICS"
+else
+    printf "Selected wallpaper is not a GIF: %s\n" "$RANDOMPICS"
+fi
+
 # Save the current wallpaper name in a .txt file
 basename "$(basename "$RANDOMPICS")" > "$allwallDIR/current_wallpaper.txt"
 

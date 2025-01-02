@@ -89,7 +89,15 @@ main() {
   done
 
   if [[ $pic_index -ne -1 ]]; then
-    swww img -o "$focused_monitor" "${PICS[$pic_index]}" $SWWW_PARAMS
+    RANDOMPICS=${PICS[$pic_index]}
+    # Check if the random wallpaper is a GIF
+    if [[ "$RANDOMPICS" =~ \.gif$ ]]; then
+        printf "Selected wallpaper is a GIF: %s\n" "$RANDOMPICS"
+        gifsicle --resize 1920x1080 "$RANDOMPICS" --output "$RANDOMPICS"
+    else
+        printf "Selected wallpaper is not a GIF: %s\n" "$RANDOMPICS"
+    fi
+    swww img -o "$focused_monitor" "${RANDOMPICS}" $SWWW_PARAMS
   else
     echo "Image not found."
     exit 1
