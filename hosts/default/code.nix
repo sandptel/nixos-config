@@ -16,11 +16,10 @@ nix.extraOptions = ''
         extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
     '';
 
-
 environment.systemPackages =
     (with pkgs; [ 
      # System Packages
-    #  python-packages # say the docs required for weather but who needs weather :)
+     python-packages # says the docs required for weather but who needs weather :)
       rustup
       cargo
       # vim
