@@ -46,7 +46,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     ./starship.nix
     ./hardware.nix
     ./users.nix
-    ./power.nix
+    # ./power.nix
     # ./greetd.nix
     # ./nixvim.nix
     # ../../modules/amd-drivers.nix
@@ -454,7 +454,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     # greetd={
     #   enable =true;
     #   package=pkgs.greetd.tuigreet;
-    # }; //imported as a module above
+    # }; #imported as a module above
     xserver = {
       displayManager.gdm = {
     enable = true;
