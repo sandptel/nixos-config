@@ -8,6 +8,8 @@
     inputs.hyprland.homeManagerModules.default
     ./matugen.nix
     ./spicetify.nix
+    ./tmux.nix
+    # ./nixvim.nix
     # inputs.hellwal.homeManagerModules.default
     # inputs.matugen.homeManagerModules.default
 ];

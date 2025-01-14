@@ -687,6 +687,27 @@
         "type": "github"
       }
     },
+    "hyprfocus": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nix-filter": "nix-filter_2"
+      },
+      "locked": {
+        "lastModified": 1719058201,
+        "narHash": "sha256-CQXeRkyS16cC9FXzfTeTmI14NZpySB9mJRksE5PAEAw=",
+        "owner": "VortexCoyote",
+        "repo": "hyprfocus",
+        "rev": "2eef8cfca879ccc8cc83f3dd7ac1dd012b5454ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "VortexCoyote",
+        "repo": "hyprfocus",
+        "type": "github"
+      }
+    },
     "hyprgraphics": {
       "inputs": {
         "hyprutils": [
@@ -1042,6 +1063,21 @@
         "owner": "numtide",
         "repo": "nix-filter",
         "rev": "3342559a24e85fc164b295c3444e8a139924675b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "type": "github"
+      }
+    },
+    "nix-filter_2": {
+      "locked": {
+        "lastModified": 1694857738,
+        "narHash": "sha256-bxxNyLHjhu0N8T3REINXQ2ZkJco0ABFPn6PIe2QUfqo=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "41fd48e00c22b4ced525af521ead8792402de0ea",
         "type": "github"
       },
       "original": {
@@ -1482,6 +1518,7 @@
         "home-manager": "home-manager_2",
         "hypr-dynamic-cursors": "hypr-dynamic-cursors",
         "hyprchroma": "hyprchroma",
+        "hyprfocus": "hyprfocus",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "hyprpanel": "hyprpanel",

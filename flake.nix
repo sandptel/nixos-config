@@ -8,6 +8,7 @@
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
     # hellwal.url = "github:sandptel/hellwal";
+
     nixvim = {
       url = "github:nix-community/nixvim/";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +27,10 @@
     };
     hyprchroma = {
       url = "github:alexhulbert/Hyprchroma";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprfocus = {
+      url = "github:VortexCoyote/hyprfocus";
       inputs.hyprland.follows = "hyprland";
     };
     hyprpanel = {

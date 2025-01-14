@@ -24,7 +24,7 @@ environment.systemPackages =
       cargo
       # vim
       git
-      tmux
+      # tmux
       pkg-config
       # github-desktop
       #vscode

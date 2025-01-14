@@ -13,7 +13,7 @@ file_exists() {
         return 1  # File does not exist
     fi
 }
-
+${UserScripts}/Lights.sh
 # Kill already running processes
 _ps=(waybar rofi swaync ags)
 for _prs in "${_ps[@]}"; do
@@ -43,7 +43,6 @@ ${SCRIPTSDIR}/WallustSwww.sh
 pywalfox update
 
 # sleep 0.5
-
 ${UserScripts}/Obsidian.sh
 # ${UserScripts}/spicetify.sh
 # Relaunching rainbow borders if the script exists

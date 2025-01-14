@@ -70,7 +70,7 @@ main() {
 
   # Random choice case
   if [[ "$choice" == "$RANDOM_PIC_NAME" ]]; then
-	swww img -o "$focused_monitor" "$RANDOM_PIC" $SWWW_PARAMS;
+	swww img "$RANDOM_PIC" $SWWW_PARAMS;
     sleep 0.5
     "$SCRIPTSDIR/WallustSwww.sh"
     sleep $RELOAD_DURATION
@@ -89,7 +89,7 @@ main() {
   done
 
   if [[ $pic_index -ne -1 ]]; then
-    swww img -o "$focused_monitor" "${PICS[$pic_index]}" $SWWW_PARAMS
+    swww img "${PICS[$pic_index]}" $SWWW_PARAMS
   else
     echo "Image not found."
     exit 1
