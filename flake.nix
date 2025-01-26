@@ -3,6 +3,7 @@
   inputs = {
     Hyprspace = {
       url = "github:KZDKM/Hyprspace/e2d561c933cd085d68bf0b39c4f78870ad0abbc2";
+      # url = "github:KZDKM/Hyprspace";
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
@@ -38,6 +39,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland/cef5e6dd7ca7008456cf63a76776550974de1612"; # hyprland development
+    # hyprland.url = "github:hyprwm/Hyprland"; # hyprland development
 #    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
      grub2-themes = {
@@ -62,6 +64,7 @@
    };
    hypr-dynamic-cursors = {
         url = "github:VirtCode/hypr-dynamic-cursors/37c770dfb0667179174b26ba5b45618f1c2dd10b";
+        # url = "github:VirtCode/hypr-dynamic-cursors";
         inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
     };
     nixos-boot.url = "github:Melkor333/nixos-boot";
@@ -73,16 +76,28 @@
   outputs =
     inputs @ { self
     , nixpkgs
+    , home-manager
     , ...
     }:
     let
       system = "x86_64-linux";
       host = "default";
       username = "roronoa";
+      lib=nixpkgs.lib;
+      config = { allowUnfree = true; };
       #defaultPackage.x86_64-linux = wezterm.packages.x86_64-linux.default;
       pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
     in
     {
+      # packages.x86_64-linux.homeConfigurations = pkgs.callPackage ./hosts/default/home.nix { inherit lib config; };
+      # homeConfigurations= {
+      #       "roronoa" = home-manager.lib.homeManagerConfiguration {
+      #           # Note: I am sure this could be done better with flake-utils or something
+      #           pkgs = import nixpkgs { system = "x86_64-linux"; };
+
+      #           modules = [ ./hosts/default/home.nix ]; # Defined later
+      #       };
+      #   };
       nixosConfigurations = {
         "${host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {

@@ -24,6 +24,7 @@ matugen
 nwg-drawer
 checkupdates
 wpgtk
+tmux
 # gnome-tweaks
 # airshipper
 pywalfox-native

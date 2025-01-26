@@ -34,7 +34,8 @@ in
     boot.initrd.kernelModules = [ "i915" ];
     services.xserver.videoDrivers = [
     "i915"
-    "intel"
+    "modesetting"
+    # "intel"
     ];
 
     # All these mean the same thing defined above as hardware.graphics is the new hardawre.opengl

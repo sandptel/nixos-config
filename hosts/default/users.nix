@@ -4,6 +4,8 @@ let
   inherit (import ./variables.nix) gitUsername;
 in
 {
+services.tftpd.enable = true;
+services.tftpd.path = "/srv/tftp";
  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "spotify"
   ];
@@ -50,6 +52,8 @@ playerctl
 neofetch
 firefox
 # obs-studio	
+gcc
+gdb
 rustup
 gcc
 glib     
