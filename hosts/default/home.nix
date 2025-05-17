@@ -3,7 +3,7 @@
   imports=[
     ../../nixos-dots.nix
     # ./hypr.nix
-    ./firefox-webapp.nix
+    # ./firefox-webapp.nix
     ./pywal16.nix
     inputs.hyprland.homeManagerModules.default
     ./matugen.nix
@@ -42,19 +42,19 @@ programs = {
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-    programs.firefox.webapps.notion ={
-    enable = true;
-    name = "Notion";
-    extraSettings = config.programs.firefox.profiles."default".settings;
-    # mimeTypes = ["video/*"];
-    genericName = "Notion";
-    comment = "Notion is a new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team.";
-    categories = ["Network"];
-    # icon = "";
-    # prefersNonDefaultGPU = false;
-    url = "https://www.notion.so/";
-    id = 1;
-    backgroundColor = "#202225";
-    };
+    # programs.firefox.webapps.notion ={
+    # enable = true;
+    # name = "Notion";
+    # extraSettings = config.programs.firefox.profiles."default".settings;
+    # # mimeTypes = ["video/*"];
+    # genericName = "Notion";
+    # comment = "Notion is a new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team.";
+    # categories = ["Network"];
+    # # icon = "";
+    # # prefersNonDefaultGPU = false;
+    # url = "https://www.notion.so/";
+    # id = 1;
+    # backgroundColor = "#202225";
+    # };
 
 }  

@@ -37,7 +37,7 @@ if [ "$ln_success" = true ]; then
     killall .wallust-wrappe
     # execute pywal
 	echo 'about to pywal'
-    wal --cols16 -i $wallpaper_path --saturate 0.85 -n 
+    wal --cols16 -i $wallpaper_path --saturate 1 -n 
     # execute wallust skipping tty and terminal changes
     echo 'about to execute wallust'
     wallust run "$wallpaper_path" -s &

@@ -1,12 +1,15 @@
 {
   description = "sandptel's Hyprland Dots";
   inputs = {
+    customkernel.url = "path:/home/roronoa/risc-v-kernelci";
+   # regolith.url = "path:/home/roronoa/Documents/regolith-project/regolith-nix";
     Hyprspace = {
       url = "github:KZDKM/Hyprspace/e2d561c933cd085d68bf0b39c4f78870ad0abbc2";
       # url = "github:KZDKM/Hyprspace";
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
+    firefox.url= "github:nix-community/flake-firefox-nightly";
     nix-gaming.url = "github:fufexan/nix-gaming";
     # hellwal.url = "github:sandptel/hellwal";
 
@@ -108,7 +111,7 @@
           };
           modules = [
             ./hosts/${host}/config.nix
-            
+           # inputs.regolith.nixosModules.regolith-session-wayland
             inputs.nixos-boot.nixosModules.default
             inputs.hyprland.nixosModules.default
  #           inputs.distro-grub-themes.nixosModules.${system}.default

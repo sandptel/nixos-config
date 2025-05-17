@@ -17,7 +17,7 @@ allow_special_workspaces = true
 animation = "fromBottom"
 command = "obsidian"
 match_by = "initialTitle"
-initialTitle = "obsidian - Obsidian v1.7.7"
+initialTitle = "obsidian - Obsidian v1.8.10"
 size = "83% 87%"
 allow_special_workspaces = true
 
