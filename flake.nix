@@ -12,6 +12,8 @@
     firefox.url= "github:nix-community/flake-firefox-nightly";
     nix-gaming.url = "github:fufexan/nix-gaming";
     # hellwal.url = "github:sandptel/hellwal";
+    
+    shimeji.url = "github:sandptel/shimeji-nix";
 
     nixvim = {
       url = "github:nix-community/nixvim/";

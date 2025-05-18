@@ -167,6 +167,8 @@ plugin:overview:reverseSwipe =true;
   ];
 };
 
+mascot.shimeji.enable=true;
+
 programs.vscode.enable=true;
 
 home.file.".config/ags".source = config.lib.file.mkOutOfStoreSymlink ./config/ags;
