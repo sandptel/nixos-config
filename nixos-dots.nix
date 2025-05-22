@@ -25,6 +25,7 @@ nwg-drawer
 checkupdates
 wpgtk
 tmux
+hyprls
 # gnome-tweaks
 # airshipper
 pywalfox-native
