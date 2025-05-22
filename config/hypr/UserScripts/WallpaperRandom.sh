@@ -42,7 +42,7 @@ basename "$(basename "$RANDOMPICS")" > "$allwallDIR/current_wallpaper.txt"
 # Transition config
 FPS=60
 TYPE="any"
-DURATION=2.4
+DURATION=0.5
 BEZIER="0,.95,1,.05"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
 
@@ -52,7 +52,7 @@ swww query || swww-daemon --format xrgb && swww img "${RANDOMPICS}" $SWWW_PARAMS
 # Run additional scripts
 "${scriptsDir}/WallustSwww.sh"
 ${UserScripts}/Lights.sh
-sleep 1.2
+# sleep 1.2
 "${scriptsDir}/Refresh.sh"
 
 exit 0

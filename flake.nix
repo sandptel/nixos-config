@@ -1,14 +1,19 @@
 {
   description = "sandptel's Hyprland Dots";
   inputs = {
+    customkernel.url = "path:/home/roronoa/risc-v-kernelci";
+   # regolith.url = "path:/home/roronoa/Documents/regolith-project/regolith-nix";
     Hyprspace = {
       url = "github:KZDKM/Hyprspace/e2d561c933cd085d68bf0b39c4f78870ad0abbc2";
       # url = "github:KZDKM/Hyprspace";
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
+    firefox.url= "github:nix-community/flake-firefox-nightly";
     nix-gaming.url = "github:fufexan/nix-gaming";
     # hellwal.url = "github:sandptel/hellwal";
+    
+    shimeji.url = "github:sandptel/shimeji-nix";
 
     nixvim = {
       url = "github:nix-community/nixvim/";
@@ -68,7 +73,7 @@
         inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
     };
     nixos-boot.url = "github:Melkor333/nixos-boot";
-    zen-browser.url = "github:sandptel/zen-browser-flake";
+    zen-browser.url = "https://flakehub.com/f/youwen5/zen-browser/0.1.171";
 #        url = "github:notashelf/nvf";
 #        inputs.nixpkgs.follows = "nixpkgs";
 #    };
@@ -108,7 +113,7 @@
           };
           modules = [
             ./hosts/${host}/config.nix
-            
+           # inputs.regolith.nixosModules.regolith-session-wayland
             inputs.nixos-boot.nixosModules.default
             inputs.hyprland.nixosModules.default
  #           inputs.distro-grub-themes.nixosModules.${system}.default

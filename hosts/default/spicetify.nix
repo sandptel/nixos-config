@@ -4,6 +4,7 @@
 # `rm -rf ~/.cache/spotify` --> This should do |)
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "spotify"
+    "slack"
   ];
   # spicetify nixosModule technically cannot update using pywal colorss 
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];

@@ -29,14 +29,21 @@ services.tftpd.path = "/srv/tftp";
         "audio"
       ];
 
-    # define user packages here
+  #   # define user packages here
+  #    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  #   "slack"
+  # ];
     packages = with pkgs; [
       # inputs.nix-init.packages."${system}".default
       #  inputs.hellwal.packages."${system}".default
       # gitbutler
-
+      inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
+kando
+kcl
 wl-clipboard
+code-cursor
 # spotify
+slack
 obsidian
 grim
 slurp
@@ -50,7 +57,7 @@ pulseaudio
 brightnessctl
 playerctl
 neofetch
-firefox
+# firefox
 # obs-studio	
 gcc
 gdb
@@ -63,7 +70,8 @@ telegram-desktop
 discord
 gnomeExtensions.pano
 libnotify
-      krabby
+qutebrowser
+krabby
       ];
     };
     

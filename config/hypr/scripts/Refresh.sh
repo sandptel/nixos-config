@@ -27,9 +27,9 @@ ags -q
 
 killall .waybar-wrapped
 
-sleep 0.5
+# sleep 0.5
 #Restart waybar
-waybar &
+waybar & disown
 
 # relaunch swaync
 # sleep 0.5

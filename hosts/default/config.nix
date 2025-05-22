@@ -20,6 +20,11 @@ let
   );
 in
 {  
+  #regolith=
+  #{
+  #  enable = true;
+  #  extraSwayConfig= "#testing";
+  #};
    
   home-manager={
   extraSpecialArgs={inherit inputs;};
@@ -46,8 +51,8 @@ nixpkgs.config.allowUnsupportedSystem = true;
     ./starship.nix
     ./hardware.nix
     ./users.nix
-    ./power.nix
-    # ./greetd.nix
+    #./power.nix
+    ./kernel.nix
     # ./nixvim.nix
     # ../../modules/amd-drivers.nix
     # ../../modules/nvidia-drivers.nix
@@ -64,37 +69,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   #   };
   # BOOT related stuff
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen; # Kernel
-    #chaotic.scx.enable = true;
-    consoleLogLevel = 0 ;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "loglevel=3"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
-      "systemd.mask=systemd-vconsole-setup.service"
-      "systemd.mask=dev-tpmrm0.device" #this is to mask that stupid 1.5 mins systemd bug
-      "nowatchdog"
-      "modprobe.blacklist=sp5100_tco" #watchdog for AMD
-      "modprobe.blacklist=iTCO_wdt" #watchdog for Intel
-    ];
-
-  # This is for OBS Virtual Cam Support
-  
-  kernelModules = [ "v4l2loopback" ];
-    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-
-    initrd = {
-      verbose = false;
-      availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-      kernelModules = [ ];
-    };
-
     
-
     # Needed For Some Steam Games
     #kernel.sysctl = {
     #  "vm.max_map_count" = 2147483642;
@@ -243,7 +218,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     firefox.enable = true;
     git.enable = true;
     nm-applet.indicator = true;
-    # neovim.enable = true;
+    neovim.enable = true;
     #stylix.enable = true;   
     thunar.enable = true;
     thunar.plugins = with pkgs.xfce; [
@@ -288,6 +263,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
      home-manager
     #  albert
      gedit
+     timer
      gjs
       baobab
       btrfs-progs
@@ -508,7 +484,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
     upower.enable = true;
 
-    # xserver.desktopManager.gnome.enable = true;
+    xserver.desktopManager.gnome.enable = true;
 
     gnome.gnome-keyring.enable = true;
     
@@ -613,13 +589,13 @@ nixpkgs.config.allowUnsupportedSystem = true;
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" ];
+      substituters = [ "https://hyprland.cachix.org" "https://cache.nixos.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-    };
+    }; 
     gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
+      automatic = false;
+    #   dates = "weekly";
+    #   options = "--delete-older-than 7d";
     };
   };
 
