@@ -73,7 +73,7 @@
         inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
     };
     nixos-boot.url = "github:Melkor333/nixos-boot";
-    zen-browser.url = "github:sandptel/zen-browser-flake";
+    zen-browser.url = "https://flakehub.com/f/youwen5/zen-browser/0.1.171";
 #        url = "github:notashelf/nvf";
 #        inputs.nixpkgs.follows = "nixpkgs";
 #    };

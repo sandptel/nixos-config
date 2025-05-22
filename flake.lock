@@ -2066,17 +2066,16 @@
         "nixpkgs": "nixpkgs_17"
       },
       "locked": {
-        "lastModified": 1733917200,
-        "narHash": "sha256-THg2FID+R32o55ye+P+ZVY6645y5uvJGmUH9YZRoJOI=",
-        "owner": "sandptel",
-        "repo": "zen-browser-flake",
-        "rev": "fc940f3644608e8dd81c3c969bb1d519502c8f0e",
-        "type": "github"
+        "lastModified": 1747282003,
+        "narHash": "sha256-UlCfXNncIYwUvPxHngoH6pY4fiZlU8Z2Ve/gUEn6h+o=",
+        "rev": "952ca99903f19a7096a3709f2938d9c7840a5f91",
+        "revCount": 171,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/youwen5/zen-browser/0.1.171%2Brev-952ca99903f19a7096a3709f2938d9c7840a5f91/0196d220-8c84-7d56-baf3-050b9e1e4791/source.tar.gz"
       },
       "original": {
-        "owner": "sandptel",
-        "repo": "zen-browser-flake",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/youwen5/zen-browser/0.1.171"
       }
     },
     "zlib": {
