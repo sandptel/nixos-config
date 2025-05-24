@@ -307,7 +307,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       libsForQt5.qtstyleplugin-kvantum #kvantum
       networkmanagerapplet
       nwg-look # requires unstable channel
-      nvtopPackages.full
+    #   nvtopPackages.full
       pamixer
       pavucontrol
       playerctl
@@ -553,7 +553,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # Security / Polkit
   security.rtkit.enable = true;

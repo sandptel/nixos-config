@@ -9,7 +9,7 @@ services.tftpd.path = "/srv/tftp";
  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "spotify"
   ];
-  services.fprintd.elanmoc2.enable=true;
+#   services.fprintd.elanmoc2.enable=true;
   imports=[
 ./starship.nix
 ];

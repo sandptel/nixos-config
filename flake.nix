@@ -4,7 +4,7 @@
     customkernel.url = "path:/home/roronoa/risc-v-kernelci";
    # regolith.url = "path:/home/roronoa/Documents/regolith-project/regolith-nix";
     Hyprspace = {
-      url = "github:KZDKM/Hyprspace/e2d561c933cd085d68bf0b39c4f78870ad0abbc2";
+      url = "github:KZDKM/Hyprspace";
       # url = "github:KZDKM/Hyprspace";
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
@@ -43,7 +43,7 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland/cef5e6dd7ca7008456cf63a76776550974de1612"; # hyprland development
+    hyprland.url = "github:hyprwm/Hyprland"; # hyprland development
     # hyprland.url = "github:hyprwm/Hyprland"; # hyprland development
 #    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
@@ -68,7 +68,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
    };
    hypr-dynamic-cursors = {
-        url = "github:VirtCode/hypr-dynamic-cursors/37c770dfb0667179174b26ba5b45618f1c2dd10b";
+        url = "github:VirtCode/hypr-dynamic-cursors";
         # url = "github:VirtCode/hypr-dynamic-cursors";
         inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
     };
