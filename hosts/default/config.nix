@@ -288,7 +288,8 @@ nixpkgs.config.allowUnsupportedSystem = true;
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
       # Hyprland Stuff
       hyprpanel
-      ags
+    #   ags
+      anyrun
       btop
       brightnessctl # for brightness control
       # cava
