@@ -10,8 +10,8 @@
     ./matugen.nix
     ./spicetify.nix
     # ./tmux.nix
-    # ./nixvim.nix
-    # inputs.hellwal.homeManagerModules.default
+    ./nixvim.nix
+    inputs.nixvim.homeManagerModules.nixvim
     # inputs.matugen.homeManagerModules.default
 ];
 

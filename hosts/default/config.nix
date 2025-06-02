@@ -45,13 +45,14 @@ nixpkgs.config.allowUnsupportedSystem = true;
   imports = [
     inputs.matugen.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
+    # inputs.nixvim.nixosModules.nixvim
     (modulesPath + "/installer/scan/not-detected.nix")
     ./code.nix
     ./gaming.nix
     ./starship.nix
     ./hardware.nix
     ./users.nix
-    #./power.nix
+    ./power.nix
     ./kernel.nix
     # ./nixvim.nix
     # ../../modules/amd-drivers.nix
@@ -218,7 +219,12 @@ nixpkgs.config.allowUnsupportedSystem = true;
     firefox.enable = true;
     git.enable = true;
     nm-applet.indicator = true;
-    neovim.enable = true;
+    # neovim.enable = true;
+    # neovim = {
+    # enable = true;
+    # plugins = with pkgs.vimPlugins; [ nvim-lspconfig pywal-nvim nvim-treesitter nvim-tree-sitter nvim-lsp-installer ];
+    # extraPackages = with pkgs; [ rust-analyzer rustc cargo rustfmt clippy ];
+    # };
     #stylix.enable = true;   
     thunar.enable = true;
     thunar.plugins = with pkgs.xfce; [
@@ -621,6 +627,11 @@ nixpkgs.config.allowUnsupportedSystem = true;
 };
 
 # Open ports in the firewall.
+  programs.kdeconnect.enable = true;
+  networking.firewall = rec {
+  allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  allowedUDPPortRanges = allowedTCPPortRanges;
+  };
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
