@@ -3,7 +3,7 @@
   ## POWER
   powerManagement = {
     enable = true;
-    # cpuFreqGovernor = "schedutil"; # no available for my laptop --> tlp logs 
+    cpuFreqGovernor = "schedutil"; # no available for my laptop --> tlp logs 
   };
   services.power-profiles-daemon.enable = false;
   services.auto-cpufreq.enable = true;
@@ -64,10 +64,19 @@
   # };
 
   ### SYSTEM 76 SCHEDULER
-  services.system76-scheduler.settings.cfsProfiles.enable = true;
-
+  services.system76-scheduler = {
+        enable = true;
+        settings.cfsProfiles = {
+            enable = true;
+        };
+        };  
   ### POWERTOP
-  #powerManagement.powertop.enable = true;
+  powerManagement.powertop.enable = true;
+
+services.irqbalance = {
+    enable = true;
+    # extraArgs = ["--policyscript=${pkgs.irqbalance}/etc/irqbalance.policy"];
+    };  
 
   ### ThermalD
   services.thermald.enable = true;
