@@ -37,7 +37,7 @@ services.tftpd.path = "/srv/tftp";
       # inputs.nix-init.packages."${system}".default
       #  inputs.hellwal.packages."${system}".default
       # gitbutler
-      inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
+    #   inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
 kando
 kcl
 wl-clipboard

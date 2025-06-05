@@ -12,6 +12,10 @@
     firefox.url= "github:nix-community/flake-firefox-nightly";
     nix-gaming.url = "github:fufexan/nix-gaming";
     # hellwal.url = "github:sandptel/hellwal";
+    nixos-cosmic = {
+    url = "github:lilyinstarlight/nixos-cosmic";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     shimeji.url = "github:sandptel/shimeji-nix";
 
@@ -113,6 +117,7 @@
           };
           modules = [
             ./hosts/${host}/config.nix
+            ./cosmic.nix
            # inputs.regolith.nixosModules.regolith-session-wayland
             inputs.nixos-boot.nixosModules.default
             inputs.hyprland.nixosModules.default
