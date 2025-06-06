@@ -9,7 +9,7 @@
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
-    firefox.url= "github:nix-community/flake-firefox-nightly";
+    # firefox.url= "github:nix-community/flake-firefox-nightly";
     nix-gaming.url = "github:fufexan/nix-gaming";
     # hellwal.url = "github:sandptel/hellwal";
     nixos-cosmic = {
