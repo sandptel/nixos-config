@@ -12,10 +12,10 @@
     # firefox.url= "github:nix-community/flake-firefox-nightly";
     nix-gaming.url = "github:fufexan/nix-gaming";
     # hellwal.url = "github:sandptel/hellwal";
-    nixos-cosmic = {
-    url = "github:lilyinstarlight/nixos-cosmic";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixos-cosmic = {
+    # url = "github:lilyinstarlight/nixos-cosmic";
+    # # inputs.nixpkgs.follows = "nixpkgs";
+    # };
     
     shimeji.url = "github:sandptel/shimeji-nix";
 
