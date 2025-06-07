@@ -419,7 +419,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
+    # wlr.enable = false;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -440,7 +440,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     # }; #imported as a module above
     xserver = {
       displayManager.gdm = {
-    enable = true;
+    enable = false;
   };
       enable = true;
       xkb = {
