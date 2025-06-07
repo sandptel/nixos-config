@@ -2,7 +2,7 @@
   description = "sandptel's Hyprland Dots";
   inputs = {
     customkernel.url = "path:/home/roronoa/risc-v-kernelci";
-   # regolith.url = "path:/home/roronoa/Documents/regolith-project/regolith-nix";
+   regolith.url = "github:regolith-lab/regolith-nix";
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
       # url = "github:KZDKM/Hyprspace";
@@ -118,7 +118,7 @@
           modules = [
             ./hosts/${host}/config.nix
             ./cosmic.nix
-           # inputs.regolith.nixosModules.regolith-session-wayland
+           inputs.regolith.nixosModules.regolith
             inputs.nixos-boot.nixosModules.default
             inputs.hyprland.nixosModules.default
  #           inputs.distro-grub-themes.nixosModules.${system}.default
