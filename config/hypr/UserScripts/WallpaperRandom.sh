@@ -50,9 +50,9 @@ SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration
 swww query || swww-daemon --format xrgb && swww img "${RANDOMPICS}" $SWWW_PARAMS
 
 # Run additional scripts
-"${scriptsDir}/WallustSwww.sh"
+"${scriptsDir}/WallustSwww.sh"; "${scriptsDir}/Refresh.sh"
 ${UserScripts}/Lights.sh
 # sleep 1.2
-"${scriptsDir}/Refresh.sh"
+# "${scriptsDir}/Refresh.sh"
 
 exit 0
