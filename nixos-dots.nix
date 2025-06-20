@@ -25,6 +25,7 @@ nwg-drawer
 checkupdates
 wpgtk
 tmux
+hyprls
 # gnome-tweaks
 # airshipper
 pywalfox-native
@@ -77,6 +78,8 @@ gtk = {
     "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
   ];
 
+
+services.kdeconnect.enable = true;
 
 programs.kitty={
   enable = true;

@@ -54,6 +54,6 @@ killall .waybar-wrapped &
 "${scriptsDir}/WallustSwww.sh" ; "${scriptsDir}/Refresh.sh"
 ${UserScripts}/Lights.sh
 # sleep 1.2
-# "${scriptsDir}/Refresh.sh"
+"${scriptsDir}/Refresh.sh"
 
 exit 0

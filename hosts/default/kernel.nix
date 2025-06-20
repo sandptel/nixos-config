@@ -2,7 +2,7 @@
 {
   
   boot = {
-   kernelPackages = pkgs.linuxPackages_zen; # Kernel
+   kernelPackages = pkgs.linuxPackages_latest; # Kernel
     #chaotic.scx.enable = true;
     consoleLogLevel = 0 ;
     kernelParams = [

@@ -20,11 +20,11 @@ let
   );
 in
 {  
-  #regolith=
-  #{
-  #  enable = true;
-  #  extraSwayConfig= "#testing";
-  #};
+  regolith=
+  {
+   enable = true;
+#    extraSwayConfig= "#testing";
+  };
    
   home-manager={
   extraSpecialArgs={inherit inputs;};
@@ -45,13 +45,14 @@ nixpkgs.config.allowUnsupportedSystem = true;
   imports = [
     inputs.matugen.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
+    # inputs.nixvim.nixosModules.nixvim
     (modulesPath + "/installer/scan/not-detected.nix")
     ./code.nix
     ./gaming.nix
     ./starship.nix
     ./hardware.nix
     ./users.nix
-    #./power.nix
+    ./power.nix
     ./kernel.nix
     # ./nixvim.nix
     # ../../modules/amd-drivers.nix
@@ -218,7 +219,12 @@ nixpkgs.config.allowUnsupportedSystem = true;
     firefox.enable = true;
     git.enable = true;
     nm-applet.indicator = true;
-    neovim.enable = true;
+    # neovim.enable = true;
+    # neovim = {
+    # enable = true;
+    # plugins = with pkgs.vimPlugins; [ nvim-lspconfig pywal-nvim nvim-treesitter nvim-tree-sitter nvim-lsp-installer ];
+    # extraPackages = with pkgs; [ rust-analyzer rustc cargo rustfmt clippy ];
+    # };
     #stylix.enable = true;   
     thunar.enable = true;
     thunar.plugins = with pkgs.xfce; [
@@ -288,7 +294,8 @@ nixpkgs.config.allowUnsupportedSystem = true;
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
       # Hyprland Stuff
       hyprpanel
-      ags
+    #   ags
+      anyrun
       btop
       brightnessctl # for brightness control
       # cava
@@ -307,7 +314,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       libsForQt5.qtstyleplugin-kvantum #kvantum
       networkmanagerapplet
       nwg-look # requires unstable channel
-      nvtopPackages.full
+    #   nvtopPackages.full
       pamixer
       pavucontrol
       playerctl
@@ -412,7 +419,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
+    # wlr.enable = false;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -433,7 +440,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     # }; #imported as a module above
     xserver = {
       displayManager.gdm = {
-    enable = true;
+    enable = false;
   };
       enable = true;
       xkb = {
@@ -553,7 +560,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # Security / Polkit
   security.rtkit.enable = true;
@@ -620,6 +627,11 @@ nixpkgs.config.allowUnsupportedSystem = true;
 };
 
 # Open ports in the firewall.
+  programs.kdeconnect.enable = true;
+  networking.firewall = rec {
+  allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  allowedUDPPortRanges = allowedTCPPortRanges;
+  };
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

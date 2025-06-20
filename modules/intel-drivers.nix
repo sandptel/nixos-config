@@ -30,12 +30,13 @@ in
       ];
     };
 
+    hardware.enableAllFirmware = true;
     environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
     boot.initrd.kernelModules = [ "i915" ];
     services.xserver.videoDrivers = [
     "i915"
     "modesetting"
-    # "intel"
+    "intel"
     ];
 
     # All these mean the same thing defined above as hardware.graphics is the new hardawre.opengl

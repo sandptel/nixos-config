@@ -28,7 +28,8 @@ environment.systemPackages =
       pkg-config
       # github-desktop
       #vscode
-      devenv
+    #   devenv
+    direnv
       gitkraken
       github-cli
       openssl #required by Rainbow borders too :)
