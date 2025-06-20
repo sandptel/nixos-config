@@ -385,7 +385,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
       hyprpicker
       #hyprlandPlugins.borders-plus-plus
       egl-wayland
-      qv2ray
       v2ray
       v2raya
       # spotify
@@ -438,10 +437,11 @@ nixpkgs.config.allowUnsupportedSystem = true;
     #   enable =true;
     #   package=pkgs.greetd.tuigreet;
     # }; #imported as a module above
-    xserver = {
-      displayManager.gdm = {
+    displayManager.gdm = {
     enable = false;
   };
+    xserver = {
+      
       enable = true;
       xkb = {
         layout = "${keyboardLayout}";
@@ -491,7 +491,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
     upower.enable = true;
 
-    xserver.desktopManager.gnome.enable = true;
+    desktopManager.gnome.enable = true;
 
     gnome.gnome-keyring.enable = true;
     

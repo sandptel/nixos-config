@@ -70,7 +70,7 @@ telegram-desktop
 discord
 gnomeExtensions.pano
 libnotify
-qutebrowser
+# qutebrowser
 krabby
       ];
     };

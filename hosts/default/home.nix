@@ -10,7 +10,7 @@
     ./matugen.nix
     ./spicetify.nix
     # ./tmux.nix
-    ./nixvim.nix
+    # ./nixvim.nix
     inputs.nixvim.homeManagerModules.nixvim
     # inputs.matugen.homeManagerModules.default
 ];

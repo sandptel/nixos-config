@@ -1,7 +1,7 @@
 {
   description = "sandptel's Hyprland Dots";
   inputs = {
-    customkernel.url = "path:/home/roronoa/risc-v-kernelci";
+    #customkernel.url = "path:/home/roronoa/risc-v-kernelci";
    regolith.url = "github:regolith-lab/regolith-nix";
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
