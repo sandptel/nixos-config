@@ -90,6 +90,7 @@ main() {
 
   if [[ $pic_index -ne -1 ]]; then
     swww img "${PICS[$pic_index]}" $SWWW_PARAMS
+    cp -r "${PICS[$pic_index]}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
   else
     echo "Image not found."
     exit 1
