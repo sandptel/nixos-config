@@ -30,7 +30,7 @@ in
   extraSpecialArgs={inherit inputs;};
   useGlobalPkgs=true;
   useUserPackages=true;
-  backupFileExtension= "backext";
+  backupFileExtension= "BACKUP";
   users={
     roronoa= {
       imports =[
@@ -43,7 +43,7 @@ in
 
 nixpkgs.config.allowUnsupportedSystem = true;
   imports = [
-    inputs.matugen.nixosModules.default
+    # inputs.matugen.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
     # inputs.nixvim.nixosModules.nixvim
     (modulesPath + "/installer/scan/not-detected.nix")

@@ -7,7 +7,7 @@
     ./pywal16.nix
     inputs.hyprland.homeManagerModules.default
     inputs.shimeji.homeManagerModules.hyprland
-    ./matugen.nix
+    # ./matugen.nix
     ./spicetify.nix
     # ./tmux.nix
     # ./nixvim.nix

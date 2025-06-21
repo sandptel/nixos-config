@@ -12,7 +12,7 @@ wallpaper_path="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
 killall .wallust-wrappe
 # execute pywal
 echo 'about to pywal'
-wal --cols16 darken -i $wallpaper_path --saturate 0.4 -n
+wal --cols16 darken -i $wallpaper_path --saturate 0.5 -n
 # execute wallust skipping tty and terminal changes
 echo 'about to execute wallust'
 wallust run "$wallpaper_path" -s

@@ -29,6 +29,7 @@ hyprls
 # gnome-tweaks
 # airshipper
 pywalfox-native
+orchis-theme
 solarc-gtk-theme
 wl-clipboard
 hyprlock

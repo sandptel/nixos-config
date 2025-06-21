@@ -7,8 +7,8 @@
 
 # home.configFile."<path>".source = "${config.programs.matugen.theme.files}/<template_output_path>";
 
-home.file."gtk-4.0/gtk.css".source = "${config.programs.matugen.theme.files}/.config/gtk-4.0/gtk.css";
-home.file."gtk-3.0/gtk.css".source = "${config.programs.matugen.theme.files}/.config/gtk-3.0/gtk.css";
+# home.file."gtk-4.0/gtk.css".source = "${config.programs.matugen.theme.files}/.config/gtk-4.0/gtk.css";
+# home.file."gtk-3.0/gtk.css".source = "${config.programs.matugen.theme.files}/.config/gtk-3.0/gtk.css";
 
 
   # programs.matugen = {
