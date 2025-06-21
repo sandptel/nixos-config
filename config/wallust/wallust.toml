@@ -49,14 +49,17 @@ waybar.target = '~/.config/waybar/wallust/colors-waybar.css'
 kitty.template = 'colors-kitty.conf'
 kitty.target = '~/.config/kitty/kitty-colors.conf'
 
+vscode = { src = 'vscode.json', dst = '~/.cache/wallust/colors.json' }
+vscode2 = { src = 'vscode', dst = '~/.cache/wallust/colors' }
+
 #swaync.template = 'colors-swaync.css'
 #swaync.target = '~/.config/swaync/wallust/colors-wallust.css'
 
 #macchina.template = 'colors-macchina.toml'
 #macchina.target = '~/.config/macchina/themes/wallust.toml'
 
-#wezterm.template = 'colors-wezterm.toml'
-#wezterm.target = '~/.config/wezterm/colors/wallust.toml'
+wezterm.template = 'colors-wezterm.toml'
+wezterm.target = '~/.config/wezterm/colors/wallust.toml'
 
-#zathura.template = 'colors-zathura'
-#zathura.target = '~/.config/zathura/zathurarc'
+zathura.template = 'colors-zathura'
+zathura.target = '~/.config/zathura/zathurarc'

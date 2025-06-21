@@ -49,11 +49,13 @@ SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration
 # Set the wallpaper
 swww query || swww-daemon --format xrgb && swww img "${RANDOMPICS}" $SWWW_PARAMS
 
+cp -r "$RANDOMPICS" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+
 # Run additional scripts
 killall .waybar-wrapped &
 "${scriptsDir}/WallustSwww.sh" ; "${scriptsDir}/Refresh.sh"
 ${UserScripts}/Lights.sh
 # sleep 1.2
-"${scriptsDir}/Refresh.sh"
+# "${scriptsDir}/Refresh.sh"
 
 exit 0
