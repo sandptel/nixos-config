@@ -2,13 +2,19 @@
 # /* ---- 👒https://github.com/sandptel/nixos-config ---- */ 
 # This script for selecting wallpapers (SUPER W)
 
+set -euo pipefail  # Exit on error, undefined vars, pipe failures
+
 # WALLPAPERS PATH
 wallDIR="$HOME/Pictures/wallpapers"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
 
-# variables
-focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{print name}')
-#waybar/wallust reload duration
+# Check if wallpaper directory exists
+if [[ ! -d "$wallDIR" ]]; then
+    echo "Error: Wallpaper directory $wallDIR does not exist" >&2
+    exit 1
+fi
+
+# Variables
 RELOAD_DURATION=1
 # swww transition config
 FPS=60
@@ -17,13 +23,19 @@ DURATION=2
 BEZIER="0,.95,1,.05"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
 
-# Check if swaybg is running
-if pidof swaybg > /dev/null; then
-  pkill swaybg
+# Check if swaybg is running and kill it only if necessary
+if pidof swaybg >/dev/null 2>&1; then
+    pkill swaybg
 fi
 
 # Retrieve image files using null delimiter to handle spaces in filenames
-mapfile -d '' PICS < <(find "${wallDIR}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -print0)
+mapfile -d '' PICS < <(find "$wallDIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -print0 2>/dev/null || true)
+
+# Check if wallpapers were found
+if [[ ${#PICS[@]} -eq 0 ]]; then
+    echo "Error: No wallpapers found in $wallDIR" >&2
+    exit 1
+fi
 
 RANDOM_PIC="${PICS[$((RANDOM % ${#PICS[@]}))]}"
 RANDOM_PIC_NAME=". random"
@@ -52,7 +64,11 @@ menu() {
 }
 
 # initiate swww if not running
-swww query || swww-daemon --format xrgb
+if ! swww query >/dev/null 2>&1; then
+    echo "Starting swww daemon..."
+    swww-daemon --format xrgb &
+    sleep 1
+fi
 
 # Choice of wallpapers
 main() {
@@ -70,11 +86,30 @@ main() {
 
   # Random choice case
   if [[ "$choice" == "$RANDOM_PIC_NAME" ]]; then
-	swww img "$RANDOM_PIC" $SWWW_PARAMS;
+    if ! swww img "$RANDOM_PIC" $SWWW_PARAMS; then
+        echo "Error: Failed to set random wallpaper" >&2
+        exit 1
+    fi
+    
+    # Copy wallpaper to effects directory
+    wallpaper_effects_dir="$HOME/.config/hypr/wallpaper_effects"
+    if [[ -d "$wallpaper_effects_dir" ]]; then
+        cp "$RANDOM_PIC" "$wallpaper_effects_dir/.wallpaper_current" 2>/dev/null || echo "Warning: Could not copy to wallpaper effects" >&2
+    fi
+    
     sleep 0.5
-    "$SCRIPTSDIR/WallustSwww.sh"
+    
+    # Run scripts with error handling
+    if [[ -x "$SCRIPTSDIR/WallustSwww.sh" ]]; then
+        "$SCRIPTSDIR/WallustSwww.sh" || echo "Warning: WallustSwww.sh failed" >&2
+    fi
+    
     sleep $RELOAD_DURATION
-    "$SCRIPTSDIR/Refresh.sh"
+    
+    if [[ -x "$SCRIPTSDIR/Refresh.sh" ]]; then
+        "$SCRIPTSDIR/Refresh.sh" || echo "Warning: Refresh.sh failed" >&2
+    fi
+    
     exit 0
   fi
 
@@ -89,28 +124,45 @@ main() {
   done
 
   if [[ $pic_index -ne -1 ]]; then
-    swww img "${PICS[$pic_index]}" $SWWW_PARAMS
-    cp -r "${PICS[$pic_index]}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+    if ! swww img "${PICS[$pic_index]}" $SWWW_PARAMS; then
+        echo "Error: Failed to set selected wallpaper" >&2
+        exit 1
+    fi
+    
+    # Copy wallpaper to effects directory
+    wallpaper_effects_dir="$HOME/.config/hypr/wallpaper_effects"
+    if [[ -d "$wallpaper_effects_dir" ]]; then
+        cp "${PICS[$pic_index]}" "$wallpaper_effects_dir/.wallpaper_current" 2>/dev/null || echo "Warning: Could not copy to wallpaper effects" >&2
+    fi
   else
-    echo "Image not found."
+    echo "Error: Image not found" >&2
     exit 1
   fi
 }
 
-# Check if rofi is already running
-if pidof rofi > /dev/null; then
-  pkill rofi
-  sleep 1  # Allow some time for rofi to close
+# Check if rofi is already running and kill only if necessary
+if pidof rofi >/dev/null 2>&1; then
+    pkill rofi
+    sleep 1  # Allow some time for rofi to close
 fi
 
 main
 
-"$SCRIPTSDIR/WallustSwww.sh"
+# Run post-selection scripts with error handling
+if [[ -x "$SCRIPTSDIR/WallustSwww.sh" ]]; then
+    "$SCRIPTSDIR/WallustSwww.sh" &
+    wallust_pid=$!
+    
+    # Wait for wallust to complete with timeout
+    if wait $wallust_pid 2>/dev/null; then
+        sleep $RELOAD_DURATION
+    else
+        echo "Warning: WallustSwww.sh failed or timed out" >&2
+    fi
+else
+    echo "Warning: WallustSwww.sh not found or not executable" >&2
+fi
 
-let wallust_pid = $(pgrep -f "$SCRIPTSDIR/WallustSwww.sh")
-
-wait $wallust_pid
-
-sleep $RELOAD_DURATION
-
-"$SCRIPTSDIR/Refresh.sh"
+if [[ -x "$SCRIPTSDIR/Refresh.sh" ]]; then
+    "$SCRIPTSDIR/Refresh.sh" || echo "Warning: Refresh.sh failed" >&2
+fi

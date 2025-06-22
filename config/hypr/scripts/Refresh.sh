@@ -1,81 +1,67 @@
 #!/bin/bash
 # /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  ##
-# Scripts for refreshing ags waybar, rofi, swaync, wallust
+# Scripts for refreshing waybar, rofi, swaync, wallust
 
-set -e  # Exit on any error
+set -euo pipefail  # Exit on error, undefined vars, pipe failures
 
-SCRIPTSDIR=$HOME/.config/hypr/scripts
-UserScripts=$HOME/.config/hypr/UserScripts
+SCRIPTSDIR="$HOME/.config/hypr/scripts"
 
 # Define file_exists function
 file_exists() {
-    if [ -e "$1" ]; then
-        return 0 # File exists
-    else
-        return 1 # File does not exist
+    [[ -e "$1" ]]
+}
+
+# Kill processes only if they're running to avoid unnecessary kills
+processes_to_kill=(waybar rofi swaync)
+for process in "${processes_to_kill[@]}"; do
+    if pidof "$process" >/dev/null 2>&1; then
+        echo "Stopping $process..."
+        pkill "$process" || echo "Warning: Failed to kill $process" >&2
     fi
-}
+done
 
-# Kill processes function
-kill_processes() {
-    local processes=(waybar rofi swaync ags)
-    
-    echo "Stopping running processes..."
-    for process in "${processes[@]}"; do
-        if pidof "${process}" >/dev/null; then
-            echo "Killing ${process}..."
-            pkill "${process}"
-        fi
-    done
-    
-    # Additional cleanup
-    ags -q 2>/dev/null || true
-    killall .waybar-wrapped 2>/dev/null || true
-    
-    # Wait a moment for processes to fully terminate
-    sleep 1
-}
+# Kill waybar wrapper if running
+if pidof .waybar-wrapped >/dev/null 2>&1; then
+    echo "Stopping waybar wrapper..."
+    pkill .waybar-wrapped || echo "Warning: Failed to kill waybar wrapper" >&2
+fi
 
-# Start services function
-start_services() {
-    echo "Starting services..."
-    
-    # Start waybar
-    waybar &
+# Run wallust script if available
+if [[ -x "$SCRIPTSDIR/WallustSwww.sh" ]]; then
+    echo "Running WallustSwww.sh..."
+    "$SCRIPTSDIR/WallustSwww.sh" || echo "Warning: WallustSwww.sh failed" >&2
+else
+    echo "Warning: WallustSwww.sh not found or not executable" >&2
+fi
+
+# Update pywalfox if available
+if command -v pywalfox >/dev/null 2>&1; then
+    echo "Updating pywalfox..."
+    pywalfox update 2>/dev/null || echo "Warning: pywalfox update failed" >&2
+fi
+
+# Check if Obsidian script exists and run it
+obsidian_script="$HOME/.config/hypr/UserScripts/Obsidian.sh"
+if [[ -x "$obsidian_script" ]]; then
+    echo "Running Obsidian.sh..."
+    "$obsidian_script" || echo "Warning: Obsidian.sh failed" >&2
+fi
+
+# Restart waybar
+echo "Starting waybar..."
+if command -v waybar >/dev/null 2>&1; then
+    waybar >/dev/null 2>&1 &
     disown
-    
-    # Start swaync
+else
+    echo "Warning: waybar not found" >&2
+fi
+
+# Relaunch swaync
+echo "Starting swaync..."
+if command -v swaync >/dev/null 2>&1; then
     swaync >/dev/null 2>&1 &
-    
-    # Start ags
-    ags &
-    
-    echo "All services started successfully!"
-}
+else
+    echo "Warning: swaync not found" >&2
+fi
 
-# Main execution
-echo "Starting refresh process..."
-
-# Initialize lights
-"${UserScripts}/Lights.sh"
-
-# Kill existing processes
-kill_processes
-
-# Run wallust and wait for it to complete
-echo "Running wallpaper and color scheme updates..."
-"${SCRIPTSDIR}/WallustSwww.sh"
-
-# Update pywalfox after wallust completes
-echo "Updating pywalfox..."
-pywalfox update
-
-# Run Obsidian script
-echo "Running Obsidian configuration..."
-"${UserScripts}/Obsidian.sh"
-
-# Start all services
-start_services
-
-echo "Refresh process completed successfully!"
 exit 0
