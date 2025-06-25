@@ -52,7 +52,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     ./starship.nix
     ./hardware.nix
     ./users.nix
-    ./power.nix
+    # ./power.nix
     ./kernel.nix
     # ./nixvim.nix
     # ../../modules/amd-drivers.nix

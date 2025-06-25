@@ -43,6 +43,7 @@ kcl
 wl-clipboard
 code-cursor
 # spotify
+bc
 slack
 obsidian
 grim
