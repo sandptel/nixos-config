@@ -64,9 +64,9 @@ if ! basename "$RANDOMPICS" > "$allwallDIR/current_wallpaper.txt" 2>/dev/null; t
 fi
 
 # Transition config
-FPS= 30
+FPS=30
 TYPE="random"
-DURATION= 0.5
+DURATION=0.5
 BEZIER="0,.95,1,.05"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
 
