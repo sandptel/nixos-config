@@ -57,9 +57,11 @@ fi
 # Transition config
 FPS=30
 TYPE="any"
-DURATION=2
+DURATION=0.5
 BEZIER=".43,1.19,1,.4"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
+
+cp -r "$RANDOMPICS" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
 
 # Initialize swww daemon if needed
 if ! swww query >/dev/null 2>&1; then

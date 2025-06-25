@@ -74,7 +74,6 @@ SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration
 if ! swww query >/dev/null 2>&1; then
     echo "Starting swww daemon..."
     swww-daemon --format xrgb &
-    sleep 1
 fi
 
 # Set the wallpaper
