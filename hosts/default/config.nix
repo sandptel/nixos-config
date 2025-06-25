@@ -328,7 +328,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       slurp
       swappy
       swaynotificationcenter
-      swww
+      inputs.swww.packages.${pkgs.system}.swww
       unzip
       wallust
       wl-clipboard
