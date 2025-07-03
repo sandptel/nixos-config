@@ -65,8 +65,8 @@ fi
 
 # Transition config
 FPS=30
-TYPE="random"
-DURATION=0.5
+TYPE="any"
+DURATION=0.6
 BEZIER="0,.95,1,.05"
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
 
