@@ -10,11 +10,11 @@ python-packages = pkgs.python3.withPackages (
   in
 {
 
-nix.extraOptions = ''
-        trusted-users = root roronoa
-        extra-substituters = https://devenv.cachix.org
-        extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
-    '';
+# nix.extraOptions = ''
+#         trusted-users = root roronoa
+#         extra-substituters = https://devenv.cachix.org
+#         extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+#     '';
 
 environment.systemPackages =
     (with pkgs; [ 
@@ -29,6 +29,7 @@ environment.systemPackages =
       # github-desktop
       #vscode
     #   devenv
+    nixfmt-rfc-style
     direnv
       gitkraken
       github-cli

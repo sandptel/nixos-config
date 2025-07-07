@@ -26,7 +26,10 @@ in
         vaapiVdpau
         libvdpau-va-gl
         libva
-			  libva-utils	
+		libva-utils
+        mesa
+        vulkan-loader
+        vulkan-tools	
       ];
     };
 

@@ -491,9 +491,9 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
     upower.enable = true;
 
-    desktopManager.gnome.enable = true;
+    # desktopManager.gnome.enable = true;
 
-    gnome.gnome-keyring.enable = true;
+    # gnome.gnome-keyring.enable = true;
     
     #printing = {
     #  enable = false;
