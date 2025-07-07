@@ -1,8 +1,10 @@
 {
   description = "sandptel's Hyprland Dots";
   inputs = {
-    #customkernel.url = "path:/home/roronoa/risc-v-kernelci";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     regolith.url = "github:regolith-lab/regolith-nix";
+
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
       # url = "github:KZDKM/Hyprspace";
@@ -27,8 +29,10 @@
     matugen = {
       url = "github:/InioX/Matugen";
     };
-    elanmoc2.url = "github:sandptel/elanmoc2";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # elanmoc2 = {
+    #   url = "github:sandptel/elanmoc2";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # hyprsplit.url = "github:shezdy/hyprsplit";
     #wallust.url = "git+https://codeberg.org/explosion-mental/wallust?ref=dev";
@@ -44,12 +48,7 @@
       url = "github:VortexCoyote/hyprfocus";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprland.url = "github:hyprwm/Hyprland"; # hyprland development
-    # hyprland.url = "github:hyprwm/Hyprland"; # hyprland development
     #    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
     grub2-themes = {
@@ -64,8 +63,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #  home-manager.url = "github:nix-community/home-manager/master";
-    #  home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
     spicetify-nix = {
@@ -79,9 +76,6 @@
     };
     nixos-boot.url = "github:Melkor333/nixos-boot";
     zen-browser.url = "https://flakehub.com/f/youwen5/zen-browser/0.1.171";
-    #        url = "github:notashelf/nvf";
-    #        inputs.nixpkgs.follows = "nixpkgs";
-    #    };
   };
   outputs =
     inputs@{
@@ -105,7 +99,7 @@
       };
     in
     {
-      # packages.x86_64-linux.homeConfigurations = pkgs.callPackage ./hosts/default/home.nix { inherit lib config; };
+    #   packages.x86_64-linux.elanmoc2 = pkgs.callPackage ./hosts/default/elanmoc2/package.nix { };
       # homeConfigurations= {
       #       "roronoa" = home-manager.lib.homeManagerConfiguration {
       #           # Note: I am sure this could be done better with flake-utils or something
@@ -132,12 +126,12 @@
             inputs.grub2-themes.nixosModules.default
             inputs.spicetify-nix.nixosModules.default
             inputs.chaotic.nixosModules.default
-            inputs.elanmoc2.nixosModules.elanmoc2
+            # inputs.elanmoc2.nixosModules.elanmoc2
+            ./hosts/${host}/fprintd.nix
             inputs.nixvim.nixosModules.nixvim
             # inputs.zen-browser.packages."${system}".generaic
             #inputs.stylix.nixosModules.default
             #inputs.catppuccin.homeManagerModules.catppuccin
-            { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
           ];
         };
       };

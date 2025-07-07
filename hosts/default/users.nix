@@ -17,7 +17,7 @@ in
     builtins.elem (lib.getName pkg) [
       "spotify"
     ];
-  #   services.fprintd.elanmoc2.enable=true;
+#   services.fprintd.elanmoc2.enable = true;
   imports = [
     ./starship.nix
   ];
@@ -49,7 +49,7 @@ in
         kando
         kcl
         wl-clipboard
-        code-cursor
+        # code-cursor
         # spotify
         bc
         slack
