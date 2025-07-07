@@ -1,24 +1,31 @@
-{ inputs, outputs, lib, config, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   ## POWER
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = "schedutil"; # no available for my laptop --> tlp logs 
+    cpuFreqGovernor = "schedutil"; # no available for my laptop --> tlp logs
   };
   services.power-profiles-daemon.enable = false;
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
-	  battery = {
-	     governor = "powersave";
-	     turbo = "auto";
-         energy_performance_preference = "power";
-	  };
-	  charger = {
-	     governor = "performance";
-	     turbo = "auto";
-       energy_performance_preference = "performance";
-	  };
-	};
+    battery = {
+      governor = "powersave";
+      turbo = "auto";
+      energy_performance_preference = "power";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+      energy_performance_preference = "performance";
+    };
+  };
 
   ### KERNEL
   boot.kernelParams = [
@@ -50,7 +57,6 @@
   #       CPU_HWP_DYN_BOOST_ON_AC=1;
   #       CPU_HWP_DYN_BOOST_ON_BAT=0;
 
-
   #       CPU_MIN_PERF_ON_AC = 0;
   #       CPU_MAX_PERF_ON_AC = 100;
   #       CPU_MIN_PERF_ON_BAT = 0;
@@ -65,11 +71,11 @@
 
   ### SYSTEM 76 SCHEDULER
   services.system76-scheduler = {
-        enable = true;
-        settings.cfsProfiles = {
-            enable = true;
-        };
-        };  
+    enable = true;
+    settings.cfsProfiles = {
+      enable = true;
+    };
+  };
   ### POWERTOP
   powerManagement.powertop.enable = true;
 

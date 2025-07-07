@@ -2,7 +2,7 @@
   description = "sandptel's Hyprland Dots";
   inputs = {
     #customkernel.url = "path:/home/roronoa/risc-v-kernelci";
-   regolith.url = "github:regolith-lab/regolith-nix";
+    regolith.url = "github:regolith-lab/regolith-nix";
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
       # url = "github:KZDKM/Hyprspace";
@@ -17,7 +17,7 @@
     # url = "github:lilyinstarlight/nixos-cosmic";
     # # inputs.nixpkgs.follows = "nixpkgs";
     # };
-    
+
     shimeji.url = "github:sandptel/shimeji-nix";
 
     nixvim = {
@@ -25,9 +25,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     matugen = {
-    url = "github:/InioX/Matugen";
-  };
-    elanmoc2.url= github:sandptel/elanmoc2;
+      url = "github:/InioX/Matugen";
+    };
+    elanmoc2.url = "github:sandptel/elanmoc2";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     # hyprsplit.url = "github:shezdy/hyprsplit";
@@ -50,53 +50,59 @@
     };
     hyprland.url = "github:hyprwm/Hyprland"; # hyprland development
     # hyprland.url = "github:hyprwm/Hyprland"; # hyprland development
-#    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+    #    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
-     grub2-themes = {
+    grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
     };
     #hypr-contrib.url = "github:hyprwm/contrib";
     home-manager = {
-        url = "github:nix-community/home-manager";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-init = {
-        url = "github:nix-community/home-manager";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-  #  home-manager.url = "github:nix-community/home-manager/master";
-  #  home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    #  home-manager.url = "github:nix-community/home-manager/master";
+    #  home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-   };
-   hypr-dynamic-cursors = {
-        url = "github:VirtCode/hypr-dynamic-cursors";
-        # url = "github:VirtCode/hypr-dynamic-cursors";
-        inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
+    };
+    hypr-dynamic-cursors = {
+      url = "github:VirtCode/hypr-dynamic-cursors";
+      # url = "github:VirtCode/hypr-dynamic-cursors";
+      inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
     };
     nixos-boot.url = "github:Melkor333/nixos-boot";
     zen-browser.url = "https://flakehub.com/f/youwen5/zen-browser/0.1.171";
-#        url = "github:notashelf/nvf";
-#        inputs.nixpkgs.follows = "nixpkgs";
-#    };
-};
+    #        url = "github:notashelf/nvf";
+    #        inputs.nixpkgs.follows = "nixpkgs";
+    #    };
+  };
   outputs =
-    inputs @ { self
-    , nixpkgs
-    , home-manager
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
     }:
     let
       system = "x86_64-linux";
       host = "default";
       username = "roronoa";
-      lib=nixpkgs.lib;
-      config = { allowUnfree = true; };
+      lib = nixpkgs.lib;
+      config = {
+        allowUnfree = true;
+      };
       #defaultPackage.x86_64-linux = wezterm.packages.x86_64-linux.default;
-      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
     in
     {
       # packages.x86_64-linux.homeConfigurations = pkgs.callPackage ./hosts/default/home.nix { inherit lib config; };
@@ -119,10 +125,10 @@
           modules = [
             ./hosts/${host}/config.nix
             ./cosmic.nix
-           inputs.regolith.nixosModules.regolith
+            inputs.regolith.nixosModules.regolith
             inputs.nixos-boot.nixosModules.default
             inputs.hyprland.nixosModules.default
- #           inputs.distro-grub-themes.nixosModules.${system}.default
+            #           inputs.distro-grub-themes.nixosModules.${system}.default
             inputs.grub2-themes.nixosModules.default
             inputs.spicetify-nix.nixosModules.default
             inputs.chaotic.nixosModules.default

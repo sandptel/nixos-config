@@ -1,47 +1,46 @@
 # Main default config
-{ nixos-dots 
-, config
-, pkgs
-, host
-, username
-, options
-, inputs,
-modulesPath
-, ...
+{
+  nixos-dots,
+  config,
+  pkgs,
+  host,
+  username,
+  options,
+  inputs,
+  modulesPath,
+  ...
 }:
 let
   inherit (import ./variables.nix) keyboardLayout;
   python-packages = pkgs.python3.withPackages (
-    ps:
-      with ps; [
-        requests
-        pyquery # needed for hyprland-dots Weather script
-      ]
+    ps: with ps; [
+      requests
+      pyquery # needed for hyprland-dots Weather script
+    ]
   );
 in
-{  
-  regolith=
-  {
-   enable = true;
-#    extraSwayConfig= "#testing";
+{
+  regolith = {
+    enable = true;
+    #    extraSwayConfig= "#testing";
   };
-   
-  home-manager={
-  extraSpecialArgs={inherit inputs;};
-  useGlobalPkgs=true;
-  useUserPackages=true;
-  backupFileExtension= "BACKUP";
-  users={
-    roronoa= {
-      imports =[
-      
-      ./home.nix
-      ];
-      };
-  };
-};
 
-nixpkgs.config.allowUnsupportedSystem = true;
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "BACKUP";
+    users = {
+      roronoa = {
+        imports = [
+
+          ./home.nix
+        ];
+      };
+    };
+  };
+
+  nixpkgs.config.allowUnsupportedSystem = true;
   imports = [
     # inputs.matugen.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
@@ -70,7 +69,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
   #   };
   # BOOT related stuff
   boot = {
-    
+
     # Needed For Some Steam Games
     #kernel.sysctl = {
     #  "vm.max_map_count" = 2147483642;
@@ -86,7 +85,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     };
 
     loader.timeout = 1;
-    loader.systemd-boot.graceful=true;
+    loader.systemd-boot.graceful = true;
 
     # Bootloader GRUB
     # loader.grub = {
@@ -130,7 +129,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     #  enable = true;
     #  theme = "connect";
     #  themePackages = with pkgs; [
-        # By default we would install all themes
+    # By default we would install all themes
     #    (adi1090x-plymouth-themes.override {
     #      selected_themes = [ "connect" ];
     #    })
@@ -197,20 +196,20 @@ nixpkgs.config.allowUnsupportedSystem = true;
   };
 
   nixpkgs.config.allowUnfree = true;
-  
+
   services.seatd.enable = true;
 
   programs = {
     hyprland = {
       enable = true;
-  #     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
-  #   #   plugins = [
-  #   #     inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
-  #   #             #  inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
-  #   #  ];
-    #  portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
-  #    xwayland.enable = true;
-    #  opengl.enable = true;
+      #     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland; #hyprland-git
+      #   #   plugins = [
+      #   #     inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
+      #   #             #  inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+      #   #  ];
+      #  portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland; # xdphls
+      #    xwayland.enable = true;
+      #  opengl.enable = true;
     };
 
     nix-ld.enable = true;
@@ -225,7 +224,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     # plugins = with pkgs.vimPlugins; [ nvim-lspconfig pywal-nvim nvim-treesitter nvim-tree-sitter nvim-lsp-installer ];
     # extraPackages = with pkgs; [ rust-analyzer rustc cargo rustfmt clippy ];
     # };
-    #stylix.enable = true;   
+    #stylix.enable = true;
     thunar.enable = true;
     thunar.plugins = with pkgs.xfce; [
       exo
@@ -243,8 +242,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
     #  remotePlay.openFirewall = true;
     #  dedicatedServer.openFirewall = true;
     #};
-    
-
 
     xwayland.enable = true;
 
@@ -264,13 +261,13 @@ nixpkgs.config.allowUnsupportedSystem = true;
   };
 
   environment.systemPackages =
-    (with pkgs; [ 
-     # System Packages
-     home-manager
-    #  albert
-     gedit
-     timer
-     gjs
+    (with pkgs; [
+      # System Packages
+      home-manager
+      #  albert
+      gedit
+      timer
+      gjs
       baobab
       btrfs-progs
       clang
@@ -279,7 +276,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       duf
       eza
       ffmpeg
-      glib #for gsettings to work
+      glib # for gsettings to work
       gsettings-qt
       git
       killall
@@ -294,7 +291,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
       # Hyprland Stuff
       hyprpanel
-    #   ags
+      #   ags
       anyrun
       btop
       brightnessctl # for brightness control
@@ -304,17 +301,17 @@ nixpkgs.config.allowUnsupportedSystem = true;
       gnome-system-monitor
       file-roller
       grim
-      gtk-engine-murrine #for gtk themes
+      gtk-engine-murrine # for gtk themes
       hyprcursor # requires unstable channel
       hypridle # requires unstable channel
       imagemagick
       inxi
       jq
       # kitty
-      libsForQt5.qtstyleplugin-kvantum #kvantum
+      libsForQt5.qtstyleplugin-kvantum # kvantum
       networkmanagerapplet
       nwg-look # requires unstable channel
-    #   nvtopPackages.full
+      #   nvtopPackages.full
       pamixer
       pavucontrol
       playerctl
@@ -323,7 +320,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
       libsForQt5.qt5ct
       qt6ct
       qt6.qtwayland
-      qt6Packages.qtstyleplugin-kvantum #kvantum
+      qt6Packages.qtstyleplugin-kvantum # kvantum
       rofi-wayland
       slurp
       swappy
@@ -374,12 +371,12 @@ nixpkgs.config.allowUnsupportedSystem = true;
       zathura
       pango
       gdk-pixbuf
-      cairo  
+      cairo
       dbus-glib
       nwg-dock-hyprland
       waypaper
       #qcomicbook
-      #libsForQt5.qt5.qtquickcontrols   
+      #libsForQt5.qt5.qtquickcontrols
       #libsForQt5.qt5.qtgraphicaleffects
       cava
       hyprpicker
@@ -408,11 +405,11 @@ nixpkgs.config.allowUnsupportedSystem = true;
     font-awesome
     material-icons
     terminus_font
-  nerd-fonts.droid-sans-mono
-  # nerd-fonts._0xproto
+    nerd-fonts.droid-sans-mono
+    # nerd-fonts._0xproto
     #(nerdfonts.override { fonts = [ "0xproto" "JetBrainsMono" ]; })
   ];
-  
+
   #chaotic.mesa-git.enable = true;
   #catppuccin.enable = true;
   # Extra Portal Configuration
@@ -438,17 +435,17 @@ nixpkgs.config.allowUnsupportedSystem = true;
     #   package=pkgs.greetd.tuigreet;
     # }; #imported as a module above
     displayManager.gdm = {
-    enable = false;
-  };
+      enable = false;
+    };
     xserver = {
-      
+
       enable = true;
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
       };
-     
-  };
+
+    };
     smartd = {
       enable = false;
       autodetect = true;
@@ -483,7 +480,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     flatpak.enable = true;
 
     blueman.enable = true;
-    
+
     #hardware.openrgb.enable = true;
     #hardware.openrgb.motherboard = "amd";
 
@@ -494,7 +491,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     # desktopManager.gnome.enable = true;
 
     # gnome.gnome-keyring.enable = true;
-    
+
     #printing = {
     #  enable = false;
     #  drivers = [
@@ -596,13 +593,16 @@ nixpkgs.config.allowUnsupportedSystem = true;
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" "https://cache.nixos.org" ];
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://cache.nixos.org"
+      ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-    }; 
+    };
     gc = {
       automatic = false;
-    #   dates = "weekly";
-    #   options = "--delete-older-than 7d";
+      #   dates = "weekly";
+      #   options = "--delete-older-than 7d";
     };
   };
 
@@ -619,18 +619,23 @@ nixpkgs.config.allowUnsupportedSystem = true;
   # For Electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables = {
-  EDITOR = "nvim";
-  BROWSER = "firefox";
-  TERMINAL = "kitty";
-  VISUAL = "vscodium";
-  GSK_RENDERER = "gl";
-};
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "kitty";
+    VISUAL = "vscodium";
+    GSK_RENDERER = "gl";
+  };
 
-# Open ports in the firewall.
+  # Open ports in the firewall.
   programs.kdeconnect.enable = true;
   networking.firewall = rec {
-  allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-  allowedUDPPortRanges = allowedTCPPortRanges;
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
   };
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

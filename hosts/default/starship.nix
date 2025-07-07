@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   lang = icon: color: {
     symbol = icon;
     format = "[$symbol ](${color})";
@@ -38,7 +39,9 @@
       format = "  ";
     };
     continuation_prompt = "∙  ┆ ";
-    line_break = {disabled = false;};
+    line_break = {
+      disabled = false;
+    };
     status = {
       symbol = "✗";
       not_found_symbol = "󰍉 Not Found";
@@ -107,47 +110,48 @@
     dart = lang "" "blue";
     elixir = lang "" "purple";
   };
-  tomlFormat = pkgs.formats.toml {};
+  tomlFormat = pkgs.formats.toml { };
   starshipCmd = "${pkgs.starship}/bin/starship";
-  settingsFile= tomlFormat.generate "starship-config" settings;
-in {
+  settingsFile = tomlFormat.generate "starship-config" settings;
+in
+{
 
   programs.bash.shellInit = ''
-      if [[ $TERM != "dumb" ]]; then
-        # don't set STARSHIP_CONFIG automatically if there's a user-specified
-        # config file.  starship appears to use a hardcoded config location
-        # rather than one inside an XDG folder:
-        # https://github.com/starship/starship/blob/686bda1706e5b409129e6694639477a0f8a3f01b/src/configure.rs#L651
-        if [[ ! -f "$HOME/.config/starship.toml" ]]; then
-          export STARSHIP_CONFIG=${settingsFile}
-        fi
-        eval "$(${starshipCmd} init bash)"
+    if [[ $TERM != "dumb" ]]; then
+      # don't set STARSHIP_CONFIG automatically if there's a user-specified
+      # config file.  starship appears to use a hardcoded config location
+      # rather than one inside an XDG folder:
+      # https://github.com/starship/starship/blob/686bda1706e5b409129e6694639477a0f8a3f01b/src/configure.rs#L651
+      if [[ ! -f "$HOME/.config/starship.toml" ]]; then
+        export STARSHIP_CONFIG=${settingsFile}
       fi
-    '';
+      eval "$(${starshipCmd} init bash)"
+    fi
+  '';
 
-    programs.fish.shellInit = ''
-      if test "$TERM" != "dumb"
-        # don't set STARSHIP_CONFIG automatically if there's a user-specified
-        # config file.  starship appears to use a hardcoded config location
-        # rather than one inside an XDG folder:
-        # https://github.com/starship/starship/blob/686bda1706e5b409129e6694639477a0f8a3f01b/src/configure.rs#L651
-        if not test -f "$HOME/.config/starship.toml";
-          set -x STARSHIP_CONFIG ${settingsFile}
-        end
-        eval "$(${starshipCmd} init fish)"
+  programs.fish.shellInit = ''
+    if test "$TERM" != "dumb"
+      # don't set STARSHIP_CONFIG automatically if there's a user-specified
+      # config file.  starship appears to use a hardcoded config location
+      # rather than one inside an XDG folder:
+      # https://github.com/starship/starship/blob/686bda1706e5b409129e6694639477a0f8a3f01b/src/configure.rs#L651
+      if not test -f "$HOME/.config/starship.toml";
+        set -x STARSHIP_CONFIG ${settingsFile}
       end
-    '';
+      eval "$(${starshipCmd} init fish)"
+    end
+  '';
 
-    programs.zsh.shellInit = ''
-      if [[ $TERM != "dumb" ]]; then
-        # don't set STARSHIP_CONFIG automatically if there's a user-specified
-        # config file.  starship appears to use a hardcoded config location
-        # rather than one inside an XDG folder:
-        # https://github.com/starship/starship/blob/686bda1706e5b409129e6694639477a0f8a3f01b/src/configure.rs#L651
-        if [[ ! -f "$HOME/.config/starship.toml" ]]; then
-          export STARSHIP_CONFIG=${settingsFile}
-        fi
-        eval "$(${starshipCmd} init zsh)"
+  programs.zsh.shellInit = ''
+    if [[ $TERM != "dumb" ]]; then
+      # don't set STARSHIP_CONFIG automatically if there's a user-specified
+      # config file.  starship appears to use a hardcoded config location
+      # rather than one inside an XDG folder:
+      # https://github.com/starship/starship/blob/686bda1706e5b409129e6694639477a0f8a3f01b/src/configure.rs#L651
+      if [[ ! -f "$HOME/.config/starship.toml" ]]; then
+        export STARSHIP_CONFIG=${settingsFile}
       fi
-    '';
+      eval "$(${starshipCmd} init zsh)"
+    fi
+  '';
 }
