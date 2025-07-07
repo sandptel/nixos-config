@@ -1,6 +1,11 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 {
-  
+    # general thermal management
+    services.thermald.enable = true;
+    services.irqbalance = {
+    enable = true;
+    # extraArgs = ["--policyscript=${pkgs.irqbalance}/etc/irqbalance.policy"];
+    };  
   boot = {
    kernelPackages = pkgs.linuxPackages_latest; # Kernel
     #chaotic.scx.enable = true;

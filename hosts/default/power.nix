@@ -73,11 +73,4 @@
   ### POWERTOP
   powerManagement.powertop.enable = true;
 
-services.irqbalance = {
-    enable = true;
-    # extraArgs = ["--policyscript=${pkgs.irqbalance}/etc/irqbalance.policy"];
-    };  
-
-  ### ThermalD
-  services.thermald.enable = true;
 }
