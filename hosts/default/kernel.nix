@@ -4,20 +4,28 @@
   boot = {
    kernelPackages = pkgs.linuxPackages_latest; # Kernel
     #chaotic.scx.enable = true;
-    consoleLogLevel = 0 ;
+    consoleLogLevel = 3 ;
     kernelParams = [
       "quiet"
       "splash"
       "boot.shell_on_fail"
-      "loglevel=3"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
       "systemd.mask=systemd-vconsole-setup.service"
       "systemd.mask=dev-tpmrm0.device" #this is to mask that stupid 1.5 mins systemd bug
       "nowatchdog"
-      "modprobe.blacklist=sp5100_tco" #watchdog for AMD
+      #Intel GPU DRIVERS
       "modprobe.blacklist=iTCO_wdt" #watchdog for Intel
+      "i915.enable_psr=1"    # Enables Panel Self Refresh (power saving)
+      "i915.enable_fbc=1"    # Enables Frame Buffer Compression
+      "i915.enable_guc=2"    # Enables GuC firmware for better scheduling
+      "i915.fastboot=1"      # Reduces boot flicker
+
+      "intel_pstate=active"
+
+      # Better for battery Life
+      "pcie_aspm=force"  # Enable ASPM (Active State Power Management) 
     ];
 
   # This is for OBS Virtual Cam Support
