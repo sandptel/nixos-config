@@ -48,20 +48,20 @@ if [[ -x "$obsidian_script" ]]; then
 fi
 
 # Restart waybar
-echo "Starting waybar..."
-if command -v waybar >/dev/null 2>&1; then
-    waybar >/dev/null 2>&1 &
-    disown
-else
-    echo "Warning: waybar not found" >&2
-fi
+# echo "Starting waybar..."
+# if command -v waybar >/dev/null 2>&1; then
+#     waybar >/dev/null 2>&1 &
+#     disown
+# else
+#     echo "Warning: waybar not found" >&2
+# fi
 
 # Relaunch swaync
-echo "Starting swaync..."
-if command -v swaync >/dev/null 2>&1; then
-    swaync >/dev/null 2>&1 &
-else
-    echo "Warning: swaync not found" >&2
-fi
+# echo "Starting swaync..."
+# if command -v swaync >/dev/null 2>&1; then
+#     swaync >/dev/null 2>&1 &
+# else
+#     echo "Warning: swaync not found" >&2
+# fi
 
 exit 0

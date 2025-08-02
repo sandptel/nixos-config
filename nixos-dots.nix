@@ -27,6 +27,35 @@ in
     programs.pywal16.enable = true;
 
     home.packages = with pkgs; [
+      quickshell
+      ddcutil
+      brightnessctl
+      cava
+      networkmanager
+      lm_sensors
+      fish
+      aubio
+      pipewire.dev
+      glibc
+      glibc.dev
+      qt6.qtdeclarative
+
+      # C++ standard library (needed for compilation)
+      stdenv.cc.cc.lib
+
+      # Fonts
+      material-symbols
+      nerd-fonts.jetbrains-mono
+
+      # Screenshot and image tools
+      grim
+      swappy
+
+      # Calculator
+      libqalculate
+
+      # Runtime pipewire
+      pipewire
       gifsicle
       matugen
       nwg-drawer
@@ -127,11 +156,11 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
-        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-        portalPackage =
-          inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    #   package = pkgs.hyprland;
-    #   portalPackage = pkgs.xdg-desktop-portal-hyprland;
+      # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      # portalPackage =
+      #   inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      #   package = pkgs.hyprland;
+      #   portalPackage = pkgs.xdg-desktop-portal-hyprland;
 
       extraConfig = ''
           # /* ---- 👒 https://github.com/sandptel/nixos-config ---- */  #
