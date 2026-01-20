@@ -91,44 +91,272 @@ map('n', '<leader>l', ':nohlsearch<CR>', opt)
 
 ## 2. VS Code Configuration (`settings.json`)
 
-Add these to your existing `settings.json`.
+If you ever lose this because vscode is a piece of shit: 
 
 ```json
 {
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "material-code.primaryColor": "#7E898C",
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     /* Fast Vertical Movement */
-    { "before": ["J"], "after": ["5", "j"] },
-    { "before": ["K"], "after": ["5", "k"] },
-    { "before": ["<leader>", "j"], "after": ["J"] },
-
+    // 3. Word & Symbol Navigation (n/m)
+    // If you want variable jumping specifically, use the commands below.
+    // To stick to word movement only: change commands to ["w"] and ["b"]
+    {
+      "before": [
+        "n"
+      ],
+      "commands": [
+        "editor.action.wordHighlight.next"
+      ]
+    },
+    {
+      "before": [
+        "m"
+      ],
+      "commands": [
+        "editor.action.wordHighlight.prev"
+      ]
+    },
+    // 4. History Navigation (N/M for Jump List)
+    {
+      "before": [
+        "N"
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ]
+    },
+    {
+      "before": [
+        "M"
+      ],
+      "commands": [
+        "workbench.action.navigateForward"
+      ]
+    },
+    // 5. Tab & Editor Navigation (Leader + h/l)
+    {
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ]
+    },
+    // 6. LSP Power Jumps (Spacebar logic)
+    // Double Space for Details, Triple Space for Definition
+    {
+      "before": [
+        "<leader>"
+      ],
+      "commands": [
+        "editor.action.showHover"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<leader>"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "J"
+      ],
+      "after": [
+        "5",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "after": [
+        "5",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "j"
+      ],
+      "after": [
+        "J"
+      ]
+    },
     /* Line Start/End */
-    { "before": ["H"], "after": ["^"] },
-    { "before": ["L"], "after": ["$"] },
-
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "$"
+      ]
+    },
     /* Home Row Word Movement */
-    { "before": ["n"], "after": ["w"] },
-    { "before": ["m"], "after": ["b"] },
-
+    {
+      "before": [
+        "n"
+      ],
+      "after": [
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "m"
+      ],
+      "after": [
+        "b"
+      ]
+    },
     /* Search Recovery */
-    { "before": ["<leader>", "n"], "after": ["n"] },
-    { "before": ["<leader>", "N"], "after": ["N"] },
-
+    {
+      "before": [
+        "<leader>",
+        "n"
+      ],
+      "after": [
+        "n"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "N"
+      ],
+      "after": [
+        "N"
+      ]
+    },
     /* Utilities */
-    { "before": ["<leader>", "l"], "commands": [":nohl"] },
-    { "before": ["<leader>", "w"], "commands": ["workbench.action.files.save"] }
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
-    { "before": ["J"], "after": ["5", "j"] },
-    { "before": ["K"], "after": ["5", "k"] },
-    { "before": ["H"], "after": ["^"] },
-    { "before": ["L"], "after": ["$"] },
-    { "before": ["n"], "after": ["w"] },
-    { "before": ["m"], "after": ["b"] }
+    {
+      "before": [
+        "J"
+      ],
+      "after": [
+        "5",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "after": [
+        "5",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "n"
+      ],
+      "after": [
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "m"
+      ],
+      "after": [
+        "b"
+      ]
+    }
   ],
   "vim.insertModeKeyBindings": [
-    { "before": ["j", "j"], "after": ["<Esc>"] }
-  ]
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-c>": false,
+    "<C-x>": false,
+    "<C-y>": false,
+    "<C-k>": false,
+    "<C-l>": false,
+    "<C-j>": false,
+    "<C-a>": false,
+    "<C-w>": false
+  },
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 17,
+  "chat.agent.maxRequests": 200,
+  "chat.checkpoints.showFileChanges": true,
+  "chat.customAgentInSubagent.enabled": true,
+  "chat.editor.fontFamily": "Fira Code",
+  "chat.editor.fontSize": 15,
+  "git.openRepositoryInParentFolders": "never"
 }
 
 ```
