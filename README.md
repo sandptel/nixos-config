@@ -225,16 +225,17 @@ If you ever lose this because vscode is a piece of shit:
       "before": [
         "n"
       ],
-      "after": [
-        "w"
+      "commands": [
+        "editor.action.wordHighlight.next"
       ]
     },
+    // Jump to the PREVIOUS occurrence of the word under the cursor
     {
       "before": [
         "m"
       ],
-      "after": [
-        "b"
+      "commands": [
+        "editor.action.wordHighlight.prev"
       ]
     },
     /* Search Recovery */
