@@ -364,3 +364,324 @@ If you ever lose this because vscode is a piece of shit:
 
 ---
 
+Final VsCode.json file :
+```
+{
+  //vscode settings.json
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "github.copilot.nextEditSuggestions.fixes": true,
+  "github.copilot.editor.enableCodeActions": true,
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', 'Material Design Icons', monospace",
+  "material-code.primaryColor": "#66AF5A",
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    /* Fast Vertical Movement */
+    // 3. Word & Symbol Navigation (n/m)
+    // If you want variable jumping specifically, use the commands below.
+    // To stick to word movement only: change commands to ["w"] and ["b"]
+    {
+      "before": [
+        "n"
+      ],
+      "commands": [
+        "editor.action.wordHighlight.next"
+      ]
+    },
+    {
+      "before": [
+        "m"
+      ],
+      "commands": [
+        "editor.action.wordHighlight.prev"
+      ]
+    },
+    // 4. History Navigation (N/M for Jump List)
+    {
+      "before": [
+        "N"
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ]
+    },
+    {
+      "before": [
+        "M"
+      ],
+      "commands": [
+        "workbench.action.navigateForward"
+      ]
+    },
+    // 5. Tab & Editor Navigation (Leader + h/l)
+    {
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ]
+    },
+    // 6. LSP Power Jumps (Spacebar logic)
+    // Double Space for Details, Triple Space for Definition
+    {
+      "before": [
+        "<leader>"
+      ],
+      "commands": [
+        "editor.action.showHover"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<leader>"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "J"
+      ],
+      "after": [
+        "5",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "after": [
+        "5",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "j"
+      ],
+      "after": [
+        "J"
+      ]
+    },
+    /* Line Start/End */
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "B"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "E"
+      ]
+    },
+    /* Home Row Word Movement */
+    {
+      "before": [
+        "n"
+      ],
+      "commands": [
+        "editor.action.wordHighlight.next"
+      ]
+    },
+    // Jump to the PREVIOUS occurrence of the word under the cursor
+    {
+      "before": [
+        "m"
+      ],
+      "commands": [
+        "editor.action.wordHighlight.prev"
+      ]
+    },
+    /* Search Recovery */
+    {
+      "before": [
+        "<leader>",
+        "n"
+      ],
+      "after": [
+        "n"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "N"
+      ],
+      "after": [
+        "N"
+      ]
+    },
+    /* Utilities */
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "J"
+      ],
+      "after": [
+        "5",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "after": [
+        "5",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "n"
+      ],
+      "after": [
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "m"
+      ],
+      "after": [
+        "b"
+      ]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-c>": false,
+    "<C-x>": false,
+    "<C-y>": false,
+    "<C-k>": false,
+    "<C-l>": false,
+    "<C-j>": false,
+    "<C-b>": false,
+    "<C-a>": false,
+    "<C-e>": false,
+    "<C-r>": false,
+    "<C-d>": false,
+    "<C-f>": false,
+    "<C-w>": false,
+    "<C-u>": false,
+    "<C-n>": false,
+  },
+  "vim.useSystemClipboard": true,
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 17,
+  "chat.agent.maxRequests": 200,
+  "chat.checkpoints.showFileChanges": true,
+  "chat.customAgentInSubagent.enabled": true,
+  "chat.editor.fontFamily": "Fira Code",
+  "chat.editor.fontSize": 15,
+  "git.openRepositoryInParentFolders": "never",
+  "accessibility.signalOptions.volume": 0,
+  "chat.fontSize": 17,
+  "chat.viewSessions.orientation": "stacked",
+  "workbench.colorTheme": "Gruvbox Light Soft",
+  "chat.edits2.enabled": true,
+  "chat.mcp.gallery.enabled": true,
+  "chat.editing.confirmEditRequestRemoval": false,
+  "[nix]": {
+    "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
+  },
+  "editor.accessibilitySupport": "on",
+  "workbench.panel.showLabels": false,
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "formatting": {
+        "command": [
+          "nixfmt"
+        ] // or "alejandra"
+      },
+      "options": {
+        // ENABLE NIXOS OPTIONS AUTOCOMPLETE
+        // Replace "/absolute/path/to/flake" and "yourHostname"
+        "nixos": {
+          "expr": "(builtins.getFlake \"/home/user/dotfiles\").nixosConfigurations.yourHostname.options"
+        },
+        // ENABLE HOME-MANAGER OPTIONS AUTOCOMPLETE
+        // Replace "user@hostname" with your actual home-manager config name
+        "home-manager": {
+          "expr": "(builtins.getFlake \"/home/user/dotfiles\").homeConfigurations.\"user@hostname\".options"
+        }
+      },
+      "diagnostic": {
+        // Suppress annoying "variable not found" errors if you use a lot of 'with' scopes
+        "suppress": [
+          "sema-extra-with"
+        ]
+      }
+    }
+  }
+}
+```
+
