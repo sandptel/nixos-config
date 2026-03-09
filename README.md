@@ -684,4 +684,60 @@ Final VsCode.json file :
   }
 }
 ```
+## Vimium Config
+```
+# ==============================================================================
+# UNIVERSAL DEVELOPER VIMIUM CONFIG (PAGE-JUMP VERSION)
+# ==============================================================================
 
+# --- 1. ESCAPE & MODE SWITCHING ---
+unmap a
+map a focusInput
+map p enterInsertMode
+unmap f
+
+# --- 2. THE J/K POWER MAPPING (Page Up/Down) ---
+unmap J
+unmap K
+map J scrollFullPageDown
+map K scrollFullPageUp
+
+# --- 3. LINK INTERACTION (Home Row) ---
+unmap i
+map i LinkHints.activateMode
+map I LinkHints.activateModeToOpenInNewTab
+map yi LinkHints.activateModeToCopyLinkUrl
+
+# --- 4. SCROLLING (Half Page) ---
+unmap w
+unmap b
+unmap u
+map u visitPreviousTab
+
+# --- 5. HISTORY & URL HIERARCHY (N/M) ---
+unmap n
+unmap m
+
+map n goBack
+map m goForward
+
+map H goBack
+map L goForward
+
+# --- 6. TAB NAVIGATION (H/L) ---
+
+map h previousTab
+map l nextTab
+
+# --- 7. MISC ---
+unmap <a-m>
+mapkey <a-i> <c-[>
+
+unmap o
+map o Vomnibar.activateInNewTab
+unmap O 
+map O Vomnibar.activate
+
+map fo Vomnibar.activateEditUrlInNewTab
+map fO Vomnibar.activateEditUrl
+```
