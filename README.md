@@ -741,3 +741,51 @@ map O Vomnibar.activate
 map fo Vomnibar.activateEditUrlInNewTab
 map fO Vomnibar.activateEditUrl
 ```
+## Tmux Configs
+```conf
+# ==============================================================================
+# UNIVERSAL DEVELOPER TMUX CONFIG (CONTROL-KEY POWER)
+# ==============================================================================
+
+# --- 1. GENERAL SETTINGS ---
+set -g mouse on               # Enable touchpad/mouse scrolling and clicking
+set -g base-index 1           # Start windows at 1 (matches keyboard)
+set -g pane-base-index 1      # Start panes at 1
+set -g renumber-windows on    # Automatically renumber windows when one is closed
+set -g status-interval 1      # Refresh status bar every second
+
+# --- 2. WINDOW MANAGEMENT (n, m, x, t) ---
+# Ctrl+h / Ctrl+l: Move back and forth between windows
+bind -n C-h previous-window
+bind -n C-l next-window
+
+# Ctrl+t: Create new window
+bind -n C-t new-window -c "#{pane_current_path}"
+
+# Ctrl+x: Kill (Delete) current window
+bind -n C-x kill-window
+
+# --- 3. SESSION MANAGEMENT (N, M, T, B) ---
+# Ctrl+n / Ctrl+m: Move back and forth between sessions
+bind -n C-n switch-client -p
+bind -n C-m switch-client -n
+
+# Ctrl+T: Create new session
+bind -n C-T new-session
+
+# Ctrl+b: Detach session (leaves it running in background)
+bind -n C-b detach-client
+
+# --- 4. STRUCTURAL MOVEMENT (Shift-H, Shift-L) ---
+# Move current window to Previous/Next session
+bind -n C-H move-window -t :-
+bind -n C-L move-window -t :+
+
+# --- 5. EXIT & EMERGENCY ---
+# Prefix + q: Exit Tmux entirely (kills the server)
+bind q confirm-before -p "Kill tmux server? (y/n)" kill-server
+
+# --- 6. CLIPBOARD (NixOS/Wayland Fix) ---
+setw -g mode-keys vi
+bind -T copy-mode-vi y send -X copy-pipe-and-cancel "wl-copy"
+```
