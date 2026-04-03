@@ -747,6 +747,26 @@ map fO Vomnibar.activateEditUrl
 # UNIVERSAL DEVELOPER TMUX CONFIG (CONTROL-KEY POWER)
 # ==============================================================================
 
+unbind C-b
+set -g prefix C-Space
+bind C-Space send-prefix
+
+# --- 4. REPEATABLE RESIZING (Prefix, then tap h, j, k, l) ---
+# The '-r' flag means you press Prefix ONCE, then you have 500ms to tap
+# h, j, k, or l repeatedly to resize the window exactly how you want.
+bind -r h resize-pane -L 5
+bind -r j resize-pane -D 5
+bind -r k resize-pane -U 5
+bind -r l resize-pane -R 5
+
+# --- 0.1. VIM-LIKE SPLITTING ---
+# v for vertical, s for horizontal (matching Vim)
+bind v split-window -h -c "#{pane_current_path}"
+bind s split-window -v -c "#{pane_current_path}"
+bind b break-pane
+unbind '"'
+unbind %
+
 # --- 1. GENERAL SETTINGS ---
 set -g mouse on               # Enable touchpad/mouse scrolling and clicking
 set -g base-index 1           # Start windows at 1 (matches keyboard)
@@ -755,31 +775,32 @@ set -g renumber-windows on    # Automatically renumber windows when one is close
 set -g status-interval 1      # Refresh status bar every second
 
 # --- 2. WINDOW MANAGEMENT (n, m, x, t) ---
-# Ctrl+h / Ctrl+l: Move back and forth between windows
-bind -n C-h previous-window
-bind -n C-l next-window
+# Ctrl+left / Ctrl+right: Move back and forth between windows
+bind -n S-left previous-window
+bind -n S-right next-window
+bind -n S-Down switch-client -p
+bind -n S-Up switch-client -n
+
+# Shift+Down to cycle to the next pane
+bind -n C-e select-pane -t :.+
+
+# Shift+Up to cycle to the previous pane
+bind -n C-b select-pane -t :.-
 
 # Ctrl+t: Create new window
 bind -n C-t new-window -c "#{pane_current_path}"
+bind -n C-T new-session
 
 # Ctrl+x: Kill (Delete) current window
 bind -n C-x kill-window
+bind -n C-X detach-client
 
 # --- 3. SESSION MANAGEMENT (N, M, T, B) ---
-# Ctrl+n / Ctrl+m: Move back and forth between sessions
-bind -n C-n switch-client -p
-bind -n C-m switch-client -n
 
-# Ctrl+T: Create new session
-bind -n C-T new-session
-
-# Ctrl+b: Detach session (leaves it running in background)
-bind -n C-b detach-client
-
-# --- 4. STRUCTURAL MOVEMENT (Shift-H, Shift-L) ---
-# Move current window to Previous/Next session
-bind -n C-H move-window -t :-
-bind -n C-L move-window -t :+
+# Prefix + Ctrl+k: FETCH window from another session to here
+# (Prompts for the target. E.g., type 'work:2' to pull window 2 from the 'work' session)
+bind C-Down command-prompt -p "Send window to session:" "move-window -t '%%:'"
+bind C-Up command-prompt -p "Fetch window from (session:window):" "move-window -s '%%'"
 
 # --- 5. EXIT & EMERGENCY ---
 # Prefix + q: Exit Tmux entirely (kills the server)
@@ -788,4 +809,5 @@ bind q confirm-before -p "Kill tmux server? (y/n)" kill-server
 # --- 6. CLIPBOARD (NixOS/Wayland Fix) ---
 setw -g mode-keys vi
 bind -T copy-mode-vi y send -X copy-pipe-and-cancel "wl-copy"
+
 ```
