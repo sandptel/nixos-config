@@ -1,20 +1,19 @@
 {
-  description = "A modular NixOS flake with Home Manager";
+  description =
+    "Nix flake for my personal configuration. It includes a NixOS configuration for my laptop and a Home Manager configuration for my user.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
-    let
-      system = "x86_64-linux";
-    in
-    {
+    let system = "x86_64-linux";
+    in {
       overlays.default = import ./pkgs;
 
       nixosConfigurations.bushido = nixpkgs.lib.nixosSystem {
@@ -23,9 +22,7 @@
         modules = [
           ./hosts/bushido/configuration.nix
 
-          ({ ... }: {
-            nixpkgs.overlays = [ self.overlays.default ];
-          })
+          ({ ... }: { nixpkgs.overlays = [ self.overlays.default ]; })
 
           home-manager.nixosModules.home-manager
           ({ ... }: {
