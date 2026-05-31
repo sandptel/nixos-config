@@ -1,4 +1,11 @@
-{ inputs, config, pkgs, host, username, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  host,
+  username,
+  ...
+}:
 {
   imports = [
     ./hardware.nix
@@ -44,6 +51,8 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  services.flatpak.enable = true;
+
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -77,14 +86,20 @@
   # services.xserver.libinput.enable = true;
 
   # Change this username to match your primary user.
+  programs.fish.enable = true;
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs;
-      [
-        # thunderbird
-      ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    shell = pkgs.fish;
+    packages = with pkgs; [
+      # thunderbird
+      flatpak
+      flatpak-xdg-utils
+    ];
   };
 
   # Install firefox.
@@ -95,11 +110,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [
-      # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      # wget
-    ];
+  environment.systemPackages = with pkgs; [
+    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # wget
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

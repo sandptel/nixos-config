@@ -1,5 +1,13 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  # Add your zsh config here.
-  # programs.zsh.enable = true;
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
+    plugins = [
+        # Enable a plugin (here grc for colorized output)
+        { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+    ];
+  };
 }
