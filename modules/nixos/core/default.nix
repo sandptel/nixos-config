@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./boot.nix
+    ./keyd.nix
     ./networking.nix
   ];
 }

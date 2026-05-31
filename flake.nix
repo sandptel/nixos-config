@@ -1,6 +1,5 @@
 {
-  description =
-    "Nix flake for my personal configuration. It includes a NixOS configuration for my laptop and a Home Manager configuration for my user.";
+  description = "Nix flake for my personal configuration. It includes a NixOS configuration for my laptop and a Home Manager configuration for my user.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -10,11 +9,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.follows = "noctalia-qs";
+    };
+
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Optional: experimental Ryzen NPU stack (use only when ready).
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
     let
       system = "x86_64-linux";
       host = "bushido";
@@ -22,9 +38,12 @@
 
       pkgs = import nixpkgs {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
-    in {
+    in
+    {
       overlays.default = import ./pkgs;
 
       nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
@@ -33,15 +52,23 @@
         modules = [
           ./hosts/${host}/configuration.nix
 
-          ({ ... }: { nixpkgs.overlays = [ self.overlays.default ]; })
+          (
+            { ... }:
+            {
+              nixpkgs.overlays = [ self.overlays.default ];
+            }
+          )
 
           home-manager.nixosModules.home-manager
-          ({ ... }: {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs host username; };
-            home-manager.users.${username} = import ./modules/home/home.nix;
-          })
+          (
+            { ... }:
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs host username; };
+              home-manager.users.${username} = import ./modules/home/home.nix;
+            }
+          )
         ];
       };
     };
