@@ -9,6 +9,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    fastfetch
+    yazi
     helix
     neovim
     vim

@@ -11,7 +11,7 @@
 
     kitty
     waybar
-    dunst
+    # dunst
     wofi
     swaybg
     cliphist
