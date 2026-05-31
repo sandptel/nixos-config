@@ -12,15 +12,23 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
-    let system = "x86_64-linux";
+    let
+      system = "x86_64-linux";
+      host = "bushido";
+      username = "bushido";
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
+      };
     in {
       overlays.default = import ./pkgs;
 
-      nixosConfigurations.bushido = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs host username; };
         modules = [
-          ./hosts/bushido/configuration.nix
+          ./hosts/${host}/configuration.nix
 
           ({ ... }: { nixpkgs.overlays = [ self.overlays.default ]; })
 
@@ -28,7 +36,8 @@
           ({ ... }: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit inputs host username; };
+            home-manager.users.${username} = import ./modules/home/home.nix;
           })
         ];
       };

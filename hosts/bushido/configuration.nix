@@ -1,6 +1,5 @@
-{ inputs, config, pkgs, ... }:
-let username = "bushido";
-in {
+{ inputs, config, pkgs, host, username, ... }:
+{
   imports = [
     ./hardware.nix
     ./amd.nix
@@ -17,7 +16,7 @@ in {
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "bushido";
+  networking.hostName = host;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -83,7 +82,7 @@ in {
   # Change this username to match your primary user.
   users.users.${username} = {
     isNormalUser = true;
-    description = "bushido";
+    description = username;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs;
       [
@@ -121,18 +120,6 @@ in {
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  home-manager.users.${username} = {
-    imports = [
-      ../../modules/home/desktop
-      ../../modules/home/shell
-      ../../modules/home/packages.nix
-    ];
-
-    home.stateVersion = "26.05";
-    home.enableNixpkgsReleaseCheck = false;
-    # Add user-level Home Manager settings here.
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
