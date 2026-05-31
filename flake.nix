@@ -9,6 +9,9 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Optional: experimental Ryzen NPU stack (use only when ready).
+    nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
