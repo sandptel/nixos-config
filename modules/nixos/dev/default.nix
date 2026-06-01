@@ -27,5 +27,7 @@
     zip
     unzip
     git-lfs
+
+    mold
   ];
 }

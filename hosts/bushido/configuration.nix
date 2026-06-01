@@ -63,6 +63,15 @@
     variant = "";
   };
 
+  nix = {
+    settings = {
+      # Automatically detects duplicate files in the store and hardlinks them
+      auto-optimise-store = true;
+      # Allows you to use modern experimental features like flakes
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

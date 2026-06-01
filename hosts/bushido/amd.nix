@@ -5,6 +5,9 @@
   # Load the newest AMD firmware and CPU microcode for stability on new silicon.
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
+    
+  # Runs fstrim weekly to optimize the NVMe flash translation layer
+  services.fstrim.enable = true;
 
   # Kernel parameters to improve power management and avoid amdgpu freezes.
   boot.kernelParams = [

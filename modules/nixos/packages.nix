@@ -8,10 +8,14 @@
     mtr.enable = true;
   };
   # System-wide packages.
+  services.cloudflare-warp.enable = true;
+
+
   environment.systemPackages = with pkgs; [
     # Add packages here.
     spotify
     vlc
+    cloudflare-warp
     playerctl
   ];
 }
