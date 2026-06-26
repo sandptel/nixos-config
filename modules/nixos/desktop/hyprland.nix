@@ -10,12 +10,13 @@
     pyprland
 
     kitty
-    waybar
     # dunst
     wofi
     swaybg
     cliphist
+    gpu-screen-recorder
     wl-clipboard
+    hyprshot
     grim
     slurp
   ];

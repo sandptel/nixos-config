@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./rust.nix ./nix-tools.nix ];
+  imports = [ ./rust.nix ./nix-tools.nix ./networks.nix];
 
   programs.vscode.enable = true;
 

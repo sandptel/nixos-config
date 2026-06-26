@@ -17,5 +17,9 @@
     vlc
     cloudflare-warp
     playerctl
+    motrix-next
+
+    google-chrome
+    mpv
   ];
 }

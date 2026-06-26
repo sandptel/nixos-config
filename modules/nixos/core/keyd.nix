@@ -20,12 +20,17 @@
             l = "right";
 
             # Your Custom Mappings
-            n = "C-left"; # Go to start of line
-            m = "C-right"; # Go to end of line
+            n = "C-left";      
+            m = "C-right";     
             u = "C-backspace"; # Delete whole word (backwards)
             i = "backspace";
             o = "enter";
-            backspace = "C-backspace"; # Back to main layer
+            
+            # Universal Copy/Paste (Bypasses terminal SIGINT)
+            y = "C-insert";    # Copy 
+            p = "S-insert";    # Paste
+            
+            backspace = "C-backspace"; 
 
             # Optional: 'f' to delete word forward (Ctrl+Delete)
             # f = "C-delete";

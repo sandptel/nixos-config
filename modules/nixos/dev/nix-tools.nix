@@ -9,6 +9,8 @@
 
   programs.nix-ld.enable = true;
 
+  nix.settings.trusted-users =  [ "root" "@wheel" "bushido" ];
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

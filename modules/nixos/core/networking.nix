@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, username, ... }:
 {
   networking.firewall = {
     # Enable the firewall.
@@ -11,8 +11,11 @@
     allowedTCPPorts = [
       22
       5555
+      8081
+      4000
       53317
     ];
+    allowedUDPPortRanges = [ { from = 50000; to = 50100; } ];
     allowedUDPPorts = [ 53317 ];
   };
 }

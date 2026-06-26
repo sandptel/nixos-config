@@ -10,6 +10,8 @@
   imports = [
     ./hardware.nix
     ./amd.nix
+    # turing off howdy because I of the shit it brings without any usability
+    # ./howdy.nix
     ../../modules/nixos/core
     ../../modules/nixos/dev
     ../../modules/nixos/desktop
@@ -102,6 +104,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "wireshark"
     ];
     shell = pkgs.fish;
     packages = with pkgs; [
