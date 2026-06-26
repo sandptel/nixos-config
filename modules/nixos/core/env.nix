@@ -1,15 +1,13 @@
-{ pkgs, ... }:
-# to be used to setup environment variables and MIME associations for the desktop environment
+{ ... }:
+# Default browser: install firefox, set env + MIME associations.
 {
-  environment.systemPackages = with pkgs; [
-    
-  ];
+  programs.firefox.enable = true;
 
   environment.sessionVariables = {
-    BROWSER = "firefox"; 
+    BROWSER = "firefox";
   };
 
-  # 2. Set XDG MIME default applications (used by GUI apps)
+  # XDG MIME default applications (used by GUI apps).
   xdg.mime = {
     enable = true;
     defaultApplications = {

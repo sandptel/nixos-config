@@ -20,10 +20,12 @@
     nload
     trippy      # binary is `trip`
     gping
-    mtr
     nmap
     sniffnet
   ];
+
+  # mtr: use programs.mtr.enable for the setuid wrapper (don't add bare pkg).
+  programs.mtr.enable = true;
 
   # Declaratively grant raw-socket capabilities to the tools that need them,
   # so you don't sudo every time. Wrappers land in /run/wrappers/bin, which is

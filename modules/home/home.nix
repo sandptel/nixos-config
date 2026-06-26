@@ -3,6 +3,7 @@
   imports = [
     ./desktop
     ./shell
+    ./dev
     ./packages.nix
   ];
 

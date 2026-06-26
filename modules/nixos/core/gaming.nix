@@ -1,13 +1,8 @@
 { config, pkgs, ... }:
 
+# hardware.graphics (incl. enable32Bit) is configured in hosts/bushido/graphics.nix.
 {
-  # 1. Ensure 32-bit graphics are enabled (Mandatory for Steam and Proton)
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  # 2. Steam Configuration
+  # Steam Configuration
   programs.steam = {
     enable = true;
     # Open required firewall ports for local streaming and multiplayer

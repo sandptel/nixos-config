@@ -1,6 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, username, ... }: {
   environment.systemPackages = with pkgs; [
-    # Add packages here.
     nixfmt
     nix-ld
     nixd
@@ -9,10 +8,7 @@
 
   programs.nix-ld.enable = true;
 
-  nix.settings.trusted-users =  [ "root" "@wheel" "bushido" ];
+  nix.settings.trusted-users = [ "root" "@wheel" username ];
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
+  # direnv is managed at the user level in modules/home/shell/utilities.nix.
 }

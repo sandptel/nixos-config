@@ -22,7 +22,6 @@
     pywalfox-native
     cava
     krabby
-    grim
     # Additional tools you might want
     # pavucontrol   # PulseAudio volume control
     # networkmanagerapplet  # Network manager GUI
