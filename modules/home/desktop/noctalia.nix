@@ -9,7 +9,7 @@
   imports = [
     inputs.noctalia.homeModules.default
   ];
-  programs.noctalia = {
+  programs.noctalia-shell = {
     enable = true;
   };
 

@@ -3,10 +3,10 @@
 {
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
+    defaultEditor = false; # helix is the default editor
     viAlias = false;
     vimAlias = false;
-    extraLuaConfig = ''
+    initLua = ''
       vim.g.mapleader = " "
       vim.g.maplocalleader = " "
       vim.o.timeoutlen = 300
