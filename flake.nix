@@ -13,7 +13,6 @@
       url = "github:noctalia-dev/noctalia/v4.7.7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     # Optional: experimental Ryzen NPU stack (use only when ready).
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };

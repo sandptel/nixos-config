@@ -6,5 +6,6 @@
     wget
     zip
     unzip
+    blueman
   ];
 }

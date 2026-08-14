@@ -11,6 +11,7 @@
     ./hardware.nix
     ./kernel.nix
     ./power.nix
+    ./wifi.nix
     ./storage.nix
     ./graphics.nix
     # turing off howdy because of the shit it brings without any usability
@@ -23,6 +24,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.supportedFilesystems = [ "ntfs" "exfat" ];
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = host;
@@ -35,6 +37,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
       "wireshark"
     ];
     shell = pkgs.fish;
