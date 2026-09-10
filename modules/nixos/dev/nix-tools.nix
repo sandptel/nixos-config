@@ -1,8 +1,6 @@
 { pkgs, username, ... }: {
   environment.systemPackages = with pkgs; [
-    nixfmt
-    nix-ld
-    nixd
+    nixfmt # nixd (LSP) is scoped to the helix wrapper in modules/home/dev/helix.nix
     nixdoc
   ];
 

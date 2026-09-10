@@ -1,12 +1,13 @@
-{ pkgs,username, ... }: {
+{ pkgs, ... }:
+{
+  virtualisation.docker = {
+    enable = true;
+    # Socket-activated instead of running from boot -> no idle daemon draining
+    # the battery; the first `docker` call starts it. User is in the docker
+    # group via hosts/bushido/configuration.nix.
+    enableOnBoot = false;
+  };
 
-  # Enable the Docker daemon
-  virtualisation.docker.enable = true;
-
-  # Add your user account to the docker group
-  # users.users.username.extraGroups = [ "docker" ];
-
-  # (Optional) Install docker-compose along with your system packages
   environment.systemPackages = with pkgs; [
     docker-compose
   ];

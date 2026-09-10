@@ -4,6 +4,7 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Vulkan / OpenCL / VA-API stacks for video decode and gaming.
+  # Verify with `vulkaninfo` / `vainfo` (core/diagnostics.nix).
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -15,20 +16,21 @@
     ];
   };
 
-  # Allow CoreCtrl to change AMD GPU power states without extra prompts.
+  # CoreCtrl owns AMD GPU power states (ships the polkit rules). Do not also
+  # enable services.lact -- two control daemons fighting over the same sysfs.
   programs.corectrl.enable = true;
-  hardware.amdgpu.overdrive = {
-    enable = true;
-    ppfeaturemask = "0xffffffff";
-  };
 
-  # Force ROCm to recognize the iGPU architecture (RDNA 3.5) for LLMs.
-  environment.variables = { HSA_OVERRIDE_GFX_VERSION = "11.5.0"; };
+  # NOT set: hardware.amdgpu.overdrive / ppfeaturemask = "0xffffffff".
+  # Buys ~nothing on an iGPU sharing the CPU power budget, and is a known source
+  # of ring timeouts / GPU hangs. https://wiki.archlinux.org/title/AMDGPU#Overclocking
+  #
+  # NOT set: HSA_OVERRIDE_GFX_VERSION. This GPU is gfx1150 (pci 1002:150E) and
+  # "11.5.0" just re-declares the native arch, globally, for every process.
+  # Confirm with `rocminfo | grep gfx`; if a HIP app still needs it, export
+  # HSA_OVERRIDE_GFX_VERSION=11.0.0 in that app's shell, not system-wide.
 
-  # AMD GPU monitoring tooling.
   environment.systemPackages = with pkgs; [
     corectrl
-    lact
     nvtopPackages.amd
   ];
 }

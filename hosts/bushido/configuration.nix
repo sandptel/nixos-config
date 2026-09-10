@@ -9,23 +9,17 @@
 {
   imports = [
     ./hardware.nix
+    ./boot.nix
     ./kernel.nix
     ./power.nix
     ./wifi.nix
     ./storage.nix
     ./graphics.nix
-    # turing off howdy because of the shit it brings without any usability
-    # ./howdy.nix
     ../../modules/nixos/core
     ../../modules/nixos/dev
     ../../modules/nixos/desktop
     ../../modules/nixos/packages.nix
   ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.supportedFilesystems = [ "ntfs" "exfat" ];
-  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = host;
 

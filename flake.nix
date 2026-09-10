@@ -13,8 +13,6 @@
       url = "github:noctalia-dev/noctalia/v4.7.7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Optional: experimental Ryzen NPU stack (use only when ready).
-    nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };
 
   outputs =
@@ -28,13 +26,8 @@
       system = "x86_64-linux";
       host = "bushido";
       username = "bushido";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-      };
+      # nixpkgs is not instantiated here -> nixosSystem builds its own pkgs from
+      # `system` + the modules' nixpkgs.config (allowUnfree in configuration.nix).
     in
     {
       overlays.default = import ./pkgs;

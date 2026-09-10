@@ -5,9 +5,11 @@
     ./networking.nix
     ./gaming.nix
     ./env.nix
-    ./sharing.nix
+    ./sharing
     ./audio.nix
     ./printing.nix
+    ./mdns.nix
+    ./diagnostics.nix
     ./locale.nix
     ./shell.nix
     ./flatpak.nix

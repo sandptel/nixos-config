@@ -13,17 +13,12 @@
     enable = true;
   };
 
+  # Shell-specific extras only. wl-clipboard/grim/slurp/networkmanagerapplet
+  # come from modules/nixos/desktop/packages.nix -- duplicating them here just
+  # shadows the system copy with a second closure.
   home.packages = with pkgs; [
-    # but you can add extras here
-    wl-clipboard # Wayland clipboard utilities
-    grim # Screenshot tool
-    slurp # Screen area selector
-
     pywalfox-native
     cava
     krabby
-    # Additional tools you might want
-    # pavucontrol   # PulseAudio volume control
-    networkmanagerapplet  # Network manager GUI
   ];
 }

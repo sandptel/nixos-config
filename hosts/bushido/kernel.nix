@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
-  # Newest kernel for Strix Point / Zen 5 and its iGPU.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Pinned to a series, NOT linuxPackages_latest: this box stacks three things
+  # that break on kernel bumps -- sched_ext (core/scheduler.nix), amdgpu on new
+  # silicon, and the rtw89 workaround (wifi.nix). Pinning makes bumps a commit.
+  boot.kernelPackages = pkgs.linuxPackages_7_2;
 
   # Modern systemd-based initrd: faster and more robust.
   boot.initrd.systemd.enable = true;
@@ -13,10 +15,5 @@
   boot.kernelParams = [
     # Modern AMD P-State scaling for better responsiveness and battery.
     "amd_pstate=active"
-
-    # Work around display flicker / ring timeouts by disabling PSR.
-    # "amdgpu.dcdebugmask=0x10"
-
-    # Keep IOMMU enabled; the Ryzen NPU depends on it.
   ];
 }

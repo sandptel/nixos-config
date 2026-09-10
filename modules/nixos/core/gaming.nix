@@ -14,14 +14,6 @@
     gamescopeSession.enable = true;
   };
 
-  # 2. Controller support (udev rules + rumble)
-  # hardware.steam-hardware.enable = true; # Steam Controller/Index/Deck udev rules
-  # # Wired Xbox (xpad) and DualSense (hid-playstation) already rumble in-kernel;
-  # # xpadneo is only for Xbox pads over Bluetooth and costs an out-of-tree module
-  # # rebuild on every kernel bump. Drop this line if you never pair one.
-  # hardware.xpadneo.enable = true;
-  # # PS4/PS5/Switch pads outside of Steam (Steam handles them itself via steam-hardware)
-  # services.udev.packages = [ pkgs.game-devices-udev-rules ];
 
   # 3. Feral GameMode
   # Automatically optimizes CPU scheduler, I/O priority, and GPU states when games launch.
@@ -71,9 +63,15 @@
     })
   ];
 
-  # 5. Environment Variables
-  # Tells ProtonUp-Qt exactly where to drop custom Proton versions so Steam finds them
   environment.sessionVariables = {
+    # Where ProtonUp-Qt drops custom Proton builds so Steam finds them.
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+
+    # gamemoderun exports LD_PRELOAD=libgamemodeauto.so.0, which pressure-vessel
+    # /flatpak inherit into bwrap -- but the gamemode dbus daemon isn't reachable
+    # from inside the sandbox, so libdbus aborts at _dl_fini and dumps core on
+    # every launch. Downgrades that abort to a warning.
+    # https://gitlab.freedesktop.org/dbus/dbus/-/issues/239
+    DBUS_FATAL_WARNINGS = "0";
   };
 }
