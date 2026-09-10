@@ -1,9 +1,14 @@
 { ... }:
+let
+  # compress/ssd/discard are btrfs superblock-wide (first mount wins) -> but
+  # noatime is per-mount VFS, so every subvol needs it or it silently relatimes.
+  btrfsOpts = [ "compress=zstd:1" "noatime" "ssd" "discard=async" ];
+in
 {
-  # Btrfs mount options for fast compression and reduced SSD wear.
-  # Device and fsType live in hardware.nix; this only adds mount options.
-  fileSystems."/".options =
-    [ "compress=zstd:1" "noatime" "ssd" "discard=async" ];
+  # Device + fsType live in hardware.nix; this only adds mount options.
+  fileSystems."/".options = btrfsOpts;
+  fileSystems."/home".options = btrfsOpts;
+  fileSystems."/nix".options = btrfsOpts;
 
   # Weekly fstrim to optimize the NVMe flash translation layer.
   services.fstrim.enable = true;

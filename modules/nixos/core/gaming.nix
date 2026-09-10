@@ -11,8 +11,17 @@
     localNetworkGameTransfers.openFirewall = true; 
     
     # Allows Steam to utilize Gamescope easily 
-    gamescopeSession.enable = true; 
+    gamescopeSession.enable = true;
   };
+
+  # 2. Controller support (udev rules + rumble)
+  # hardware.steam-hardware.enable = true; # Steam Controller/Index/Deck udev rules
+  # # Wired Xbox (xpad) and DualSense (hid-playstation) already rumble in-kernel;
+  # # xpadneo is only for Xbox pads over Bluetooth and costs an out-of-tree module
+  # # rebuild on every kernel bump. Drop this line if you never pair one.
+  # hardware.xpadneo.enable = true;
+  # # PS4/PS5/Switch pads outside of Steam (Steam handles them itself via steam-hardware)
+  # services.udev.packages = [ pkgs.game-devices-udev-rules ];
 
   # 3. Feral GameMode
   # Automatically optimizes CPU scheduler, I/O priority, and GPU states when games launch.
@@ -46,8 +55,20 @@
 
     protonup-qt   # GUI to easily install custom GE-Proton versions
 
-    # lutris is currently unable to compile
-    lutris-unwrapped        
+    # Wrapped lutris = FHS env, which is what umu/pressure-vessel needs: a real
+    # /usr/bin (bwrap: execvp true) and a valid ld.so.cache (pressure-vessel's
+    # "Unable to determine architecture of provider / ldconfig").
+    # Launch it as plain `lutris` -- NOT `steam-run lutris`: steam-run's older glib
+    # breaks every gio module (undefined symbol: g_task_set_name) and the portal.
+    (lutris.override {
+      extraPkgs = p: with p; [
+        coreutils # /usr/bin/true, which pressure-vessel execs to probe the container
+        umu-launcher
+        winetricks
+        vulkan-tools # vulkaninfo, which lutris shells out to on startup
+        p7zip
+      ];
+    })
   ];
 
   # 5. Environment Variables
