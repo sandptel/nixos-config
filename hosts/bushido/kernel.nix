@@ -1,9 +1,7 @@
 { pkgs, ... }:
 {
-  # Pinned to a series, NOT linuxPackages_latest: this box stacks three things
-  # that break on kernel bumps -- sched_ext (core/scheduler.nix), amdgpu on new
-  # silicon, and the rtw89 workaround (wifi.nix). Pinning makes bumps a commit.
-  boot.kernelPackages = pkgs.linuxPackages_7_2;
+  # Mainline. Strix Point iGPU + sched_ext (core/scheduler.nix) both want new.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Modern systemd-based initrd: faster and more robust.
   boot.initrd.systemd.enable = true;
