@@ -7,7 +7,8 @@
 
   boot.extraModprobeConfig = ''
     options rtw89_core disable_ps_mode=1
+    options rtw89_pci disable_aspm_l1=1 disable_aspm_l1ss=1
   '';
 
-  #  also an option : rtw89_pci disable_aspm_l1=1 disable_aspm_l1ss=1
+  # ASPM L1 off: kills ~20ms latency spikes in online games; costs a bit of battery.
 }
