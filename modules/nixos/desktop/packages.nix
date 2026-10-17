@@ -15,6 +15,10 @@
 
     libnotify # send notifications (notify-send)
 
+    # rice engine (~/.config/rice/rice): runs from noctalia hooks, needs these on PATH
+    python3
+    imagemagick # wallpaper classification
+
     # --- Screen Capture & Recording ---
     grim
     slurp
