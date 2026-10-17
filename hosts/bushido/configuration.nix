@@ -15,6 +15,7 @@
     ./wifi.nix
     ./storage.nix
     ./graphics.nix
+    # ./howdy.nix # face unlock -> more breakage than usability, see file
     ../../modules/nixos/core
     ../../modules/nixos/dev
     ../../modules/nixos/desktop
@@ -33,9 +34,12 @@
       "wheel"
       "docker"
       "wireshark"
+      "uinput" 
     ];
     shell = pkgs.fish;
   };
+
+  hardware.uinput.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data were taken. Leave at first-install version.

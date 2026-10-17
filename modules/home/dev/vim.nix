@@ -66,6 +66,17 @@
       map("n", "<C-y>", "<C-r>", o) -- redo
       map("n", "<C-a>", "ggVG", o)  -- select all
       map({ "n", "i" }, "<C-s>", "<cmd>w<cr>", o) -- save
+
+      -- Ctrl+h/j/k/l: move between splits, hand off to tmux at the edge
+      for key, d in pairs({ h = "L", j = "D", k = "U", l = "R" }) do
+        map("n", "<C-" .. key .. ">", function()
+          local win = vim.fn.winnr()
+          vim.cmd("wincmd " .. key)
+          if win == vim.fn.winnr() and vim.env.TMUX then
+            vim.fn.system({ "tmux", "select-pane", "-" .. d })
+          end
+        end, o)
+      end
     '';
   };
 }

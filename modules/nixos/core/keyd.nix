@@ -20,8 +20,8 @@
             l = "right";
 
             # Your Custom Mappings
-            n = "C-left";      
-            m = "C-right";     
+            n = "C-left";
+            m = "C-right";
             u = "C-backspace"; # Delete whole word (backwards)
             i = "backspace";
             o = "enter";
