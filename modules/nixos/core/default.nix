@@ -12,5 +12,6 @@
     ./firmware.nix
     ./nix.nix
     ./logging.nix
+    ./dotfiles.nix
   ];
 }

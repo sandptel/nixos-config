@@ -30,6 +30,10 @@
       # `system` + the modules' nixpkgs.config (allowUnfree in configuration.nix).
     in
     {
+      checks.${system}.dotfiles =
+        nixpkgs.legacyPackages.${system}.callPackage ./modules/nixos/core/dotfiles-test.nix
+          { };
+
       nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs host username; };
