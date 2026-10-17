@@ -6,7 +6,7 @@
   environment.systemPackages = with pkgs; [
     spotify
     vlc
-    motrix-next
+    rayburst # was motrix-next; renamed upstream, history not migrated
     google-chrome
     mpv
   ];
