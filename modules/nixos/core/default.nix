@@ -17,5 +17,7 @@
     ./scheduler.nix
     ./firmware.nix
     ./nix.nix
+    ./logging.nix
+    ./bluetooth.nix
   ];
 }

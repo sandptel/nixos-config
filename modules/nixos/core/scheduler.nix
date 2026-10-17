@@ -6,5 +6,10 @@
   services.scx = {
     enable = true;
     scheduler = "scx_lavd";
+
+    # Power mode ← the active power-profiles-daemon profile, instead of lavd's
+    # default load-based autopilot. On balanced/power-saver this turns on core
+    # compaction: pack work onto one CCX rather than spreading it across both.
+    extraArgs = [ "--autopower" ];
   };
 }
