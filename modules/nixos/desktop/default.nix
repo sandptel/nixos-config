@@ -6,6 +6,7 @@
     ./gnome.nix
     ./niri.nix
     ./fonts.nix
+    ./browser.nix
     ./portals.nix
     ./packages.nix
   ];

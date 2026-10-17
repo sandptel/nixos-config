@@ -17,6 +17,8 @@
     ./graphics.nix
     # ./howdy.nix # face unlock -> more breakage than usability, see file
     ../../modules/nixos/core
+    ../../modules/nixos/services
+    ../../modules/nixos/gaming
     ../../modules/nixos/dev
     ../../modules/nixos/desktop
     ../../modules/nixos/packages.nix

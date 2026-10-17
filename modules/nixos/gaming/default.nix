@@ -2,6 +2,8 @@
 
 # hardware.graphics (incl. enable32Bit) is configured in hosts/bushido/graphics.nix.
 {
+  imports = [ ./controller.nix ];
+
   # Steam Configuration
   programs.steam = {
     enable = true;
