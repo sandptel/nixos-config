@@ -1,7 +1,6 @@
 { config, pkgs, username, ... }:
 {
   imports = [
-    ./desktop
     ./shell
     ./dev
     ./packages.nix
