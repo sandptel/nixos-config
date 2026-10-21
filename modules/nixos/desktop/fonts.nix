@@ -10,6 +10,8 @@
     geist-font
     plus-jakarta-sans
     figtree
+    # pixel mono: numerals and labels on rice's pixel-flavoured widgets
+    departure-mono
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
     nerd-fonts.ubuntu
