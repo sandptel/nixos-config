@@ -1,0 +1,39 @@
+--- a/src/input.cpp
++++ b/src/input.cpp
+@@ -324,7 +324,7 @@
+                 swipe_state = HT_SWIPE_OPEN;
+                 swipe_amt = OPEN_DISTANCE;
+             } else if (cursor_view->active && deltaY > 0) {
+-                cursor_view->hide(false);
++                cursor_view->hide(true);
+                 swipe_state = HT_SWIPE_OPEN;
+                 swipe_amt = 0.0;
+             }
+@@ -372,7 +372,7 @@
+             if (swipe_perc >= 0.5) {
+                 cursor_view->show(false);
+             } else {
+-                cursor_view->hide(false);
++                cursor_view->hide(true);
+             }
+             break;
+         }
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -484,10 +484,16 @@
+     const unsigned int drag_button = HTConfig::value<Config::INTEGER>("drag_button");
+     const unsigned int select_button = HTConfig::value<Config::INTEGER>("select_button");
+ 
++    // a press + release that barely moved is a click: select the workspace under the pointer
++    static Vector2D press_coords;
+     if (pressed && e.button == drag_button) {
++        press_coords = g_pInputManager->getMouseCoordsInternal();
+         info.cancelled = ht_manager->start_window_drag();
+     } else if (!pressed && e.button == drag_button) {
+         info.cancelled = ht_manager->end_window_drag();
++        if (g_pInputManager->getMouseCoordsInternal().distance(press_coords) < 6.0
++            && ht_manager->exit_to_workspace())
++            info.cancelled = true;
+     } else if (pressed && e.button == select_button) {
+         info.cancelled = ht_manager->exit_to_workspace();
+     }
