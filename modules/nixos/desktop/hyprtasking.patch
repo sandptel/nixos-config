@@ -1,3 +1,4 @@
+diff -ruN a/src/input.cpp b/src/input.cpp
 --- a/src/input.cpp
 +++ b/src/input.cpp
 @@ -324,7 +324,7 @@
@@ -18,6 +19,35 @@
              }
              break;
          }
+diff -ruN a/src/layout/grid.cpp b/src/layout/grid.cpp
+--- a/src/layout/grid.cpp
++++ b/src/layout/grid.cpp
+@@ -36,13 +36,13 @@
+     Animation::mgr()->createAnimation(
+         {0, 0},
+         offset,
+-        anim_tree->getAnimationPropertyConfig("workspaces"),
++        anim_tree->getAnimationPropertyConfig("border"),
+         AVARDAMAGE_NONE
+     );
+     Animation::mgr()->createAnimation(
+         1.f,
+         scale,
+-        anim_tree->getAnimationPropertyConfig("workspaces"),
++        anim_tree->getAnimationPropertyConfig("border"),
+         AVARDAMAGE_NONE
+     );
+ 
+@@ -563,6 +563,8 @@
+         bdata.box = ws_layout.box;
+         bdata.grad1 = start_workspace->m_id == ws_id ? *ACTIVECOL : *INACTIVECOL;
+         bdata.borderSize = BORDERSIZE;
++        bdata.round = *CConfigValue<Config::INTEGER>("decoration:rounding");
++        bdata.roundingPower = *CConfigValue<Config::FLOAT>("decoration:rounding_power");
+         g_pHyprRenderer->m_renderPass.add(makeUnique<CBorderPassElement>(bdata));
+     }
+ 
+diff -ruN a/src/main.cpp b/src/main.cpp
 --- a/src/main.cpp
 +++ b/src/main.cpp
 @@ -484,10 +484,16 @@

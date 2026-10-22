@@ -16,7 +16,7 @@
   # the hovered workspace; upstream needs right click and always returns to the old one.
   environment.etc."hypr/plugins/hyprtasking.so".source =
     "${pkgs.hyprlandPlugins.hyprtasking.overrideAttrs (old: {
-      patches = (old.patches or [ ]) ++ [ ./hyprtasking-select.patch ];
+      patches = (old.patches or [ ]) ++ [ ./hyprtasking.patch ];
     })}/lib/libhyprtasking.so";
   # Cursor that rotates with its direction of travel and grows when shaken (rice configures it).
   # nixpkgs' build (2026-07-21) throws on load in 0.56.2; upstream's hyprpm.toml pins this
