@@ -1,5 +1,6 @@
 # dotfiles: keep $DOTS (a checkout of $DOTS_REMOTE) symlinked into $HOME.
-#   link         symlink every path in $DOTS/tracked into $HOME
+#   link [--force]  symlink every path in $DOTS/tracked into $HOME; a path that already
+#                   exists is left alone (--force: back it up, then link)
 #   track PATH   move PATH into the repo, add it to tracked, link + sync
 #   sync         commit all changes, push if ahead
 #   pull         sync, then clone or pull --rebase from origin, then link
@@ -13,14 +14,15 @@ flock -w 120 9
 paths() { grep -v -E '^\s*(#|$)' "$DOTS/tracked"; }
 
 cmd_link() {
-  local backup p src dst
+  local backup p src dst force=${1:-}
   backup="$HOME/.local/state/dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
   while read -r p; do
     src="$DOTS/$p" dst="$HOME/$p"
     [ -e "$src" ] || { echo "skip $p: not in repo" >&2; continue; }
     [ "$(readlink "$dst" || true)" = "$src" ] && continue
-    # First link on a machine: keep whatever was there instead of deleting it.
     if [ -e "$dst" ] || [ -L "$dst" ]; then
+      # Never replace what's already there unless asked; --force keeps it as a backup.
+      [ "$force" = --force ] || { echo "kept ~/$p (exists; dotfiles link --force to replace)" >&2; continue; }
       mkdir -p "$(dirname "$backup/$p")"
       mv "$dst" "$backup/$p"
       echo "backed up ~/$p -> $backup/$p"
@@ -69,7 +71,8 @@ cmd_track() {
 }
 
 case "${1:-}" in
-  link | sync | pull) "cmd_$1" ;;
+  link) cmd_link "${2:-}" ;;
+  sync | pull) "cmd_$1" ;;
   track) cmd_track "${2:?usage: dotfiles track PATH}" ;;
-  *) echo "usage: dotfiles {link|track PATH|sync|pull}" >&2; exit 2 ;;
+  *) echo "usage: dotfiles {link [--force]|track PATH|sync|pull}" >&2; exit 2 ;;
 esac

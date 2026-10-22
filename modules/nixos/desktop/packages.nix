@@ -18,6 +18,9 @@
     # rice engine (~/.config/rice/rice): runs from noctalia hooks, needs these on PATH
     python3
     imagemagick # wallpaper classification
+    jq # hypr scripts (cycle_fullscreen, zoom)
+    wtype # emoji picker types the pick
+    wlrctl # rice selftest: real pointer clicks
 
     # --- Screen Capture & Recording ---
     grim

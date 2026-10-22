@@ -1,6 +1,6 @@
 { runCommand, git, util-linux }:
-# `nix flake check`: pull adopts an existing dir (backup + link), track moves a
-# file in and pushes it. Fake $HOME + local bare remote, no network.
+# `nix flake check`: pull leaves an existing dir alone, link --force adopts it (backup +
+# link), track moves a file in and pushes it. Fake $HOME + local bare remote, no network.
 runCommand "dotfiles-test" { nativeBuildInputs = [ git util-linux ]; } ''
   dotfiles() { bash -euo pipefail ${./dotfiles.sh} "$@"; }
   export HOME=$TMPDIR/home XDG_RUNTIME_DIR=$TMPDIR DOTS_REMOTE=$TMPDIR/remote.git
@@ -15,6 +15,8 @@ runCommand "dotfiles-test" { nativeBuildInputs = [ git util-linux ]; } ''
 
   mkdir -p $HOME/.config/app && echo old > $HOME/.config/app/conf
   dotfiles pull
+  [ ! -L $HOME/.config/app ] && grep -qx old $HOME/.config/app/conf
+  dotfiles link --force
   [ "$(readlink $HOME/.config/app)" = $HOME/dots/.config/app ]
   grep -qx old $HOME/.local/state/dotfiles-backup/*/.config/app/conf
   grep -qx new $HOME/.config/app/conf

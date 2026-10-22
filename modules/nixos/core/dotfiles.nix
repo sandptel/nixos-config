@@ -24,6 +24,13 @@ in
   system.userActivationScripts.dotfiles.text = ''
     if [ "$(id -un)" = ${username} ]; then
       timeout 60 ${lib.getExe dotfiles} pull || true
+      # First run on a machine: generate the rice's state (hypr setup.conf, noctalia
+      # zz-setup.toml, gen/) so the first Hyprland login sources no missing files.
+      # Only when missing -- noctalia regenerates it on every start after that.
+      if [ -x "$HOME/.config/rice/rice" ] && [ ! -e "$HOME/.config/hypr/setup.conf" ]; then
+        PATH=${lib.makeBinPath [ pkgs.python3 pkgs.imagemagick pkgs.coreutils ]}:$PATH \
+          timeout 60 "$HOME/.config/rice/rice" resolve || true
+      fi
     fi
   '';
 
